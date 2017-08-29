@@ -1,0 +1,6 @@
+.DashBoard {
+  /* height: 100vh; */
+  overflow: scroll;
+  width: 80vw;
+  background-color: blue;
+}
