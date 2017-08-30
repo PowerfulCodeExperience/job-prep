@@ -3,3 +3,13 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.color-scheme {
+  primary-blue: #2AABE2;
+  light-blue: #5DC0E1;
+  dark-blue: #1B86BD;
+  charcoal-black: #252525;
+  charcoal-gray: #444444;
+  accent-gray: #DADADA;
+  input-yellow: #FAFFBD;
+}

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
+import Card from './../Card/Card.js';
+
 import './DashBoard.css';
 
 class DashBoard extends Component {
@@ -8,12 +10,47 @@ class DashBoard extends Component {
 
     console.log('props:', this.props);
 
+    const userImage = () => {
+      if(this.props.user.picture) {
+        return <img src={this.props.user.picture} alt="" />
+      }
+      else {
+        return <img src={require("./user-default.png")} alt="" />
+      }
+    }
+
+    // const upDate = () => {
+    //   let d = new Date();
+    //   let sec = d.getSeconds();
+    //   let month = d.getMonth();
+    //   let day = d.getDate();
+    //   let year = d.getYear();
+    //   let date = sec + ':' + (month+1) + '/' + day + '/' + (1900+year);
+
+    //   setInterval(() => {
+    //     console.log(date);
+    //   }, 1000);
+    // }
+
     return(
       <div className="DashBoard">
-        <header>
-          <img src={this.props.user.picture} alt="profile-pic" />
-          Good Morning Loser!
+
+        <div className="Status">
+          4:20 PM, August 30, 2017
+          <span>Status: Unemployed :(</span>
+        </div>
+
+        <header className="DashHead">
+          {userImage()}
+          Good Morning {this.props.user.firstname || 'Bucko'}!
         </header>
+
+        <div className="Portal">
+          <Card name="Tasks"/>
+          <Card name="Day"/>
+          <Card name="Goals"/>
+        </div>
+
       </div>
     )
   }
