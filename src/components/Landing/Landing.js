@@ -9,7 +9,7 @@ class Landing extends Component {
   render() {
     return (
     <div className="Landing">
-      <div>
+      <div className="Landing-Logo">
         <img src={require("./logowhiteblue.png")} alt="logo" /> 
       </div>
       <div className="Landing-Body">

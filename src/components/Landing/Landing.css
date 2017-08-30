@@ -3,8 +3,16 @@
   width: 100vw;
 }
 
+.Landing-Logo img {
+  width: 20%;
+  padding: 5px;
+}
+
 .Landing-Body {
   display: flex;
+  height: 100vh;
   justify-content: center;
   align-items: center;
+  background-color: blue;
 }
+
