@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 // import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 // import axios from 'axios';
+import {connect} from 'react-redux';
+import {getUser} from './../../ducks/reducer.js';
 
 import "./Navigation.css";
 
@@ -10,6 +12,10 @@ class Navigation extends Component {
   // signOut(){
   //   axios.get('/api/signout')
   // }
+
+  componentDidMount() {
+    this.props.getUser();
+  }
 
   render() {
     return (
@@ -32,4 +38,10 @@ class Navigation extends Component {
   }
 }
 
-export default Navigation;
+function mapStateToProps(state) {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps, {getUser})(Navigation);
