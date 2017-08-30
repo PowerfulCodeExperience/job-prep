@@ -1,0 +1,21 @@
+.Landing {
+  height: 100vh;
+  width: 100vw;
+}
+
+.Landing-Logo {
+  border-bottom: 1px solid gray;
+}
+
+.Landing-Logo img {
+  width: 20%;
+  padding: 5px;
+}
+
+.Landing-Body {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
