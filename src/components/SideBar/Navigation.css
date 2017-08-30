@@ -1,10 +1,8 @@
 .Navigation {
-  /* height: 100vh; */
   width: 302px;
-  /* background-color: orange; */
 }
 
-.Container{
+.Container {
   position: fixed;
   height: 100vh;
   width: 302px;
@@ -17,19 +15,22 @@
 }
 
 .Container a {
+  height: 40px;
   font-family: 'Nunito', sans-serif;
   text-decoration: none;
   font-size: 16px;
   font-weight: 700;
   color: black;
+  display: flex;
+  align-items: center;
 }
 
 .Container a:hover {
-  color: #2aabe2;
+  color: #2AABE2;
 }
 
 .Container span {
-  color: #2aabe2;
+  color: #2AABE2;
 }
 
 .Container span:hover {
@@ -37,9 +38,7 @@
 }
 
 .Links {
-  height: 400px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   padding-left: 45px;
 }
