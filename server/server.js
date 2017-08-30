@@ -73,6 +73,7 @@ passport.deserializeUser(function(profileFromSession, done) {
 
 // Endpoints
 
+app.get('/api/signIn', mainCtrl.signIn);
 app.get('/api/signOut', mainCtrl.signOut);
 
 const port = 3001;

@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 
 import './DashBoard.css';
 
 class DashBoard extends Component {
   render(){
+
+    console.log('props:', this.props);
+
     return(
       <div className="DashBoard">
         <header>
-          <img src="http://34.195.5.80/demo/wp-content/uploads/2017/01/abstract-user-flat-3.png" alt="profile-pic" />
+          <img src={this.props.user.picture} alt="profile-pic" />
           Good Morning Loser!
         </header>
       </div>
@@ -15,4 +19,10 @@ class DashBoard extends Component {
   }
 }
 
-export default DashBoard;
+function mapStateToProps(state) {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(DashBoard);
