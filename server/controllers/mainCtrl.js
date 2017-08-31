@@ -8,5 +8,12 @@ module.exports = {
     req.logout();
     console.log("User has signed out")
     res.status(200).send(true);
+  },
+  getResources: (req, res) => {
+    const db = req.app.get('db');
+
+    db.get_resources().then(resources => {
+      res.status(200).json(resources)
+    })
   }
 }

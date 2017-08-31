@@ -6,6 +6,7 @@ import Card from './../Card/Card.js';
 import './DashBoard.css';
 
 class DashBoard extends Component {
+
   render(){
 
     console.log('props:', this.props);
@@ -36,7 +37,7 @@ class DashBoard extends Component {
       <div className="DashBoard">
 
         <div className="Status">
-          4:20 PM, August 30, 2017
+          <p>{JSON.stringify(now)}</p>
           <span>Status: Unemployed :(</span>
         </div>
 
