@@ -1,5 +1,11 @@
 .Companies {
-  width: 80vw;
   height: 100vh;
   overflow-y: scroll;
+  display: flex;
+}
+
+.companyInput {
+  background-color: skyblue;
+  margin: 20px;
+  padding: 50px;
 }
