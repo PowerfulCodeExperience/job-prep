@@ -51,10 +51,10 @@ class DashBoard extends Component {
           <Grid.Row stretched>
             <Grid.Column className="column_dash">
               <Segment textAlign="center">
-                <h3>Portfolio Piece</h3>
+                <span className='card_header'>Portfolio Piece</span>
                 </Segment>
               <Segment>
-              <h3>My Tasks</h3>
+              <span className='card_header'>My Tasks</span>
               <ul>
                 <li>list of stuff</li>
                 <li>list of stuff</li>
@@ -74,15 +74,15 @@ class DashBoard extends Component {
             </Grid.Column>
             <Grid.Column>
               <Segment>
-              <h3>Job Application Actions</h3>
+              <span className='card_header'>Job Application Actions</span>
                 </Segment>
             </Grid.Column>
             <Grid.Column>
             <Segment>
-            <h3>Interview Status</h3>
+            <span className='card_header'>Interview Status</span>
               </Segment>
               <Segment>
-                <h3>Goals<DashGoalsModal/></h3>
+                <span className='card_header'>Goals<DashGoalsModal/></span>
                 
                 {
                   this.props.goals.map((goal, i) => (

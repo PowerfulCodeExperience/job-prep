@@ -22,5 +22,15 @@ module.exports = {
     db.get_goals(req.user.id)
     .then(goal => res.status(200).send(goal))
     res.status(200);
+  },
+  postGoal: (req,res) => {
+    const db = req.app.get('db');
+    let added = req.body;
+
+    db.post_goal([
+      added.goal
+    ])
+    .then( goal => res.status(200).send('goal added backend'))
+    .catch(() => res.status(500).send());
   }
 }
