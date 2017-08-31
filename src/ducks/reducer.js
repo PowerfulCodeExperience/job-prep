@@ -2,7 +2,8 @@ import axios from 'axios';
 
 const initialState = {
   user: {},
-  resources: []
+  resources: [],
+  companies: []
 };
 
 const GET_USER = 'GET_USER';

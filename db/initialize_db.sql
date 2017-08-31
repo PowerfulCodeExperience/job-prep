@@ -122,5 +122,19 @@ CREATE TABLE IF NOT EXISTS resources (
 -- ('article', 'businessinsider', 'Googles former HR Boss Says This is the Key to a Perfect Resume', 'http://www.businessinsider.com/laszlo-bock-gives-key-to-perfect-resume-2016-10' ),
 -- ('article', 'cio', 'How to Crack the Coding Challenge', 'https://www.cio.com/article/3139449/developer/how-to-crack-the-coding-challenge.html' ),
 -- ('googleDocs', 'Jeremy', 'Post-grad Roadmap: Immersive', 'https://docs.google.com/document/d/10gjpjAOJPg8KxOwLb6zz0lRvjHo71TDhnc1_XMcHqxg/edit'),
--- ('googleDocs', 'Jeremy', 'Jop Prep 2', 'https://docs.google.com/document/d/1BIyW2ou2G-Kj8wE0wPocWENbzrhrxe762ySwBwgcrgI/edit');
+-- ('googleDocs', 'Jeremy', 'Jop Prep 2', 'https://docs.google.com/document/d/1BIyW2ou2G-Kj8wE0wPocWENbzrhrxe762ySwBwgcrgI/edit'),
+-- ('example', 'linkedIn', 'Cleber Albuquerque', 'https://www.linkedin.com/in/cleberlop/' ),
+-- ('example', 'linkedIn', 'Brett Caudill', 'https://www.linkedin.com/in/brettcaudill/' ),
+-- ('example', 'linkedIn', 'Wyatt Johnny', 'https://www.linkedin.com/in/wyattjohnny/' ),
+-- ('example', 'linkedIn', 'Jeff Chapman', 'https://www.linkedin.com/in/chapmanjeffrey/' );
+
+-- INSERT INTO goals (goal, user_id) VALUES
+-- ('Apply to an average of 3 jobs per day. Research each job and customize my resume to each job.', 8),
+-- ('Code and average of 4 hours per day. As well as review Toy problems and practice whiteboarding', 8),
+-- ('Finish a new portfolio piece every 2 weeks', 8),
+-- ('Reach out to 4 people on Linkedin every day', 8),
+-- ('Tell all relatives and friends that I am looking for a job and ask for referrals', 8),
+-- ('Tour 2 companies offices per week', 8),
+-- ('Apply to 5 jobs outside of target search area per week', 8),
+-- ('Attend 2 meetups/ Networking events per week', 8);
 
