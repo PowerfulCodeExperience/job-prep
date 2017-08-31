@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { Grid, Segment, Button, Header, Icon, Modal } from 'semantic-ui-react';
-import {getGoals} from '../../ducks/reducer';
-import DashGoalsModal from '../DashGoalsModal/DashGoalsModal'
+import { Grid, Segment } from 'semantic-ui-react';
 
 import Card from './../Card/Card.js';
 
@@ -18,6 +16,7 @@ class DashBoard extends Component {
     this.props.getGoals(this.props.user.id)
 }
   render(){
+    console.log("user", this.props.user)
     const userImage = () => {
       if(this.props.user.picture) {
         return <img src={this.props.user.picture} alt="" />
@@ -46,54 +45,21 @@ class DashBoard extends Component {
       //   </div>
 
       // </div>
-      <div>
-        <Grid columns={3} divided className="main_dash">
-          <Grid.Row stretched>
-            <Grid.Column className="column_dash">
-              <Segment textAlign="center">
-                <span className='card_header'>Portfolio Piece</span>
-                </Segment>
-              <Segment>
-              <span className='card_header'>My Tasks</span>
-              <ul>
-                <li>list of stuff</li>
-                <li>list of stuff</li>
-                <li>list of stuff</li>
-                <li>list of stuff</li>
-                <li>list of stuff</li>
-                <li>list of stuff</li>
-                <li>list of stuff</li>
-                <li>list of stuff</li>
-                <li>list of stuff</li>
-                <li>list of stuff</li>
-                <li>list of stuff</li>
-                <li>list of stuff</li>
-
-              </ul>
-                </Segment>
-            </Grid.Column>
-            <Grid.Column>
-              <Segment>
-              <span className='card_header'>Job Application Actions</span>
-                </Segment>
-            </Grid.Column>
-            <Grid.Column>
-            <Segment>
-            <span className='card_header'>Interview Status</span>
-              </Segment>
-              <Segment>
-                <span className='card_header'>Goals<DashGoalsModal/></span>
-                
-                {
-                  this.props.goals.map((goal, i) => (
-                    <p key={i} className="goals_list">{goal.goal}</p>
-                  ))
-                }
-              </Segment>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </div>
+            <Grid columns={3} divided>
+            <Grid.Row stretched>
+              <Grid.Column className="column_dash">
+                <Segment>Portfolio Peice</Segment>
+                <Segment>ToDo</Segment>
+              </Grid.Column>
+              <Grid.Column>
+                <Segment>Jobs Applied Action</Segment>
+              </Grid.Column>
+              <Grid.Column>
+              <Segment>Interview Status</Segment>
+                <Segment>Goals</Segment>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
     )
   }
 }

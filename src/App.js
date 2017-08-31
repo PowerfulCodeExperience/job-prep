@@ -22,7 +22,7 @@ export class Wrapper extends Component {
     return (
       <div className="App">
         <Navigation />
-        <div>
+        <div className="RoutesContainer">
           <Switch>
             <Route exact path="/dash" component={ DashBoard } />
             <Route path="/dash/companies" component={ Companies } />
