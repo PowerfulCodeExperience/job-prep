@@ -2,4 +2,13 @@
   width: 80vw;
   height: 100vh;
   overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.DropWrap {
+  width: 50%;
+  height: 50%;
+  background: lightblue;
 }

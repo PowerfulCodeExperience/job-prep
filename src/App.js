@@ -24,11 +24,11 @@ export class Wrapper extends Component {
         <Navigation />
         <div>
           <Switch>
-            <Route exact path="/dash" component={ DashBoard } />
-            <Route path="/dash/companies" component={ Companies } />
-            <Route path="/dash/interviews" component={ Interviews } />
-            <Route path="/dash/contacts" component={ Contacts } />
-            <Route path="/dash/resources" component={ JobResources } />
+            <Route exact path="/" component={ DashBoard } />
+            <Route path="/companies" component={ Companies } />
+            <Route path="/interviews" component={ Interviews } />
+            <Route path="/contacts" component={ Contacts } />
+            <Route path="/resources" component={ JobResources } />
             {/* <Route path="/dash/resume" component={ Resume } />
             <Route path="/dash/portfolio" component={ Portfolio } />
             <Route path="/dash/linkedin" component={ LinkedIn } />
@@ -45,9 +45,9 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Route path="/" component={ Status } />
-          <Route exact path="/" component={ Landing } />
-          <Route path="/dash" component={ Wrapper } />
+          {/* <Route path="/" component={ Status } /> */}
+          <Route path="/landing" component={ Landing } />
+          <Route path="/" component={ Wrapper } />
         </div>
       </Router>
     );
