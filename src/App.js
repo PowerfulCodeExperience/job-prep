@@ -45,7 +45,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Route path="/" component={ Status } />
+          {/* <Route path="/" component={ Status } /> */}
           <Route exact path="/" component={ Landing } />
           <Route path="/dash" component={ Wrapper } />
         </div>

@@ -15,5 +15,12 @@ module.exports = {
     db.get_resources().then(resources => {
       res.status(200).json(resources)
     })
+  },
+  getGoals: (req, res) => {
+    const db = req.app.get('db');
+
+    db.get_goals(req.user.id)
+    .then(goal => res.status(200).send(goal))
+    res.status(200);
   }
 }
