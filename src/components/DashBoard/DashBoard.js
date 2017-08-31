@@ -22,7 +22,6 @@ class DashBoard extends Component {
       <div className="DashBoard">
 
         <div className="Status">
-          <p>{JSON.stringify(now)}</p>
           <span>Status: Unemployed :(</span>
         </div>
 
