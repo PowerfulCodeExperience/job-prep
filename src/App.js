@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Status from './Status.js';
 
-import Navigation from './components/SideBar/Navigation';
+import Landing from './components/Landing/Landing.js';
+import Navigation from './components/Navigation/Navigation.js';
+import DashBoard from './components/DashBoard/DashBoard.js';
 
-import Landing from './components/Landing/Landing';
-import DashBoard from './components/DashBoard/DashBoard';
+import Companies from './components/Companies/Companies.js';
+import Interviews from './components/Interviews/Interviews.js';
+import Contacts from './components/Contacts/Contacts.js';
+import JobResources from './components/JobResources/JobResources.js';
+// import Resume from './components/Resume/Resume.js';
+// import Portfolio from './components/Portfolio/Portfolio.js';
+// import LinkedIn from './components/LinkedIn/LinkedIn.js';
+// import Personal from './components/Personal/Personal.js';
 
 import './App.css';
 
-class Wrapper extends Component {
+export class Wrapper extends Component {
   render() {
     return (
       <div className="App">
@@ -16,6 +25,14 @@ class Wrapper extends Component {
         <div>
           <Switch>
             <Route exact path="/dash" component={ DashBoard } />
+            <Route path="/dash/companies" component={ Companies } />
+            <Route path="/dash/interviews" component={ Interviews } />
+            <Route path="/dash/contacts" component={ Contacts } />
+            <Route path="/dash/resources" component={ JobResources } />
+            {/* <Route path="/dash/resume" component={ Resume } />
+            <Route path="/dash/portfolio" component={ Portfolio } />
+            <Route path="/dash/linkedin" component={ LinkedIn } />
+            <Route path="/dash/personal" component={ Personal } /> */}
           </Switch>
         </div>
       </div>
@@ -28,8 +45,9 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Route exact path="/" component={ Landing } > </Route>
-          <Route path="/dash" component={ Wrapper }></Route>
+          <Route path="/" component={ Status } />
+          <Route exact path="/" component={ Landing } />
+          <Route path="/dash" component={ Wrapper } />
         </div>
       </Router>
     );

@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
-import Card from './../Card/Card.js';
+import './Personal.css';
 
-import './DashBoard.css';
-
-class DashBoard extends Component {
-
+class Personal extends Component {
   render(){
 
     const userImage = () => {
@@ -19,23 +16,17 @@ class DashBoard extends Component {
     }
 
     return(
-      <div className="DashBoard">
+      <div className="Personal">
 
         <div className="Status">
-          <p>{JSON.stringify(now)}</p>
+          4:20 PM, August 30, 2017
           <span>Status: Unemployed :(</span>
         </div>
 
-        <header className="DashHead">
+        <header className="TitleBar">
           {userImage()}
           Good Morning {this.props.user.firstname || 'Bucko'}!
         </header>
-
-        <div className="Portal">
-          <Card name="Tasks"/>
-          <Card name="Day"/>
-          <Card name="Goals"/>
-        </div>
 
       </div>
     )
@@ -48,4 +39,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(DashBoard);
+export default connect(mapStateToProps)(Personal);
