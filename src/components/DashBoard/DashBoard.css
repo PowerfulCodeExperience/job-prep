@@ -39,3 +39,7 @@
   display: flex;
   justify-content: space-around;
 }
+
+.Goals{
+  background-color: blue;
+}
