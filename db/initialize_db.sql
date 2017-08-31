@@ -128,3 +128,13 @@ CREATE TABLE IF NOT EXISTS resources (
 -- ('example', 'linkedIn', 'Wyatt Johnny', 'https://www.linkedin.com/in/wyattjohnny/' ),
 -- ('example', 'linkedIn', 'Jeff Chapman', 'https://www.linkedin.com/in/chapmanjeffrey/' );
 
+-- INSERT INTO goals (goal, user_id) VALUES
+-- ('Apply to an average of 3 jobs per day. Research each job and customize my resume to each job.', 8),
+-- ('Code and average of 4 hours per day. As well as review Toy problems and practice whiteboarding', 8),
+-- ('Finish a new portfolio piece every 2 weeks', 8),
+-- ('Reach out to 4 people on Linkedin every day', 8),
+-- ('Tell all relatives and friends that I am looking for a job and ask for referrals', 8),
+-- ('Tour 2 companies offices per week', 8),
+-- ('Apply to 5 jobs outside of target search area per week', 8),
+-- ('Attend 2 meetups/ Networking events per week', 8);
+

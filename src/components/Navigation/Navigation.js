@@ -30,6 +30,7 @@ class Navigation extends Component {
           <Link to="/"><span>LOGOUT</span></Link>
         </div>
       </div>
+      <img src={this.props.user.picture} style={{'border-radius': '50%', 'width':'60px', 'position':'fixed', 'bottom':'0'}}/>
     </div>
     )
   }

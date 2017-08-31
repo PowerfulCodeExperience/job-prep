@@ -1,4 +1,8 @@
 .App {
   display: flex;
-  width: 100vw;
+}
+
+.RoutesContainer {
+  background: blue;
+  width: calc(100% - 302px);
 }
