@@ -3,8 +3,6 @@ import {connect} from 'react-redux';
 import { Grid, Segment } from 'semantic-ui-react';
 import {getGoals} from '../../ducks/reducer'
 
-import Card from './../Card/Card.js';
-
 import './DashBoard.css';
 
 class DashBoard extends Component {
@@ -18,14 +16,14 @@ class DashBoard extends Component {
 }
   render(){
     console.log("user", this.props.user)
-    const userImage = () => {
-      if(this.props.user.picture) {
-        return <img src={this.props.user.picture} alt="" />
-      }
-      else {
-        return <img src={require("./user-default.png")} alt="" />
-      }
-    }
+    // const userImage = () => {
+    //   if(this.props.user.picture) {
+    //     return <img src={this.props.user.picture} alt="" />
+    //   }
+    //   else {
+    //     return <img src={require("./user-default.png")} alt="" />
+    //   }
+    // }
 
     return(
       // <div className="DashBoard">

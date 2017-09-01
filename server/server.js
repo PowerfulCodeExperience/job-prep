@@ -61,7 +61,7 @@ passport.use(new Auth0Strategy({
 }));
 
 app.get('/auth', passport.authenticate('auth0'));
-app.get('/auth/callback', passport.authenticate('auth0', {successRedirect: 'http://localhost:3000/dash'}));
+app.get('/auth/callback', passport.authenticate('auth0', {successRedirect: 'http://localhost:3000/'}));
 
 passport.serializeUser(function(profileToSession, done) {
   done(null, profileToSession); // Puts second argument on session 
@@ -75,10 +75,8 @@ passport.deserializeUser(function(profileFromSession, done) {
 
 app.get('/api/signIn', mainCtrl.signIn);
 app.get('/api/signOut', mainCtrl.signOut);
-app.get('/api/getResources', mainCtrl.getResources);
-app.get('/api/getGoals', mainCtrl.getGoals);
 
-app.post('/api/postgoal', mainCtrl.postGoal);
+app.get('/api/resources', mainCtrl.getResources);
 
 const port = 3001;
 app.listen( port, () => { console.log(`Server listening on port ${port}`)} );
