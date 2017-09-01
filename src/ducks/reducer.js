@@ -2,7 +2,8 @@ import axios from 'axios';
 
 const initialState = {
   user: {},
-  companies: []
+  companies: [],
+  goals: []
 };
 
 const GET_USER = 'GET_USER';
