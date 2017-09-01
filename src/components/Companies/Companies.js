@@ -3,7 +3,9 @@ import {connect} from 'react-redux';
 
 // import axios from 'axios';
 
-import {Button, Input} from 'semantic-ui-react';
+import {Button, Input, Table} from 'semantic-ui-react';
+
+import { postCompany } from '../../ducks/reducer';
 
 import './Companies.css';
 
@@ -12,8 +14,8 @@ class Companies extends Component {
     super(props)
 
     this.state = {
-      company: '',
-      linkedin: ''
+      company: "",
+      linkedin: ""
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -22,7 +24,7 @@ class Companies extends Component {
 
   handleChange(e){
     let updatedName = e.target.name
-    console.log("updatedName", updatedName);
+    // console.log("updatedName", updatedName);
     let updatedValue = e.target.value
     this.setState({
       [updatedName]: updatedValue 
@@ -30,11 +32,18 @@ class Companies extends Component {
   }
 
   handleSubmit(event){
-    console.log("event", this.state)
+    this.props.postCompany(this.state);
+
+    // console.log("event", this.state)
+
+    this.setState({
+      company: "",
+      linkedin: ""
+    })
   }
 
   render() {
-    console.log("state", this.state)
+
     return (
       <div className="Companies">
 
@@ -70,6 +79,31 @@ class Companies extends Component {
 
         </div>
 
+        <Table striped>
+
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell>Name</Table.HeaderCell>
+              <Table.HeaderCell>LinkedIn</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+
+          <Table.Body>
+            <Table.Row>
+              <Table.Cell>Nike</Table.Cell>
+              <Table.Cell>https://www.linkedin.com/company/2029/</Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell>Nike</Table.Cell>
+              <Table.Cell>https://www.linkedin.com/company/2029/</Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell>Nike</Table.Cell>
+              <Table.Cell>https://www.linkedin.com/company/2029/</Table.Cell>
+            </Table.Row>
+          </Table.Body>
+        </Table>
+
       </div>
     )
   }
@@ -82,4 +116,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(Companies);
+export default connect(mapStateToProps, {postCompany})(Companies);
