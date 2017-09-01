@@ -29,11 +29,11 @@ class Companies extends Component {
   }
 
   handleSubmit(event){
-    console.log("event", this.state)
+    // console.log("event", this.state)
   }
 
   render() {
-    console.log("state", this.state)
+    // console.log("state", this.state)
     return (
       <div className="Companies">
 

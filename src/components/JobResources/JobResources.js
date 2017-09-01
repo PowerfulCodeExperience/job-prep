@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getResources} from  './../../ducks/reducer.js';
 
-// import DropDown from './../DropDown/DropDown.js';
 import { Accordion, Icon } from 'semantic-ui-react';
 
 import './JobResources.css';
