@@ -76,6 +76,7 @@ passport.deserializeUser(function(profileFromSession, done) {
 app.get('/api/signIn', mainCtrl.signIn);
 app.get('/api/signOut', mainCtrl.signOut);
 app.get('/api/resources', mainCtrl.getResources);
+app.get('/api/company', mainCtrl.getCompany);
 
 app.post('/api/company', mainCtrl.postCompany);
 

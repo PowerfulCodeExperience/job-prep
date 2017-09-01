@@ -31,11 +31,23 @@ export default function reducer(state=initialState, action) {
     case GET_RESOURCES + '_FULFILLED':
       return Object.assign({}, state, {resources: action.payload.data});
 
+    case GET_COMPANIES + '_PENDING':
+      return state;
+
+    case GET_COMPANIES + '_FULFILLED':
+      console.log("payload:", action.payload.data);
+      return Object.assign({}, state, {
+        companies: [...action.payload.data]
+      })
+
     case POST_COMPANY + '_PENDING':
       return state;
 
     case POST_COMPANY + '_FULFILLED':
-      return state;
+      // console.log("action.payload:", action.payload.data)
+      return Object.assign({}, state, {
+        companies: [...action.payload.data]
+      })
 
     default: return state;
   }

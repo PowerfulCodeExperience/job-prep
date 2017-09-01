@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 
 import {Button, Input, Table} from 'semantic-ui-react';
 
-import { postCompany } from '../../ducks/reducer';
+import { postCompany, getCompanies } from '../../ducks/reducer';
 
 import './Companies.css';
 
@@ -20,6 +20,10 @@ class Companies extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+  }
+
+  componentDidMount(){
+    this.props.getCompanies();
   }
 
   handleChange(e){
@@ -43,7 +47,7 @@ class Companies extends Component {
   }
 
   render() {
-
+    console.log("companies", this.props.companies)
     return (
       <div className="Companies">
 
@@ -87,23 +91,20 @@ class Companies extends Component {
               <Table.HeaderCell>LinkedIn</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
-
           <Table.Body>
-            <Table.Row>
-              <Table.Cell>Nike</Table.Cell>
-              <Table.Cell>https://www.linkedin.com/company/2029/</Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell>Nike</Table.Cell>
-              <Table.Cell>https://www.linkedin.com/company/2029/</Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell>Nike</Table.Cell>
-              <Table.Cell>https://www.linkedin.com/company/2029/</Table.Cell>
-            </Table.Row>
+          {
+            this.props.companies.map((company, i) => {
+              return (
+                <Table.Row key={i}>
+                  <Table.Cell>{company.companyname}</Table.Cell>
+                  <Table.Cell>{company.companylinkedin}</Table.Cell>
+                </Table.Row>
+              )
+            })
+          }
           </Table.Body>
-        </Table>
 
+        </Table>  
       </div>
     )
   }
@@ -116,4 +117,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {postCompany})(Companies);
+export default connect(mapStateToProps, {postCompany, getCompanies})(Companies);

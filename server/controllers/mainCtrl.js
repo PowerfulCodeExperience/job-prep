@@ -19,15 +19,21 @@ module.exports = {
     })
   },
 
+  getCompany: (req, res) => {
+    const db = req.app.get('db');
+
+    db.get_companies(req.user.id).then(response => {
+      res.status(200).send(response)
+    })
+  },
+
   postCompany: (req, res) => {
     const db = req.app.get('db');
 
-    console.log("Post Company", req.body)
-    console.log("User on Session", req.user.id)
-
     db.post_company(req.body.company, req.body.linkedin, req.user.id).then(response => {
-      console.log(response)
-      res.status(200).send(response)
+      db.get_companies(req.user.id).then(companies => {
+        res.status(200).send(companies)
+      })
     })
     
   }
