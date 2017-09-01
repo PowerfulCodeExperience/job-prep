@@ -9,7 +9,8 @@ class DashGoalsModal extends Component {
 
     this.state = {
       open: false,
-      goal: ''
+      goal: '',
+      task: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -25,9 +26,8 @@ class DashGoalsModal extends Component {
     axios.post('/api/postgoal', {
       goal: this.state.goal
     })
-    .then(response => console.log('added'))
+    .then(this.setState({goal:''}))
     .catch(error => error)
-
   }
   show = dimmer => () => this.setState({ dimmer, open: true })
   close = () => this.setState({ open: false })

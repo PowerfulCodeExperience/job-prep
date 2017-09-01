@@ -37,7 +37,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          {/* <Route path="/" component={ Status } /> */}
+          <Route path="/" component={ Status } />
           <Route path="/landing" component={ Landing } />
           <Route path="/" component={ Wrapper } />
         </div>
