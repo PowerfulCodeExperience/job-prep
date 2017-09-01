@@ -7,11 +7,12 @@ import './Navigation.css';
 
 class Navigation extends Component {
 
-  // componentDidMount() {
-  //   this.props.getUser();
-  // }
+  componentDidMount() {
+    this.props.getUser();
+  }
 
   render() {
+    console.log("User: ", this.props.user)
     return (
     <div className="Navigation">
       <div className="Container">

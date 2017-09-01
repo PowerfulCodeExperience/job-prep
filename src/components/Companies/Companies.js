@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-
 import axios from 'axios';
+
+import {Button, Input} from 'semantic-ui-react';
 
 import './Companies.css';
 
@@ -19,7 +20,6 @@ class Companies extends Component {
   }
 
   handleChange(e){
-
     let updatedName = e.target.name
     console.log("updatedName", updatedName);
     let updatedValue = e.target.value
@@ -37,16 +37,36 @@ class Companies extends Component {
     return (
       <div className="Companies">
 
-        <p>20 Company Challenge</p>
+        <h1>20 Company Challenge</h1>
 
-        <div className="companyInput">
-            Company:<br/>
-            <input type="text" name={'company'} placeholder="company" value={this.state.company} onChange={(e) => {this.handleChange(e)}} />
-            <br/>
-            LinkedIn:<br/>
-            <input type="text" name={'linkedin'} placeholder="link" value={this.state.linkedin} onChange={(e) => {this.handleChange(e)}} />
-            <br/><br/>
-            <button onClick={this.handleSubmit}>Submit</button>
+        <div className="CompanyInput">
+
+          <h3>Company:</h3>
+
+          <Input 
+            focus placeholder="Company" 
+            type="text"
+            name={"company"}
+            value={this.state.company}
+            onChange={(e) => {this.handleChange(e)}}
+          />
+
+          <br/>
+
+          <h3>LinkedIn:</h3>
+
+          <Input
+            focus placeholder="URL"
+            type="text"
+            name={"linkedin"}
+            value={this.state.linkedin}
+            onChange={(e) => {this.handleChange(e)}}
+          />
+
+          <br/><br/>
+
+          <Button size='huge' onClick={this.handleSubmit}>Submit</Button>
+
         </div>
 
       </div>
