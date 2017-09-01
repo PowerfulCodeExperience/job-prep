@@ -14,7 +14,7 @@ module.exports = {
     const db = req.app.get('db');
 
     db.get_resources().then(resources => {
-      console.log(resources)
+      // console.log(resources)
       res.status(200).send(resources)
     })
   },

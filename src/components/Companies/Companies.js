@@ -39,6 +39,13 @@ class Companies extends Component {
   }
 
   handleSubmit(event){
+<<<<<<< HEAD
+    // console.log("event", this.state)
+  }
+
+  render() {
+    // console.log("state", this.state)
+=======
     this.props.postCompany(this.state);
 
     // console.log("event", this.state)
@@ -51,6 +58,7 @@ class Companies extends Component {
 
   render() {
 
+>>>>>>> master
     return (
       <div className="Companies">
 
