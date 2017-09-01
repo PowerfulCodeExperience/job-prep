@@ -3,6 +3,6 @@
 }
 
 .RoutesContainer {
-  background: blue;
+  /* background: blue; */
   width: calc(100% - 302px);
 }

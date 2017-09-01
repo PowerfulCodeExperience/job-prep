@@ -7,8 +7,36 @@
   align-items: center;
 }
 
-.DropWrap {
-  width: 50%;
-  height: 50%;
-  background: lightblue;
+.ResourceWrap {
+  width: 80%;
+  height: 100%;
+  padding-top: 50px;
+}
+
+.ResourceHeader {
+  width: 100%;
+  height: 100px;
+  font-family: 'Nunito', sans-serif;
+  color: #29ABE2;
+  text-decoration: underline;
+  font-size: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.PanelContent {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Nunito', sans-serif;
+}
+
+.PanelRow {
+  height: 35px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  color: #29ABE2;
+}
+
+.PanelRow:hover {
+  color: black;
 }

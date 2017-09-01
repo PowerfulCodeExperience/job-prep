@@ -8,43 +8,78 @@ import { Accordion, Icon } from 'semantic-ui-react';
 import './JobResources.css';
 
 class JobResources extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hover: false
+    }
+    this.dropDown = this.dropDown.bind(this);
+    this.capLetter = this.capLetter.bind(this);
+  }
 
   componentDidMount() {
     this.props.getResources();
   }
 
-  render() {
+  capLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 
-    
-    const BuildContent = this.props.resources.map(item => {
-      let panelContent = (
-        <Accordion.Content key={item.id}>
-          <a target="_blank" href={item.link}>{item.title}</a>
-        </Accordion.Content>
-      );
+  dropDown() {
+    let types = [];
 
-      return panelContent;
+    this.props.resources.forEach(item => {
+      if(!types.includes(item.type)){
+        types.push(item.type)
+      }
     });
 
-    const BuildDropDown = this.props.resources.map(item => {
-      let dropPanel = (
+    types = types.map(type => {
+      return {type: type, resources: []};
+    });
+
+    types.forEach( (set, i, arr) => {
+      this.props.resources.forEach(resource => {
+        if(resource.type === arr[i].type) {
+          types[i].resources.push(resource);
+        }
+      });
+    });
+
+    let dropDown = types.map(item => {
+      return (
         <Accordion styled fluid key={item.type}>
-          <Accordion.Title>
-            <Icon name='dropdown' />
-            {item.type}
+
+          <Accordion.Title style={{"fontFamily":"Nunito, sans-serif"}}>
+            <Icon name='dropdown'/>
+            {this.capLetter(item.type)}
           </Accordion.Title>
-          {BuildContent}
+
+          <Accordion.Content>
+          {item.resources.map(set => {
+            return (
+              <div className="PanelContent" key={set.title}>
+                <a className="PanelRow" href={set.link} target="_blank">{set.title}</a>
+              </div>
+            );
+          })}
+          </Accordion.Content>
+
         </Accordion>
       );
-
-      return dropPanel;
     });
+
+    return dropDown;
+  }
+
+  render() {
 
     return (
       <div className="Resources">
 
-        <div className="DropWrap">
-          {BuildDropDown}
+        <div className="ResourceWrap">
+          <h1 className="ResourceHeader"> Resources </h1>
+          {this.dropDown()}
         </div>
 
       </div>

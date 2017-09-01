@@ -23,7 +23,6 @@ export default function reducer(state=initialState, action) {
       return state;
 
     case GET_RESOURCES + '_FULFILLED':
-      console.log('Got Resources?', action.payload.data);
       return Object.assign({}, state, {resources: action.payload.data});
 
     default: return state;

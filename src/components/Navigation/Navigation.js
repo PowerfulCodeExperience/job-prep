@@ -18,14 +18,10 @@ class Navigation extends Component {
           <Link to="/interviews">INTERVIEWS</Link>
           <Link to="/contacts">CONTACTS</Link>
           <Link to="/resources">RESOURCES</Link>
-          {/* <Link to="/dash/resume">RESUME</Link>
-          <Link to="/dash/portfolio">PORTFOLIO</Link>
-          <Link to="/dash/linkedin">LINKEDIN</Link>
-          <Link to="/dash/personal">PERSONAL</Link> */}
           <Link to="/landing"><span>LOGOUT</span></Link>
         </div>
       </div>
-      <img src={this.props.user.picture} style={{'border-radius': '50%', 'width':'60px', 'position':'fixed', 'bottom':'0'}}/>
+      <img src={this.props.user.picture} style={{'borderRadius': '50%', 'width':'60px', 'position':'fixed', 'bottom':'0'}} alt=""/>
     </div>
     )
   }

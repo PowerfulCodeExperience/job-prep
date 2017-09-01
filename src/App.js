@@ -10,10 +10,6 @@ import Companies from './components/Companies/Companies.js';
 import Interviews from './components/Interviews/Interviews.js';
 import Contacts from './components/Contacts/Contacts.js';
 import JobResources from './components/JobResources/JobResources.js';
-// import Resume from './components/Resume/Resume.js';
-// import Portfolio from './components/Portfolio/Portfolio.js';
-// import LinkedIn from './components/LinkedIn/LinkedIn.js';
-// import Personal from './components/Personal/Personal.js';
 
 import './App.css';
 
@@ -29,10 +25,6 @@ export class Wrapper extends Component {
             <Route path="/interviews" component={ Interviews } />
             <Route path="/contacts" component={ Contacts } />
             <Route path="/resources" component={ JobResources } />
-            {/* <Route path="/dash/resume" component={ Resume } />
-            <Route path="/dash/portfolio" component={ Portfolio } />
-            <Route path="/dash/linkedin" component={ LinkedIn } />
-            <Route path="/dash/personal" component={ Personal } /> */}
           </Switch>
         </div>
       </div>
