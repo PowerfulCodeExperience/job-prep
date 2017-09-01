@@ -1,13 +1,12 @@
 .Navigation {
   width: 302px;    
-  background: white;
 }
 
 .Container {
   position: fixed;
+  width: 302px;
   height: 100vh;
   border-right: 2px solid #DADADA;
-  /* background: white; */
 }
 
 .Logo {
