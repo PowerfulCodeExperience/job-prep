@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 // import axios from 'axios';
 
@@ -8,6 +9,8 @@ import {Button, Input, Table} from 'semantic-ui-react';
 import { postCompany, getCompanies } from '../../ducks/reducer';
 
 import './Companies.css';
+
+
 
 class Companies extends Component {
   constructor(props){
@@ -47,7 +50,7 @@ class Companies extends Component {
   }
 
   render() {
-    console.log("companies", this.props.companies)
+
     return (
       <div className="Companies">
 
@@ -91,13 +94,14 @@ class Companies extends Component {
               <Table.HeaderCell>LinkedIn</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
+
           <Table.Body>
           {
             this.props.companies.map((company, i) => {
               return (
                 <Table.Row key={i}>
-                  <Table.Cell>{company.companyname}</Table.Cell>
-                  <Table.Cell>{company.companylinkedin}</Table.Cell>
+                  <Table.Cell><Link to={`/contacts/${company.id}`}>{company.companyname}</Link></Table.Cell>
+                  <Table.Cell><a href={company.companylinkedin} target={"_blank"}>{company.companylinkedin}</a></Table.Cell>
                 </Table.Row>
               )
             })

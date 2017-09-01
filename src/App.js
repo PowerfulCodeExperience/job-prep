@@ -23,7 +23,7 @@ export class Wrapper extends Component {
             <Route exact path="/" component={ DashBoard } />
             <Route path="/companies" component={ Companies } />
             <Route path="/interviews" component={ Interviews } />
-            <Route path="/contacts" component={ Contacts } />
+            <Route path="/contacts/:id" component={ Contacts } />
             <Route path="/resources" component={ JobResources } />
           </Switch>
         </div>
