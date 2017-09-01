@@ -20,10 +20,9 @@ CREATE TABLE IF NOT EXISTS goals (
 
 CREATE TABLE IF NOT EXISTS users_companies (
   id SERIAL PRIMARY KEY,
-  user_id INTEGER REFERENCES users(id),
   companyName TEXT,
   companyLinkedIn TEXT,
-  company_id INTEGER
+  user_id INTEGER REFERENCES users(id)
 );
 
 CREATE TABLE IF NOT EXISTS contact (
@@ -37,7 +36,7 @@ CREATE TABLE IF NOT EXISTS contact (
   dateContacted DATE,
   notes TEXT,
   outcome TEXT,
-  company_id INTEGER REFERENCES users_companies(commpany_id)
+  company_id INTEGER REFERENCES users_companies(id)
 );
 
 CREATE TABLE IF NOT EXISTS resources (
@@ -126,7 +125,8 @@ CREATE TABLE IF NOT EXISTS resources (
 -- ('example', 'linkedIn', 'Cleber Albuquerque', 'https://www.linkedin.com/in/cleberlop/' ),
 -- ('example', 'linkedIn', 'Brett Caudill', 'https://www.linkedin.com/in/brettcaudill/' ),
 -- ('example', 'linkedIn', 'Wyatt Johnny', 'https://www.linkedin.com/in/wyattjohnny/' ),
--- ('example', 'linkedIn', 'Jeff Chapman', 'https://www.linkedin.com/in/chapmanjeffrey/' );
+-- ('example', 'linkedIn', 'Jeff Chapman', 'https://www.linkedin.com/in/chapmanjeffrey/' ),
+-- ('example', 'resume', 'Matt Guenther', 'http://mattguenther.com/');
 
 -- INSERT INTO goals (goal, user_id) VALUES
 -- ('Apply to an average of 3 jobs per day. Research each job and customize my resume to each job.', 8),

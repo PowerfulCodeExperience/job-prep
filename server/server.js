@@ -75,8 +75,10 @@ passport.deserializeUser(function(profileFromSession, done) {
 
 app.get('/api/signIn', mainCtrl.signIn);
 app.get('/api/signOut', mainCtrl.signOut);
-
 app.get('/api/resources', mainCtrl.getResources);
+app.get('/api/company', mainCtrl.getCompany);
+
+app.post('/api/company', mainCtrl.postCompany);
 
 const port = 3001;
 app.listen( port, () => { console.log(`Server listening on port ${port}`)} );

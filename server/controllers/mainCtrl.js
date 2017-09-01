@@ -17,5 +17,24 @@ module.exports = {
       console.log(resources)
       res.status(200).send(resources)
     })
+  },
+
+  getCompany: (req, res) => {
+    const db = req.app.get('db');
+
+    db.get_companies(req.user.id).then(response => {
+      res.status(200).send(response)
+    })
+  },
+
+  postCompany: (req, res) => {
+    const db = req.app.get('db');
+
+    db.post_company(req.body.company, req.body.linkedin, req.user.id).then(response => {
+      db.get_companies(req.user.id).then(companies => {
+        res.status(200).send(companies)
+      })
+    })
+    
   }
 }
