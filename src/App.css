@@ -10,7 +10,6 @@
 @media(max-width: 800px) {
   .App {
     flex-direction: column;
-    overflow-y: hidden;
   }
 
   .RoutesContainer {

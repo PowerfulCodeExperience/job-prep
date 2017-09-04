@@ -22,7 +22,7 @@ export default function reducer(state=initialState, action) {
       return state;
 
     case GET_USER + '_FULFILLED':
-      console.log('Got User?', action.payload.data);
+      console.log('User:', action.payload.data);
       return Object.assign({}, state, {user: action.payload.data});
 
     case GET_RESOURCES + '_PENDING':
@@ -35,7 +35,7 @@ export default function reducer(state=initialState, action) {
       return state;
 
     case GET_COMPANIES + '_FULFILLED':
-      console.log("payload:", action.payload.data);
+      console.log("Companies:", action.payload.data);
       return Object.assign({}, state, {
         companies: [...action.payload.data]
       })
