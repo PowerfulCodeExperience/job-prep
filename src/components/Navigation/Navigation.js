@@ -56,7 +56,7 @@ class Navigation extends Component {
           <Link to="/landing" onClick={this.props.signOut}><span>LOGOUT</span></Link>
         </div>
       </div>
-      <img src={this.props.user.picture} className={this.props.user?"UserImage":null} alt=""/>
+      <img src={this.props.user.picture} className={this.props.user.id?"UserImage":null} alt=""/>
     </div>
     )
   }

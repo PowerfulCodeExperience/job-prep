@@ -72,7 +72,6 @@ class JobResources extends Component {
   }
 
   render() {
-
     return (
       <div className="Resources">
 
@@ -80,6 +79,8 @@ class JobResources extends Component {
           <h1 className="ResourceHeader"> Resources </h1>
           {this.dropDown()}
         </div>
+
+        <footer className="Footer"></footer>
 
       </div>
     )

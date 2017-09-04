@@ -54,61 +54,61 @@ class Companies extends Component {
     return (
       <div className="Companies">
 
-        <h1>20 Company Challenge</h1>
+        <h1 className="CompanyHeader">20 Company Challenge</h1>
 
-        <div className="CompanyInput">
+        <main className="CompanyWrap">
+          <section className="CompanyInput">
 
-          <h3>Company:</h3>
+            <h3 className="CompanySub">Company:</h3>
 
-          <Input 
-            focus placeholder="Company" 
-            type="text"
-            name={"company"}
-            value={this.state.company}
-            onChange={(e) => {this.handleChange(e)}}
-          />
+            <Input 
+              focus placeholder="Name" 
+              type="text"
+              name={"company"}
+              value={this.state.company}
+              onChange={(e) => {this.handleChange(e)}}
+            />
 
-          <br/>
+            <h3 className="CompanySub">LinkedIn:</h3>
 
-          <h3>LinkedIn:</h3>
+            <Input
+              focus placeholder="URL"
+              type="text"
+              name={"linkedin"}
+              value={this.state.linkedin}
+              onChange={(e) => {this.handleChange(e)}}
+            />
 
-          <Input
-            focus placeholder="URL"
-            type="text"
-            name={"linkedin"}
-            value={this.state.linkedin}
-            onChange={(e) => {this.handleChange(e)}}
-          />
+            <Button style={{'fontFamily':'"Nunito", sans-serif', 'fontWeight':'700'}} size='large' onClick={this.handleSubmit}>Submit</Button>
+          </section>
 
-          <br/><br/>
-
-          <Button size='huge' onClick={this.handleSubmit}>Submit</Button>
-
-        </div>
-
-        <Table striped>
-
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell>Name</Table.HeaderCell>
-              <Table.HeaderCell>LinkedIn</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-
-          <Table.Body>
-          {
-            this.props.companies.map((company, i) => {
-              return (
-                <Table.Row key={i}>
-                  <Table.Cell><Link to={`/contacts/${company.id}`}>{company.companyname}</Link></Table.Cell>
-                  <Table.Cell><a href={company.companylinkedin} target={"_blank"}>{company.companylinkedin}</a></Table.Cell>
+          <section className="TableWrap">
+            <Table striped selectable compact>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell>Name</Table.HeaderCell>
+                  <Table.HeaderCell>LinkedIn</Table.HeaderCell>
                 </Table.Row>
-              )
-            })
-          }
-          </Table.Body>
+              </Table.Header>
 
-        </Table>  
+              <Table.Body>
+              {
+                this.props.companies.map((company, i) => {
+                  return (
+                    <Table.Row key={i}>
+                      <Table.Cell><Link to={`/contacts/${company.id}`}>{company.companyname}</Link></Table.Cell>
+                      <Table.Cell><a href={company.companylinkedin} target={"_blank"}>{company.companylinkedin}</a></Table.Cell>
+                    </Table.Row>
+                  )
+                })
+              }
+              </Table.Body>
+            </Table>
+          </section>
+        </main>
+        
+        <footer className="Footer"></footer>
+
       </div>
     )
   }

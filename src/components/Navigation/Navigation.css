@@ -4,6 +4,7 @@
 
 .Container {
   position: fixed;
+  /* background: #202020; */
   width: 302px;
   height: 100vh;
   border-right: 2px solid #DADADA;
@@ -80,11 +81,13 @@
 
   .Container {
     position: fixed;
+    z-index: 900;
     top: -85.5vh;
     width: 100%;
     height: 85%;
     background: white;
     border-bottom: 2px solid #DADADA;
+    border-right: none;
   }
 
   .Logo {
