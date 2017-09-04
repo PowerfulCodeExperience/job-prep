@@ -10,8 +10,6 @@ import { postCompany, getCompanies } from '../../ducks/reducer';
 
 import './Companies.css';
 
-
-
 class Companies extends Component {
   constructor(props){
     super(props)
@@ -39,16 +37,7 @@ class Companies extends Component {
   }
 
   handleSubmit(event){
-<<<<<<< HEAD
-    // console.log("event", this.state)
-  }
-
-  render() {
-    // console.log("state", this.state)
-=======
     this.props.postCompany(this.state);
-
-    // console.log("event", this.state)
 
     this.setState({
       company: "",
@@ -58,7 +47,6 @@ class Companies extends Component {
 
   render() {
 
->>>>>>> master
     return (
       <div className="Companies">
 
@@ -90,14 +78,20 @@ class Companies extends Component {
 
           <br/><br/>
 
-          <Button size='huge' onClick={this.handleSubmit}>Submit</Button>
+          <Button 
+            size='huge' 
+            onClick={this.handleSubmit}
+            disabled={(!this.state.company) || (!this.state.linkedin)}>
+            Submit
+          </Button>
 
         </div>
 
-        <Table striped>
+        <Table striped definition className="CompaniesTable">
 
           <Table.Header>
             <Table.Row>
+              <Table.Header />
               <Table.HeaderCell>Name</Table.HeaderCell>
               <Table.HeaderCell>LinkedIn</Table.HeaderCell>
             </Table.Row>
@@ -108,6 +102,7 @@ class Companies extends Component {
             this.props.companies.map((company, i) => {
               return (
                 <Table.Row key={i}>
+                  <Table.Cell>{i+1}</Table.Cell>
                   <Table.Cell><Link to={`/contacts/${company.id}`}>{company.companyname}</Link></Table.Cell>
                   <Table.Cell><a href={company.companylinkedin} target={"_blank"}>{company.companylinkedin}</a></Table.Cell>
                 </Table.Row>

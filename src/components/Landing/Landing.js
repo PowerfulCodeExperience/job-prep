@@ -13,7 +13,7 @@ class Landing extends Component {
         <img src={require("./logowhiteblue.png")} alt="logo" /> 
       </div>
       <div className="Landing-Body">
-        <Button size="massive" color="blue" href={'http://localhost:3001/auth/'}>Login</Button>
+        <Button size="massive" color="blue" href={'http://localhost:3001/auth/'}>LOGIN</Button>
       </div>
     </div>
     )
