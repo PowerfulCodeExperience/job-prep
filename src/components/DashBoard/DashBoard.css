@@ -1,7 +1,6 @@
 .DashBoard {
   width: 80vw;
   height: 100vh;
-  overflow-y: scroll;
   color: #2AABE2;
 }
 
@@ -42,4 +41,9 @@
 
 .Goals{
   background-color: blue;
+}
+
+.Footer {
+  width: 100%;
+  height: 100px;
 }

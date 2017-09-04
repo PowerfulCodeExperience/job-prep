@@ -1,15 +1,73 @@
 .Companies {
-  height: 100vh;
-  overflow-y: scroll;
-  /* display: flex; */
+  width: 100%;
+  padding-top: 100px;
+}
+
+.CompanyHeader {
+  width: 100%;
+  font-family: 'Nunito', sans-serif;
+  font-size: 60px;
+  font-weight: 700;
+  color: #2AABE2;
+  display: flex;
+  justify-content: center;
+}
+
+.CompanySub {
+  font-family: 'Nunito', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.CompanyWrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
 }
 
 .CompanyInput {
-  background-color: skyblue;
-  margin: 30px;
-  padding: 20px;
+  width: 80%;
+  height: 100px;
+  font-family: 'Nunito', sans-serif;
+  background-color: #2AABE2;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 20px;
 }
 
-.Companies {
-  text-align: center;
+.TableWrap {
+  width: 80%;
+}
+
+/* Mobile View */
+@media(max-width: 800px) {
+  .CompanyHeader {
+    text-align: center;
+    font-size: 40px;
+  }
+
+  .CompanyInput {
+    flex-direction: column;
+
+    width: 90%;
+    height: 300px;
+    font-family: 'Nunito', sans-serif;
+    background-color: #2AABE2;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .TableWrap {
+    width: 90%;
+  }
 }
