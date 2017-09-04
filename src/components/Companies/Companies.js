@@ -39,8 +39,6 @@ class Companies extends Component {
   handleSubmit(event){
     this.props.postCompany(this.state);
 
-    // console.log("event", this.state)
-
     this.setState({
       company: "",
       linkedin: ""
@@ -83,7 +81,7 @@ class Companies extends Component {
           <Button 
             size='huge' 
             onClick={this.handleSubmit}
-            disabled={(!this.state.company) && (!this.state.linkedin)}>
+            disabled={(!this.state.company) || (!this.state.linkedin)}>
             Submit
           </Button>
 

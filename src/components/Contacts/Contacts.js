@@ -1,10 +1,58 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Card, Input, Button, Dropdown, Table} from 'semantic-ui-react';
+import axios from 'axios';
+
+import {Input, Button, Dropdown, Table} from 'semantic-ui-react';
+
+import {getContacts, postContact} from '../../ducks/reducer';
 
 import './Contacts.css';
 
 class Contacts extends Component {
+  constructor(props){
+    super(props)
+
+    this.state = {
+      company: {},
+      name: "",
+      position: "",
+      linkedin: ""
+    }
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount(){
+    axios.get(`/api/returnCompany/${this.props.match.params.id}`)
+      .then(response => (
+        this.setState({
+        company: response.data[0]
+      })
+    ))
+
+    this.props.getContacts(this.props.match.params.id)
+  }
+
+  handleChange(event){
+    let updatedName = event.target.name
+
+    let updatedValue = event.target.value
+    this.setState({
+      [updatedName]: updatedValue 
+    })
+  }
+
+  handleSubmit(event){
+    this.props.postContact(this.state)
+
+    this.setState({
+      name: "",
+      position: "",
+      linkedin: ""
+    })
+  }
+
   render() {
 
     const options = [
@@ -13,164 +61,89 @@ class Contacts extends Component {
       {key: "No Action Taken", text: "No Action Taken", value: "No Action Taken"}
     ]
 
+    let contacts = this.state.contacts;
+    let date = new Date();
+    console.log("Date:", date);
+    console.log("Contacts", this.props.contacts);
     return (
       <div className="Contacts">
 
-        <h1>Contacts</h1>
-        
-        <Card className="ContactInput">
-          <Card.Content>
-            <Card.Header>
-              Nike
-            </Card.Header>
-          </Card.Content>
+        <div>
+          <h1>{this.state.company.companyname}</h1>
+        </div>
+        <div className="ContactInput">
+          <p>Name:</p>
+            <Input 
+              placeholder="Name" 
+              type="text"
+              name={"name"}
+              value={this.state.name}
+              onChange={(e) => {this.handleChange(e)}}
+            />
+          <p>Position: </p>
+            <Input 
+              placeholder="Position" 
+              type="text"
+              name={"position"}
+              value={this.state.position}
+              onChange={(e) => {this.handleChange(e)}}
+            />
+          <p>LinkedIn: </p>
+            <Input 
+              placeholder="LinkedIn Profile URL" 
+              type="text"
+              name={"linkedin"}
+              value={this.state.linkedin}
+              onChange={(e) => {this.handleChange(e)}}
+            />
 
-          <Card.Content>
-            Name: <Input placeholder="Name" /> <br/>
-            Position: <Input placeholder="Position" />
-            LinkedIn: <Input placeholder="LinkedIn" />
-            Status: <Dropdown placeholder="Status" options={options} />  
-            Email: <Input placeholder="Email" />
-            Personal Email: <Input placeholder="Personal Email" />
-          </Card.Content>
-          <Card.Content Extra>
-            <Button >Submit</Button>
-          </Card.Content>
-        </Card>
+          <Button 
+            size='huge' 
+            onClick={this.handleSubmit}
+            disabled={!this.state.name || !this.state.position || !this.state.linkedin}
+          >
+            Submit
+          </Button>
+        </div>
+
 
         <Table striped celled>
 
           <Table.Header>
             <Table.Row>
+              <Table.Header />
               <Table.HeaderCell>Name</Table.HeaderCell>
               <Table.HeaderCell>Position</Table.HeaderCell>
               <Table.HeaderCell>LinkedIn</Table.HeaderCell>
               <Table.HeaderCell>Status</Table.HeaderCell>
               <Table.HeaderCell>Email</Table.HeaderCell>
+              <Table.HeaderCell>Date Contacted</Table.HeaderCell>
+              <Table.HeaderCell>Notes</Table.HeaderCell>
+              <Table.HeaderCell>Outcome</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
 
           <Table.Body>
-            <Table.Row>
-              <Table.Cell>
-                George
-              </Table.Cell>
-              <Table.Cell>
-                CTO
-              </Table.Cell>
-              <Table.Cell>
-                www.linkedin.com/in/glopez
-              </Table.Cell>
-              <Table.Cell>
-                Connected
-              </Table.Cell>
-              <Table.Cell>
-                glopez@gmail.com
-              </Table.Cell>
-            </Table.Row>
+            {
+              this.props.contacts.map((contact, i) => {
+                return (
+                  <Table.Row>
+                    <Table.Cell>{i+1}</Table.Cell>
+                    <Table.Cell>{contact.firstname}</Table.Cell>
+                    <Table.Cell>{contact.position}</Table.Cell>
+                    <Table.Cell>{contact.linkedin}</Table.Cell>
+                    <Table.Cell>{contact.status}</Table.Cell>
+                    <Table.Cell>{contact.email}</Table.Cell>
+                    <Table.Cell>{contact.datecontacted}</Table.Cell>
+                    <Table.Cell>{contact.notes}</Table.Cell>
+                    <Table.Cell>{contact.outcome}</Table.Cell>
+                </Table.Row>
+              )})
+            }
           </Table.Body>
 
-          <Table.Body>
-            <Table.Row>
-              <Table.Cell>
-                George
-              </Table.Cell>
-              <Table.Cell>
-                CTO
-              </Table.Cell>
-              <Table.Cell>
-                www.linkedin.com/in/glopez
-              </Table.Cell>
-              <Table.Cell>
-               <Dropdown placeholder="Status" options={options} />
-              </Table.Cell>
-              <Table.Cell>
-                glopez@gmail.com
-              </Table.Cell>
-            </Table.Row>
-          </Table.Body>
-
-          <Table.Body>
-            <Table.Row>
-              <Table.Cell>
-                George
-              </Table.Cell>
-              <Table.Cell>
-                CTO
-              </Table.Cell>
-              <Table.Cell>
-                www.linkedin.com/in/glopez
-              </Table.Cell>
-              <Table.Cell>
-                Connected
-              </Table.Cell>
-              <Table.Cell>
-                glopez@gmail.com
-              </Table.Cell>
-            </Table.Row>
-          </Table.Body>
-
-          <Table.Body>
-            <Table.Row>
-              <Table.Cell>
-                George
-              </Table.Cell>
-              <Table.Cell>
-                CTO
-              </Table.Cell>
-              <Table.Cell>
-                www.linkedin.com/in/glopez
-              </Table.Cell>
-              <Table.Cell>
-                Connected
-              </Table.Cell>
-              <Table.Cell>
-                glopez@gmail.com
-              </Table.Cell>
-            </Table.Row>
-          </Table.Body>
-
-          <Table.Body>
-            <Table.Row>
-              <Table.Cell>
-                George
-              </Table.Cell>
-              <Table.Cell>
-                CTO
-              </Table.Cell>
-              <Table.Cell>
-                www.linkedin.com/in/glopez
-              </Table.Cell>
-              <Table.Cell>
-                Connected
-              </Table.Cell>
-              <Table.Cell>
-                glopez@gmail.com
-              </Table.Cell>
-            </Table.Row>
-          </Table.Body>
-
-          <Table.Body>
-            <Table.Row>
-              <Table.Cell>
-                George
-              </Table.Cell>
-              <Table.Cell>
-                CTO
-              </Table.Cell>
-              <Table.Cell>
-                www.linkedin.com/in/glopez
-              </Table.Cell>
-              <Table.Cell>
-                Connected
-              </Table.Cell>
-              <Table.Cell>
-                glopez@gmail.com
-              </Table.Cell>
-            </Table.Row>
-          </Table.Body>
         </Table>
-
+        
       </div>
     )
   }
@@ -178,8 +151,9 @@ class Contacts extends Component {
 
 function mapStateToProps(state) {
   return {
-    companies: state.companies
+    companies: state.companies,
+    contacts: state.contacts
   }
 }
 
-export default connect(mapStateToProps)(Contacts);
+export default connect(mapStateToProps, {getContacts, postContact})(Contacts);
