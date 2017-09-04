@@ -37,7 +37,6 @@ class Navigation extends Component {
   }
 
   render() {
-    console.log("User: ", this.props.user)
     return (
     <div className="Navigation">
 
@@ -57,7 +56,7 @@ class Navigation extends Component {
           <Link to="/landing" onClick={this.props.signOut}><span>LOGOUT</span></Link>
         </div>
       </div>
-
+      <img src={this.props.user.picture} style={this.props.user?{'borderRadius': '50%', 'width':'60px', 'position':'fixed', 'bottom':'0', 'margin':'0 0 20px 20px', 'border':'3px solid #2AABE2'}:null} alt=""/>
     </div>
     )
   }
