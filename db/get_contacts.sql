@@ -1,0 +1,1 @@
+SELECT * FROM contact WHERE company_id = $1

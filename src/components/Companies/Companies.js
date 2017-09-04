@@ -10,8 +10,6 @@ import { postCompany, getCompanies } from '../../ducks/reducer';
 
 import './Companies.css';
 
-
-
 class Companies extends Component {
   constructor(props){
     super(props)
@@ -40,8 +38,6 @@ class Companies extends Component {
 
   handleSubmit(event){
     this.props.postCompany(this.state);
-
-    // console.log("event", this.state)
 
     this.setState({
       company: "",

@@ -77,8 +77,11 @@ app.get('/api/signIn', mainCtrl.signIn);
 app.get('/api/signOut', mainCtrl.signOut);
 app.get('/api/resources', mainCtrl.getResources);
 app.get('/api/company', mainCtrl.getCompany);
+app.get('/api/returnCompany/:id', mainCtrl.returnCompany);
+app.get('/api/getContacts/:id', mainCtrl.getContacts);
 
 app.post('/api/company', mainCtrl.postCompany);
+app.post('/api/contact', mainCtrl.postContact);
 
 const port = 3001;
 app.listen( port, () => { console.log(`Server listening on port ${port}`)} );

@@ -1,0 +1,1 @@
+SELECT * FROM users_companies WHERE id = $1
