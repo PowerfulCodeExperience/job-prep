@@ -65,12 +65,30 @@ module.exports = {
   postContact: (req, res) => {
     const db = req.app.get('db');
 
-    const { company, name, position, linkedin } = req.body;
+    const { company, name, position, linkedin, email } = req.body;
 
-    db.post_contact(name, position, linkedin, company.id)
+    db.post_contact(name, position, linkedin, company.id, email)
       .then(response => {
         db.get_contacts(company.id)
           .then(contacts => {
+            console.log("contacts: ", contacts)
+            res.status(200).send(contacts)
+          })
+      })
+      .catch( err => console.log(err));
+  },
+
+  updateStatus: (req, res) => {
+    const db = req.app.get('db');
+
+    console.log("req.body", req.body);
+    const {status, date, id, company_id} = req.body;
+
+    db.update_status(status, date, id, company_id)
+      .then(response => {
+        db.get_contacts(company_id)
+          .then(contacts => {
+            console.log("contacts", contacts)
             res.status(200).send(contacts)
           })
       })

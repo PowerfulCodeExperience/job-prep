@@ -2,9 +2,10 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
 
-import {Input, Button, Dropdown, Table} from 'semantic-ui-react';
+import {Card, Input, Button, Dropdown, Table} from 'semantic-ui-react';
 
-import {getContacts, postContact} from '../../ducks/reducer';
+import {getContacts, postContact, updateStatus} from '../../ducks/reducer';
+import Kard from '../Kard/Kard';
 
 import './Contacts.css';
 
@@ -16,11 +17,13 @@ class Contacts extends Component {
       company: {},
       name: "",
       position: "",
-      linkedin: ""
+      linkedin: "",
+      email: ""
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.setStatus = this.setStatus.bind(this);
   }
 
   componentDidMount(){
@@ -49,28 +52,25 @@ class Contacts extends Component {
     this.setState({
       name: "",
       position: "",
-      linkedin: ""
+      linkedin: "",
+      email: ""
     })
+  }
+  
+  setStatus(e, data, company_id) {
+    let date = new Date();
+    this.props.updateStatus(e, data.value, date, company_id)
   }
 
   render() {
 
-    const options = [
-      {key: "Connected", text: "Connected", value: "Connected"}, 
-      {key: "Request Sent", text: "Request Sent", value: "Request Sent"}, 
-      {key: "No Action Taken", text: "No Action Taken", value: "No Action Taken"}
-    ]
-
-    let contacts = this.state.contacts;
-    let date = new Date();
-    console.log("Date:", date);
-    console.log("Contacts", this.props.contacts);
     return (
       <div className="Contacts">
 
         <div>
           <h1>{this.state.company.companyname}</h1>
         </div>
+
         <div className="ContactInput">
           <p>Name:</p>
             <Input 
@@ -96,7 +96,15 @@ class Contacts extends Component {
               value={this.state.linkedin}
               onChange={(e) => {this.handleChange(e)}}
             />
-
+          <p>Email: </p>
+            <Input 
+              placeholder="Email" 
+              type="text"
+              name={"email"}
+              value={this.state.email}
+              onChange={(e) => {this.handleChange(e)}}
+            />  
+            
           <Button 
             size='huge' 
             onClick={this.handleSubmit}
@@ -106,43 +114,18 @@ class Contacts extends Component {
           </Button>
         </div>
 
-
-        <Table striped celled>
-
-          <Table.Header>
-            <Table.Row>
-              <Table.Header />
-              <Table.HeaderCell>Name</Table.HeaderCell>
-              <Table.HeaderCell>Position</Table.HeaderCell>
-              <Table.HeaderCell>LinkedIn</Table.HeaderCell>
-              <Table.HeaderCell>Status</Table.HeaderCell>
-              <Table.HeaderCell>Email</Table.HeaderCell>
-              <Table.HeaderCell>Date Contacted</Table.HeaderCell>
-              <Table.HeaderCell>Notes</Table.HeaderCell>
-              <Table.HeaderCell>Outcome</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-
-          <Table.Body>
-            {
-              this.props.contacts.map((contact, i) => {
-                return (
-                  <Table.Row>
-                    <Table.Cell>{i+1}</Table.Cell>
-                    <Table.Cell>{contact.firstname}</Table.Cell>
-                    <Table.Cell>{contact.position}</Table.Cell>
-                    <Table.Cell>{contact.linkedin}</Table.Cell>
-                    <Table.Cell>{contact.status}</Table.Cell>
-                    <Table.Cell>{contact.email}</Table.Cell>
-                    <Table.Cell>{contact.datecontacted}</Table.Cell>
-                    <Table.Cell>{contact.notes}</Table.Cell>
-                    <Table.Cell>{contact.outcome}</Table.Cell>
-                </Table.Row>
-              )})
-            }
-          </Table.Body>
-
-        </Table>
+        <Card.Group>
+        {
+          this.props.contacts.map((contact, i) => {
+            return(
+              <Kard
+                i = {i}
+                contact = {contact}
+              />
+            )
+          })
+        }
+        </Card.Group>
         
       </div>
     )
@@ -156,4 +139,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {getContacts, postContact})(Contacts);
+export default connect(mapStateToProps, {getContacts, postContact, updateStatus})(Contacts);
