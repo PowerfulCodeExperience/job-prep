@@ -75,7 +75,7 @@ class Companies extends Component {
               onChange={(e) => {this.handleChange(e)}}
             />
 
-            <Button style={{'fontFamily':'"Nunito", sans-serif', 'fontWeight':'700'}} size='large' onClick={this.handleSubmit}>Submit</Button>
+            <Button style={{'fontFamily':'"Nunito", sans-serif', 'fontWeight':'700'}} size='large' inverted onClick={this.handleSubmit}>Submit</Button>
           </section>
 
           <section className="TableWrap">
