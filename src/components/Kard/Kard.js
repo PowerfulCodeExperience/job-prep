@@ -19,13 +19,16 @@ function Kard (props){
       <Card.Content>
         <Card.Header content={props.contact.firstname} />
         <Card.Meta content={props.contact.position} />
-        <Card.Description>
+        <Card.Description style={{"display": "flex", "justify-content":"center"}}>
           <a href={props.contact.linkedin} target="_blank"><FA name="linkedin-square" size="3x"/></a>
           {
             (props.contact.email) ?
             <div>
               <a href={`mailto:${props.contact.email}`}><FA name="envelope-o" size="3x"/></a>
-            </div> : null
+            </div> :
+            <div>
+              <FA name="plus-circle" size="3x"/>
+            </div>
           }
         </Card.Description>
       </Card.Content>
