@@ -67,7 +67,9 @@ module.exports = {
 
     const { company, name, position, linkedin, email } = req.body;
 
-    db.post_contact(name, position, linkedin, company.id, email)
+    let status = "No Action Taken";
+
+    db.post_contact(name, position, linkedin, company.id, email, status)
       .then(response => {
         db.get_contacts(company.id)
           .then(contacts => {

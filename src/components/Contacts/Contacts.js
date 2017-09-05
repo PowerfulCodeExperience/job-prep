@@ -63,7 +63,7 @@ class Contacts extends Component {
   }
 
   render() {
-
+    console.log("Contacts", this.props.contacts)
     return (
       <div className="Contacts">
 
@@ -121,6 +121,7 @@ class Contacts extends Component {
               <Kard
                 i = {i}
                 contact = {contact}
+                setStatus = {this.setStatus}
               />
             )
           })

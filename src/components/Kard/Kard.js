@@ -8,7 +8,7 @@ import './Kard.css';
 function Kard (props){
 
   const options = [
-    {key: "No Action Taken", text: "No Action Taken", value: "No Action Taken"},
+    // {key: "No Action Taken", text: "No Action Taken", value: "No Action Taken"},
     {key: "Request Sent", text: "Request Sent", value: "Request Sent"},  
     {key: "Connected", text: "Connected", value: "Connected"}
   ]
@@ -33,7 +33,7 @@ function Kard (props){
       <Card.Content extra>
       Date of Last Action Taken:
       {
-        (props.contact.status) ?
+        (props.contact.status !== "No Action Taken") ?
         <div>
           {moment(props.contact.datecontacted).format("l")}
         </div> : null
@@ -41,7 +41,11 @@ function Kard (props){
       </Card.Content>
 
       <Card.Content extra>
-        Status:<Dropdown inline fluid placeholder="No Action Taken" options={options} onChange={(e, value) => {this.setStatus(props.contact.id, value, props.contact.company_id)}}/>
+        Status:<Dropdown inline fluid placeholder={props.contact.status} options={options} onChange={(e, value) => {props.setStatus(props.contact.id, value, props.contact.company_id)}}/>
+      </Card.Content>
+
+      <Card.Content extra>
+        Delete
       </Card.Content>
 
     </Card>
