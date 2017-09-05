@@ -1,1 +1,1 @@
-INSERT INTO contact (firstname, position, linkedin, company_id) VALUES ($1, $2, $3, $4) RETURNING *;
+INSERT INTO contact (firstname, position, linkedin, company_id, email) VALUES ($1, $2, $3, $4, $5) RETURNING *;

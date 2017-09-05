@@ -14,6 +14,7 @@ const GET_CONTACTS = 'GET_CONTACTS';
 
 const POST_COMPANY = 'POST_COMPANY';
 const POST_CONTACT = 'POST_CONTACT';
+const UPDATE_STATUS = 'UPDATE_STATUS';
 
 const SIGN_OUT = 'SIGN_OUT';
 
@@ -65,6 +66,14 @@ export default function reducer(state=initialState, action) {
     case POST_CONTACT + '_FULFILLED':
       return Object.assign({}, state, {
         contacts: [...action.payload.data]
+      })
+
+    case UPDATE_STATUS + '_PENDING':
+      return state;
+
+    case UPDATE_STATUS + '_FULFILLED':
+      return Object.assign({}, state, {
+        contacts: action.payload.data
       })
 
     case SIGN_OUT + '_PENDING':
@@ -125,5 +134,12 @@ export function postContact(contact){
   return {
     type: POST_CONTACT,
     payload: axios.post('/api/contact', contact)
+  }
+}
+
+export function updateStatus(id, status, date, company_id){
+  return {
+    type: UPDATE_STATUS,
+    payload: axios.put('/api/status', { id, status, date, company_id })
   }
 }

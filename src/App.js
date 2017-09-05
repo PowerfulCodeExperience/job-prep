@@ -61,9 +61,10 @@ class App extends Component {
     }
 
     return (
-      // <div>
-      //   {checkStatus()}
-      // </div>
+      <div>
+      <div>
+        {/* {checkStatus()} */}
+      </div>
       
       <Router>
         <div>
@@ -71,6 +72,7 @@ class App extends Component {
           <Route path="/landing" component={ Landing } />
         </div>
       </Router>
+      </div>
     );
   }
 }
