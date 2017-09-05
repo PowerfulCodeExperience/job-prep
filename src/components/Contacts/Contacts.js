@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
 
-import {Input, Button, Dropdown, Table} from 'semantic-ui-react';
+import {Card, Input, Button, Dropdown, Table} from 'semantic-ui-react';
 
-import {getContacts, postContact} from '../../ducks/reducer';
+import {getContacts, postContact, updateStatus} from '../../ducks/reducer';
 
 import './Contacts.css';
 
@@ -21,6 +21,7 @@ class Contacts extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.setStatus = this.setStatus.bind(this);
   }
 
   componentDidMount(){
@@ -53,6 +54,13 @@ class Contacts extends Component {
     })
   }
 
+  setStatus(e, data) {
+    console.log("e", e)
+    console.log("data", data.value)
+    let date = new Date();
+    this.props.updateStatus(e, data.value, date)
+  }
+
   render() {
 
     const options = [
@@ -61,10 +69,6 @@ class Contacts extends Component {
       {key: "No Action Taken", text: "No Action Taken", value: "No Action Taken"}
     ]
 
-    let contacts = this.state.contacts;
-    let date = new Date();
-    console.log("Date:", date);
-    console.log("Contacts", this.props.contacts);
     return (
       <div className="Contacts">
 
@@ -106,8 +110,35 @@ class Contacts extends Component {
           </Button>
         </div>
 
+        <Card.Group>
+        {
+          this.props.contacts.map((contact, i) => {
+            return(
+              <Card key={i}>
+                <Card.Content>
+                  <Card.Header content={contact.firstname} />
+                  <Card.Meta content={contact.position} />
+                  <Card.Description content={<a href={'http://' + contact.linkedin} target="_blank">{contact.linkedin}</a>} />
+                </Card.Content>
+                <Card.Content extra>
+                  Status:<Dropdown inline fluid placeholder={contact.status} options={options} onChange={(e, value) => {this.setStatus(contact.id, value)}}/>
+                </Card.Content>
+                <Card.Content extra>
+                  {
+                    (contact.status === "Connected") &&
+                    <div>
+                      Email: <input />
+                      <b>Date of Last Action Taken:</b> {contact.datecontacted}
+                    </div>
+                  }
+                </Card.Content>
+              </Card>
+            )
+          })
+        }
+        </Card.Group>
 
-        <Table striped celled>
+        {/* <Table striped celled>
 
           <Table.Header>
             <Table.Row>
@@ -142,7 +173,7 @@ class Contacts extends Component {
             }
           </Table.Body>
 
-        </Table>
+        </Table> */}
         
       </div>
     )
@@ -156,4 +187,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {getContacts, postContact})(Contacts);
+export default connect(mapStateToProps, {getContacts, postContact, updateStatus})(Contacts);
