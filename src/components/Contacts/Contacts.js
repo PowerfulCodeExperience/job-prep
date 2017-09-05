@@ -18,7 +18,8 @@ class Contacts extends Component {
       company: {},
       name: "",
       position: "",
-      linkedin: ""
+      linkedin: "",
+      email: ""
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -52,11 +53,11 @@ class Contacts extends Component {
     this.setState({
       name: "",
       position: "",
-      linkedin: ""
+      linkedin: "",
+      email: ""
     })
   }
   
-
   setStatus(e, data, company_id) {
     console.log("e", e)
     console.log("data", data.value, company_id)
@@ -104,7 +105,15 @@ class Contacts extends Component {
               value={this.state.linkedin}
               onChange={(e) => {this.handleChange(e)}}
             />
-
+          <p>Email: </p>
+            <Input 
+              placeholder="Email" 
+              type="text"
+              name={"email"}
+              value={this.state.email}
+              onChange={(e) => {this.handleChange(e)}}
+            />  
+            
           <Button 
             size='huge' 
             onClick={this.handleSubmit}
@@ -124,7 +133,12 @@ class Contacts extends Component {
                   <Card.Meta content={contact.position} />
                   <Card.Description>
                     <a href={contact.linkedin} target="_blank"><FA name="linkedin-square" size="3x"/></a>
-                    <a href={contact.linkedin} target="_blank"><FA name="envelope-o" size="3x"/></a>
+                    {
+                      (contact.email) ?
+                      <div>
+                        <a href={`mailto:${contact.email}`}><FA name="envelope-o" size="3x"/></a>
+                      </div> : null
+                    }
                   </Card.Description>
                 </Card.Content>
 
