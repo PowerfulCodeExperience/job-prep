@@ -5,6 +5,7 @@ const massive = require('massive');
 const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 const path = require('path');
+const axios = require('axios');
 
 const mainCtrl = require('./controllers/mainCtrl');
 
@@ -77,8 +78,14 @@ app.get('/api/signIn', mainCtrl.signIn);
 app.get('/api/signOut', mainCtrl.signOut);
 app.get('/api/getGoals', mainCtrl.getGoals);
 app.get('/api/resources', mainCtrl.getResources);
+app.get('/api/getWeather', function getWeather(req, res) {
+  return axios.get(`http://api.weatherbit.io/v2.0/forecast/hourly?ip=auto&units=I&key=${config.API_KEY}`)
+  .then(response => res.status(200).send(response.data))
+  .catch(error => error)
+});
 
 app.post('/api/postGoal', mainCtrl.postGoal)
+app.post('/api/postTask', mainCtrl.postTask)
 
 const port = 3001;
 app.listen( port, () => { console.log(`Server listening on port ${port}`)} );

@@ -18,6 +18,12 @@ CREATE TABLE IF NOT EXISTS goals (
   user_id INTEGER REFERENCES users(id)
 );
 
+CREATE TABLE IF NOT EXISTS tasks (
+  id SERIAL PRIMARY KEY,
+  task TEXT,
+  user_id INTEGER REFERENCES users(id)
+);
+
 CREATE TABLE IF NOT EXISTS users_companies (
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users(id),
@@ -46,7 +52,13 @@ CREATE TABLE IF NOT EXISTS resources (
   source TEXT,
   title TEXT,
   link TEXT
-)
+);
+
+CREATE TABLE IF NOT EXISTS application_actions (
+  id SERIAL PRIMARY KEY,
+  action TEXT,
+  application_id INTEGER REFERENCES contact(id) 
+);
 
 -- Drop Tables --
 

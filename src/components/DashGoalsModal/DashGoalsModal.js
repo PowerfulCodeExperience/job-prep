@@ -1,34 +1,16 @@
 import React, { Component } from 'react'
 import { Button, Modal, Input, Icon } from 'semantic-ui-react'
 import './DashGoalsModal.css'
-import axios from 'axios'
 
 class DashGoalsModal extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      open: false,
-      goal: '',
-      task: ''
+      open: false
     }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleChange(event) {
-    this.setState({
-      goal: event.target.value
-    })
-  }
-  handleSubmit(event) {
-    event.preventDefault();
-    axios.post('/api/postgoal', {
-      goal: this.state.goal
-    })
-    .then(this.setState({goal:''}))
-    .catch(error => error)
-  }
   show = dimmer => () => this.setState({ dimmer, open: true })
   close = () => this.setState({ open: false })
 
@@ -43,12 +25,12 @@ class DashGoalsModal extends Component {
         </Button>
 
         <Modal dimmer={dimmer} open={open} onClose={this.close}>
-          <Modal.Header>Add a Goal!</Modal.Header>
+          <Modal.Header>{this.props.header}</Modal.Header>
           <Modal.Content>
-            <Input type='text' onChange={this.handleChange} fluid icon='add' inverted placeholder='Add a goal...'></Input>
+            <Input type='text' onChange={this.props.onChange} fluid icon='add' inverted placeholder={this.props.placeholder}></Input>
           </Modal.Content>
           <Modal.Actions>
-            <Button positive icon='checkmark' labelPosition='right' content="Add!" onClick={this.handleSubmit} />
+            <Button positive icon='checkmark' labelPosition='right' content="Add!" onClick={this.props.handleSubmit} />
           </Modal.Actions>
         </Modal>
       </div>

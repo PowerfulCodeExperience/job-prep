@@ -1,3 +1,5 @@
+
+
 module.exports = {
   signIn: (req, res) => {
     console.log('User:', req.user);
@@ -34,5 +36,16 @@ module.exports = {
     ])
     .then( goal => res.status(200).send('goal added backend'))
     .catch(() => res.status(500).send());
+  },
+  postTask: (req, res) => {
+    const db = req.app.get('db')
+    let addedTask = req.body
+
+    db.post_task([
+      addedTask.task
+    ])
+    .then( task => res.status(200).send('task added backend'))
+    .catch(() => res.status(500).send(error))
   }
+
 }
