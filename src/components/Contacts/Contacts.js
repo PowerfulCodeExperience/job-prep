@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import FA from 'react-fontawesome';
 import axios from 'axios';
+import moment from 'moment';
 
 import {Card, Input, Button, Dropdown, Table} from 'semantic-ui-react';
 
@@ -53,20 +55,21 @@ class Contacts extends Component {
       linkedin: ""
     })
   }
+  
 
-  setStatus(e, data) {
+  setStatus(e, data, company_id) {
     console.log("e", e)
-    console.log("data", data.value)
+    console.log("data", data.value, company_id)
     let date = new Date();
-    this.props.updateStatus(e, data.value, date)
+    this.props.updateStatus(e, data.value, date, company_id)
   }
 
   render() {
-
+    console.log("Props", this.props)
     const options = [
-      {key: "Connected", text: "Connected", value: "Connected"}, 
-      {key: "Request Sent", text: "Request Sent", value: "Request Sent"}, 
-      {key: "No Action Taken", text: "No Action Taken", value: "No Action Taken"}
+      {key: "No Action Taken", text: "No Action Taken", value: "No Action Taken"},
+      {key: "Request Sent", text: "Request Sent", value: "Request Sent"},  
+      {key: "Connected", text: "Connected", value: "Connected"}
     ]
 
     return (
@@ -75,6 +78,7 @@ class Contacts extends Component {
         <div>
           <h1>{this.state.company.companyname}</h1>
         </div>
+
         <div className="ContactInput">
           <p>Name:</p>
             <Input 
@@ -118,19 +122,24 @@ class Contacts extends Component {
                 <Card.Content>
                   <Card.Header content={contact.firstname} />
                   <Card.Meta content={contact.position} />
-                  <Card.Description content={<a href={'http://' + contact.linkedin} target="_blank">{contact.linkedin}</a>} />
+                  <Card.Description>
+                    <a href={contact.linkedin} target="_blank"><FA name="linkedin-square" size="3x"/></a>
+                    <a href={contact.linkedin} target="_blank"><FA name="envelope-o" size="3x"/></a>
+                  </Card.Description>
                 </Card.Content>
+
                 <Card.Content extra>
-                  Status:<Dropdown inline fluid placeholder={contact.status} options={options} onChange={(e, value) => {this.setStatus(contact.id, value)}}/>
+                Date of Last Action Taken:
+                {
+                  (contact.status) ?
+                  <div>
+                    {moment(contact.datecontacted).format("l")}
+                  </div> : null
+                }
                 </Card.Content>
+
                 <Card.Content extra>
-                  {
-                    (contact.status === "Connected") &&
-                    <div>
-                      Email: <input />
-                      <b>Date of Last Action Taken:</b> {contact.datecontacted}
-                    </div>
-                  }
+                  Status:<Dropdown inline fluid placeholder="No Action Taken" options={options} onChange={(e, value) => {this.setStatus(contact.id, value, contact.company_id)}}/>
                 </Card.Content>
               </Card>
             )

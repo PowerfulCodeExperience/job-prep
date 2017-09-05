@@ -81,12 +81,15 @@ module.exports = {
     const db = req.app.get('db');
 
     console.log("req.body", req.body);
-    const {status, date, id} = req.body;
+    const {status, date, id, company_id} = req.body;
 
-    db.update_status(status, date, id)
+    db.update_status(status, date, id, company_id)
       .then(response => {
-        console.log("updated,", response);
-        res.status(200).send(response);
+        db.get_contacts(company_id)
+          .then(contacts => {
+            console.log("contacts", contacts)
+            res.status(200).send(contacts)
+          })
       })
       .catch( err => console.log(err));
   }

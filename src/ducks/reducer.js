@@ -72,23 +72,19 @@ export default function reducer(state=initialState, action) {
       return state;
 
     case UPDATE_STATUS + '_FULFILLED':
-      console.log("payload: ", action.payload.data)
+      console.log("payload: ", action.payload)
       console.log("state:", state.contacts)
-      let updatedContacts = state.contacts.map((contact, index) => {
-        if(contact.id == action.payload.data.id){
-          return contact[index] = action.payload.data
-        } else {
-          return contact
-        }
-      })
-      
+      // let updatedContacts = state.contacts.map((contact, index) => {
+      //   if(contact.id == action.payload.data.id){
+      //     return contact[index] = action.payload.data
+      //   } else {
+      //     return contact
+      //   }
+      // })
+      // console.log("Updated Contacts", updatedContacts)
       return Object.assign({}, state, {
-        contacts: updatedContacts
+        contacts: action.payload.data
       })
-
-      console.log("updated contact", updatedContacts)
-
-      return state;
 
     case SIGN_OUT + '_PENDING':
       return state;
@@ -151,9 +147,9 @@ export function postContact(contact){
   }
 }
 
-export function updateStatus(id, status, date){
+export function updateStatus(id, status, date, company_id){
   return {
     type: UPDATE_STATUS,
-    payload: axios.put('/api/status', { id, status, date })
+    payload: axios.put('/api/status', { id, status, date, company_id })
   }
 }
