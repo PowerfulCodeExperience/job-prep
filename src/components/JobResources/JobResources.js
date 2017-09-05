@@ -49,7 +49,7 @@ class JobResources extends Component {
       return (
         <Accordion styled fluid key={item.type}>
 
-          <Accordion.Title style={{"fontFamily":"Nunito, sans-serif"}}>
+          <Accordion.Title>
             <Icon name='dropdown'/>
             {this.capLetter(item.type)}
           </Accordion.Title>
