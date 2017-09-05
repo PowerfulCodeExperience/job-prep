@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import FA from 'react-fontawesome';
 import axios from 'axios';
-import moment from 'moment';
+
 
 import {Card, Input, Button, Dropdown, Table} from 'semantic-ui-react';
 
 import {getContacts, postContact, updateStatus} from '../../ducks/reducer';
+import Kard from '../Kard/Kard';
 
 import './Contacts.css';
 
@@ -67,11 +67,11 @@ class Contacts extends Component {
 
   render() {
     console.log("Props", this.props)
-    const options = [
-      {key: "No Action Taken", text: "No Action Taken", value: "No Action Taken"},
-      {key: "Request Sent", text: "Request Sent", value: "Request Sent"},  
-      {key: "Connected", text: "Connected", value: "Connected"}
-    ]
+    // const options = [
+    //   {key: "No Action Taken", text: "No Action Taken", value: "No Action Taken"},
+    //   {key: "Request Sent", text: "Request Sent", value: "Request Sent"},  
+    //   {key: "Connected", text: "Connected", value: "Connected"}
+    // ]
 
     return (
       <div className="Contacts">
@@ -127,35 +127,11 @@ class Contacts extends Component {
         {
           this.props.contacts.map((contact, i) => {
             return(
-              <Card key={i}>
-                <Card.Content>
-                  <Card.Header content={contact.firstname} />
-                  <Card.Meta content={contact.position} />
-                  <Card.Description>
-                    <a href={contact.linkedin} target="_blank"><FA name="linkedin-square" size="3x"/></a>
-                    {
-                      (contact.email) ?
-                      <div>
-                        <a href={`mailto:${contact.email}`}><FA name="envelope-o" size="3x"/></a>
-                      </div> : null
-                    }
-                  </Card.Description>
-                </Card.Content>
+              <Kard
+                i = {i}
+                contact = {contact}
+              />
 
-                <Card.Content extra>
-                Date of Last Action Taken:
-                {
-                  (contact.status) ?
-                  <div>
-                    {moment(contact.datecontacted).format("l")}
-                  </div> : null
-                }
-                </Card.Content>
-
-                <Card.Content extra>
-                  Status:<Dropdown inline fluid placeholder="No Action Taken" options={options} onChange={(e, value) => {this.setStatus(contact.id, value, contact.company_id)}}/>
-                </Card.Content>
-              </Card>
             )
           })
         }
