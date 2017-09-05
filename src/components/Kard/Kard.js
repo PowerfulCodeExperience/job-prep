@@ -3,6 +3,8 @@ import {Card, Dropdown} from 'semantic-ui-react';
 import FA from 'react-fontawesome';
 import moment from 'moment';
 
+import './Kard.css';
+
 function Kard (props){
 
   const options = [

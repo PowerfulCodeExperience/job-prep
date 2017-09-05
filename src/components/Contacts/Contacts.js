@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
 
-
 import {Card, Input, Button, Dropdown, Table} from 'semantic-ui-react';
 
 import {getContacts, postContact, updateStatus} from '../../ducks/reducer';
@@ -59,19 +58,11 @@ class Contacts extends Component {
   }
   
   setStatus(e, data, company_id) {
-    console.log("e", e)
-    console.log("data", data.value, company_id)
     let date = new Date();
     this.props.updateStatus(e, data.value, date, company_id)
   }
 
   render() {
-    console.log("Props", this.props)
-    // const options = [
-    //   {key: "No Action Taken", text: "No Action Taken", value: "No Action Taken"},
-    //   {key: "Request Sent", text: "Request Sent", value: "Request Sent"},  
-    //   {key: "Connected", text: "Connected", value: "Connected"}
-    // ]
 
     return (
       <div className="Contacts">
@@ -131,48 +122,10 @@ class Contacts extends Component {
                 i = {i}
                 contact = {contact}
               />
-
             )
           })
         }
         </Card.Group>
-
-        {/* <Table striped celled>
-
-          <Table.Header>
-            <Table.Row>
-              <Table.Header />
-              <Table.HeaderCell>Name</Table.HeaderCell>
-              <Table.HeaderCell>Position</Table.HeaderCell>
-              <Table.HeaderCell>LinkedIn</Table.HeaderCell>
-              <Table.HeaderCell>Status</Table.HeaderCell>
-              <Table.HeaderCell>Email</Table.HeaderCell>
-              <Table.HeaderCell>Date Contacted</Table.HeaderCell>
-              <Table.HeaderCell>Notes</Table.HeaderCell>
-              <Table.HeaderCell>Outcome</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-
-          <Table.Body>
-            {
-              this.props.contacts.map((contact, i) => {
-                return (
-                  <Table.Row>
-                    <Table.Cell>{i+1}</Table.Cell>
-                    <Table.Cell>{contact.firstname}</Table.Cell>
-                    <Table.Cell>{contact.position}</Table.Cell>
-                    <Table.Cell>{contact.linkedin}</Table.Cell>
-                    <Table.Cell>{contact.status}</Table.Cell>
-                    <Table.Cell>{contact.email}</Table.Cell>
-                    <Table.Cell>{contact.datecontacted}</Table.Cell>
-                    <Table.Cell>{contact.notes}</Table.Cell>
-                    <Table.Cell>{contact.outcome}</Table.Cell>
-                </Table.Row>
-              )})
-            }
-          </Table.Body>
-
-        </Table> */}
         
       </div>
     )
