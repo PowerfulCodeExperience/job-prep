@@ -9,11 +9,11 @@ class Landing extends Component {
   render() {
     return (
     <div className="Landing">
+      <Button style={{'fontFamily':'"Nunito", sans-serif', 'fontWeight':'700', 'color':'white'}} color="blue" size="massive" href={'http://localhost:3001/auth/'}>LOGIN</Button>      
       <div className="Landing-Logo">
         <img src={require("./logowhiteblue.png")} alt="logo" /> 
       </div>
       <div className="Landing-Body">
-        <Button style={{'fontFamily':'"Nunito", sans-serif', 'fontWeight':'700', 'color':'white'}} color="blue" size="massive" href={'http://localhost:3001/auth/'}>LOGIN</Button>
       </div>
     </div>
     )

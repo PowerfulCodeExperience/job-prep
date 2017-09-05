@@ -79,7 +79,7 @@ class Companies extends Component {
           </section>
 
           <section className="TableWrap">
-            <Table striped selectable compact>
+            <Table striped selectable>
               <Table.Header>
                 <Table.Row>
                   <Table.HeaderCell>Name</Table.HeaderCell>
@@ -99,6 +99,7 @@ class Companies extends Component {
                 })
               }
               </Table.Body>
+              <Table.Footer><br/><br/><br/></Table.Footer>
             </Table>
           </section>
         </main>
