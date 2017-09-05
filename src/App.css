@@ -3,6 +3,17 @@
 }
 
 .RoutesContainer {
-  /* background: blue; */
+  /* background: lightblue; */
   width: calc(100% - 302px);
+}
+
+@media(max-width: 800px) {
+  .App {
+    flex-direction: column;
+  }
+
+  .RoutesContainer {
+    width: 100%;
+    padding-top: 50px;
+  }
 }

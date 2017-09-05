@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getResources} from  './../../ducks/reducer.js';
 
-// import DropDown from './../DropDown/DropDown.js';
 import { Accordion, Icon } from 'semantic-ui-react';
 
 import './JobResources.css';
@@ -50,7 +49,7 @@ class JobResources extends Component {
       return (
         <Accordion styled fluid key={item.type}>
 
-          <Accordion.Title style={{"fontFamily":"Nunito, sans-serif"}}>
+          <Accordion.Title>
             <Icon name='dropdown'/>
             {this.capLetter(item.type)}
           </Accordion.Title>
@@ -73,7 +72,6 @@ class JobResources extends Component {
   }
 
   render() {
-
     return (
       <div className="Resources">
 
@@ -81,6 +79,8 @@ class JobResources extends Component {
           <h1 className="ResourceHeader"> Resources </h1>
           {this.dropDown()}
         </div>
+
+        <footer className="Footer"></footer>
 
       </div>
     )

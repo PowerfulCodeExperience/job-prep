@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 // import axios from 'axios';
+
+import {Button, Input, Table} from 'semantic-ui-react';
+
+import { postCompany, getCompanies } from '../../ducks/reducer';
 
 import './Companies.css';
 
@@ -10,18 +15,21 @@ class Companies extends Component {
     super(props)
 
     this.state = {
-      company: '',
-      linkedin: ''
+      company: "",
+      linkedin: ""
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
 
-  handleChange(e){
+  componentDidMount(){
+    this.props.getCompanies();
+  }
 
+  handleChange(e){
     let updatedName = e.target.name
-    console.log("updatedName", updatedName);
+    // console.log("updatedName", updatedName);
     let updatedValue = e.target.value
     this.setState({
       [updatedName]: updatedValue 
@@ -29,25 +37,74 @@ class Companies extends Component {
   }
 
   handleSubmit(event){
-    console.log("event", this.state)
+    this.props.postCompany(this.state);
+
+    this.setState({
+      company: "",
+      linkedin: ""
+    })
   }
 
   render() {
-    console.log("state", this.state)
+
     return (
       <div className="Companies">
 
-        <p>20 Company Challenge</p>
+        <h1 className="CompanyHeader">20 Company Challenge</h1>
 
-        <div className="companyInput">
-            Company:<br/>
-            <input type="text" name={'company'} placeholder="company" value={this.state.company} onChange={(e) => {this.handleChange(e)}} />
-            <br/>
-            LinkedIn:<br/>
-            <input type="text" name={'linkedin'} placeholder="link" value={this.state.linkedin} onChange={(e) => {this.handleChange(e)}} />
-            <br/><br/>
-            <button onClick={this.handleSubmit}>Submit</button>
-        </div>
+        <main className="CompanyWrap">
+          <section className="CompanyInput">
+
+            <h3 className="CompanySub">Company:</h3>
+
+            <Input 
+              focus placeholder="Name" 
+              type="text"
+              name={"company"}
+              value={this.state.company}
+              onChange={(e) => {this.handleChange(e)}}
+            />
+
+            <h3 className="CompanySub">LinkedIn:</h3>
+
+            <Input
+              focus placeholder="URL"
+              type="text"
+              name={"linkedin"}
+              value={this.state.linkedin}
+              onChange={(e) => {this.handleChange(e)}}
+            />
+
+            <Button style={{'fontFamily':'"Nunito", sans-serif', 'fontWeight':'700'}} size='large' onClick={this.handleSubmit}>Submit</Button>
+          </section>
+
+          <section className="TableWrap">
+            <Table striped selectable>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell>Name</Table.HeaderCell>
+                  <Table.HeaderCell>LinkedIn</Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+
+              <Table.Body>
+              {
+                this.props.companies.map((company, i) => {
+                  return (
+                    <Table.Row key={i}>
+                      <Table.Cell><Link to={`/contacts/${company.id}`}>{company.companyname}</Link></Table.Cell>
+                      <Table.Cell><a href={company.companylinkedin} target={"_blank"}>{company.companylinkedin}</a></Table.Cell>
+                    </Table.Row>
+                  )
+                })
+              }
+              </Table.Body>
+              <Table.Footer><br/><br/><br/></Table.Footer>
+            </Table>
+          </section>
+        </main>
+        
+        <footer className="Footer"></footer>
 
       </div>
     )
@@ -61,4 +118,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(Companies);
+export default connect(mapStateToProps, {postCompany, getCompanies})(Companies);

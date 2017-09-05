@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Status from './Status.js';
+
+import {connect} from 'react-redux';
+import {getUser} from './ducks/reducer.js';
 
 import Landing from './components/Landing/Landing.js';
 import Navigation from './components/Navigation/Navigation.js';
@@ -23,7 +25,7 @@ export class Wrapper extends Component {
             <Route exact path="/" component={ DashBoard } />
             <Route path="/companies" component={ Companies } />
             <Route path="/interviews" component={ Interviews } />
-            <Route path="/contacts" component={ Contacts } />
+            <Route path="/contacts/:id" component={ Contacts } />
             <Route path="/resources" component={ JobResources } />
           </Switch>
         </div>
@@ -33,17 +35,50 @@ export class Wrapper extends Component {
 }
 
 class App extends Component {
+
+  componentDidMount() {
+    this.props.getUser();
+  }
+
   render() {
+
+    const checkStatus = () => {
+      if(!this.props.user) {
+        return <Landing/>
+      }
+      else {
+        return (
+          <Router>
+            <div>
+              <Route path="/" component={ Wrapper } />
+              <Route path="/landing" component={ Landing } />
+            </div>
+          </Router>
+        )
+      }
+    }
+
     return (
+      <div>
+      <div>
+        {/* {checkStatus()} */}
+      </div>
+      
       <Router>
         <div>
-          <Route path="/" component={ Status } />
-          <Route path="/landing" component={ Landing } />
           <Route path="/" component={ Wrapper } />
+          <Route path="/landing" component={ Landing } />
         </div>
       </Router>
+      </div>
     );
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps, {getUser})(App);

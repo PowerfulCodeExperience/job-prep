@@ -1,5 +1,15 @@
 .Contacts {
-  
   height: 100vh;
-  overflow-y: scroll;
+  text-align: center;
+}
+
+.ContactInput {
+  background: #818181;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+.fa {
+  padding: 15px;
 }

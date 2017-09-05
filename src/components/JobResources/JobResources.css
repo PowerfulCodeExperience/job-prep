@@ -1,8 +1,7 @@
 .Resources {
-  width: 80vw;
-  height: 100vh;
-  overflow-y: scroll;
+  width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -16,27 +15,72 @@
 .ResourceHeader {
   width: 100%;
   height: 100px;
-  font-family: 'Nunito', sans-serif;
-  color: #29ABE2;
-  text-decoration: underline;
+  font-weight: 700;
+  color: #2AABE2;
   font-size: 60px;
   display: flex;
   align-items: center;
+  margin-bottom: 50px;
 }
 
 .PanelContent {
   display: flex;
   flex-direction: column;
-  font-family: 'Nunito', sans-serif;
 }
 
 .PanelRow {
-  height: 35px;
-  font-family: 'Nunito', sans-serif;
+  height: 60px;
+  font-size: 18px;
   font-weight: 600;
-  color: #29ABE2;
+  color: black;
+  display: flex;
+  align-items: center;
 }
 
 .PanelRow:hover {
-  color: black;
+  color: white;
+  cursor: pointer;
+}
+
+/* Mobile View */
+@media(max-width: 800px) {
+  .ResourceHeader {
+    font-size: 40px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .PanelRow {
+    height: 60px;
+    font-size: 16px;
+  }
+}
+
+/* Accordian Styles */
+.ui.styled.accordion {
+  background: #4E4E4E;
+}
+
+.ui.styled.accordion>.title {
+  color: #2AABE2;
+  font-family: 'Nunito', sans-serif;
+  font-size: 25px;
+  border-radius: 5px;
+}
+
+.ui.styled.accordion>.title.active {
+  border-radius: 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background: #2AABE2;
+}
+
+.ui.styled.accordion>.title:hover {
+  background: #2AABE2;
+}
+
+.ui.styled.accordion>.content {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background: #0077AA;
 }
