@@ -55,32 +55,34 @@ handleTaskSubmit(event) {
       goals,
       tasks
     } = this.props
+
+
     return(
       <Grid columns={3} divided>
             <Grid.Row stretched>
               <Grid.Column className="column_dash">
                 <Segment>Portfolio Piece</Segment>
-                <Card>My Tasks
+                <Segment>My Tasks
                 
-                {/* <Button onClick={this.show('inverted')}>
+                <Button onClick={this.show('inverted')}>
                   <Icon name='add' size='large'/>
                   </Button>
 
-        <Modal dimmer={dimmer} open={open} onClose={this.close}>
-          <Modal.Header>Add a Task</Modal.Header>
-          <Modal.Content> */}
-            <Input 
-            type='text'
-            name='task'
-            onChange={(e) => {this.handleChange(e)}}
-            inverted placeholder={'Add task here...'}
-            value={this.state.task}
-            ></Input>
-            <Button positive icon="checkmark" labelPosition='right' content="Add!" onClick={this.handleTaskSubmit} />
-          {/* </Modal.Content>
-          <Modal.Actions>
-          </Modal.Actions>
-        </Modal> */}
+                  <Modal dimmer={dimmer} open={open} onClose={this.close}>
+                  <Modal.Header>Add a Task</Modal.Header>
+                  <Modal.Content>
+                    <Input 
+                    type='text'
+                    name='task'
+                    onChange={(e) => {this.handleChange(e)}}
+                    inverted placeholder={'Add task here...'}
+                    value={this.state.task}
+                    ></Input>
+                    <Button positive icon="checkmark" labelPosition='right' content="Add!" onClick={this.handleTaskSubmit} />
+                  </Modal.Content>
+                  <Modal.Actions>
+                  </Modal.Actions>
+                </Modal>
 
                 {
                   tasks.map((e, j) => 
@@ -91,17 +93,17 @@ handleTaskSubmit(event) {
                     )
                   )
                 }
-
-                </Card>
+            </Segment>
+            </Grid.Column>
+              <Grid.Column>
+                <Segment>Jobs Applied Action</Segment>
               </Grid.Column>
               <Grid.Column>
-                <Card>Jobs Applied Action</Card>
-              </Grid.Column>
-              <Grid.Column>
-              <Card>Interview Status
+              <Segment>Interview Status
                 <Weather/>
-              </Card>
-                <Card>Goals
+              </Segment>
+
+                <Segment>Goals
                 <Button size="mini" icon='add' onClick={this.show('inverted')} className="goal_add_button">
                 </Button>
                 <Modal dimmer={dimmer} open={open} onClose={this.close}>
@@ -130,10 +132,10 @@ handleTaskSubmit(event) {
           )
         }
         </ul>
-                </Card>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
+                </Segment>
+                </Grid.Column>
+              </Grid.Row>
+              </Grid>
     )
   }
 }
