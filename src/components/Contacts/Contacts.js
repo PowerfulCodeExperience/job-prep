@@ -121,6 +121,7 @@ class Contacts extends Component {
               <Kard
                 i = {i}
                 contact = {contact}
+                setStatus = {this.setStatus}
               />
             )
           })

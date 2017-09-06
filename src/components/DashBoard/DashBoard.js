@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { Grid, Segment } from 'semantic-ui-react';
-import DashGoalsModal from '../DashGoalsModal/DashGoalsModal';
 import axios from 'axios';
 import './DashBoard.css';
 import Weather from '../Weather/Weather'
+import { Button, Modal, Input, Icon } from 'semantic-ui-react'
 
-import { getGoals } from '../../ducks/reducer'
+import { getGoals, postGoal, getTasks, postTask, getJobActions, postJobAction } from '../../ducks/reducer'
 
 class DashBoard extends Component {
   constructor(props) {
@@ -14,45 +14,58 @@ class DashBoard extends Component {
 
     this.state = {
       goal: '',
-      task: ''
+      task: '',
+      jobAction: '',
+      open: false
     }
-    this.handleGoalChange = this.handleGoalChange.bind(this)
-    this.handleTaskChange = this.handleTaskChange.bind(this)
+    this.handleChange = this.handleChange.bind(this)
     this.handleGoalSubmit = this.handleGoalSubmit.bind(this)
     this.handleTaskSubmit = this.handleTaskSubmit.bind(this)
+    this.handleJobActionSubmit = this.handleJobActionSubmit.bind(this)
   }
-  
+  show = dimmer => () => this.setState({ dimmer, open: true })
+  close = () => this.setState({ open: false })
+
   componentDidMount() {
-    // console.log('goal', this.props.goals)
     this.props.getGoals(this.props.user.id)
+    this.props.getTasks(this.props.user.id)
+    this.props.getJobActions(this.props.user.id)
 }
-handleGoalChange(event) {
+handleChange(event) {
+  let name = event.target.name
+  let value = event.target.value
   this.setState({
-    goal: event.target.value
+    [name]: value
   })
 }
-handleTaskChange(event) {
-  this.setState({
-    task: event.target.value
-  })
-}
+
 handleGoalSubmit(event) {
   event.preventDefault();
-  axios.post('/api/postgoal', {
-    goal: this.state.goal
+  this.props.postGoal(this.state.goal);
+  this.setState({
+    goal: ''
   })
-  .then(this.setState({goal:''}))
-  .catch(error => error)
 }
 handleTaskSubmit(event) {
   event.preventDefault();
-  axios.post('/api/postTask', {
-    task: this.state.task
+  this.props.postTask(this.state.task);
+  this.setState({
+    task: ''
+  })
+}
+handleJobActionSubmit(event) {
+  event.preventDefault();
+  this.props.postJobAction(this.state.jobAction);
+  this.setState({
+    jobAction: ''
   })
 }
   render(){
+    const { open, dimmer } = this.state
     const {
-      goals
+      goals,
+      tasks,
+      jobActions
     } = this.props
     return(
       <Grid columns={3} divided>
@@ -60,12 +73,37 @@ handleTaskSubmit(event) {
               <Grid.Column className="column_dash">
                 <Segment>Portfolio Piece</Segment>
                 <Segment>My Tasks
-                  <DashGoalsModal
-                  header='Add a Task'
-                  placeholder='Add your task here...'
-                  handleSubmit={this.handleGoalSubmit}
-                  onChange={this.handleGoalChange}
-                  />
+                
+                {/* <Button onClick={this.show('inverted')}>
+                  <Icon name='add' size='large'/>
+                  </Button>
+
+        <Modal dimmer={dimmer} open={open} onClose={this.close}>
+          <Modal.Header>Add a Task</Modal.Header>
+          <Modal.Content> */}
+            <Input 
+            type='text'
+            name='task'
+            onChange={(e) => {this.handleChange(e)}}
+            inverted placeholder={'Add task here...'}
+            value={this.state.task}
+            ></Input>
+            <Button positive icon="checkmark" labelPosition='right' content="Add!" onClick={this.handleTaskSubmit} />
+          {/* </Modal.Content>
+          <Modal.Actions>
+          </Modal.Actions>
+        </Modal> */}
+
+                {
+                  tasks.map((e, j) => 
+                    (
+                      <p key={j}>
+                          {e.task}
+                      </p>
+                    )
+                  )
+                }
+
                 </Segment>
               </Grid.Column>
               <Grid.Column>
@@ -76,12 +114,24 @@ handleTaskSubmit(event) {
                 <Weather/>
               </Segment>
                 <Segment>Goals
-                  <DashGoalsModal
-                  header='Add a Goal'
-                  placeholder='Add your goal here...'
-                  handleSubmit={this.handleTaskSubmit}
-                  onChange={this.handleTaskChange}
-                  />
+                <Button onClick={this.show('inverted')}>
+          <Icon name='add' size='large'/>
+        </Button>
+                <Modal dimmer={dimmer} open={open} onClose={this.close}>
+          <Modal.Header>Add a Goal</Modal.Header>
+          <Modal.Content>
+            <Input 
+            type='text'
+            name='goal'
+            onChange={this.handleChange} 
+            inverted placeholder={'Add goal here...'}
+            value={this.state.goal}
+            ></Input>
+          </Modal.Content>
+          <Modal.Actions>
+            <Button positive icon="checkmark" labelPosition='right' content="Add!" onClick={this.handleGoalSubmit} />
+          </Modal.Actions>
+        </Modal>
                 {
                   goals.map((e, i) => 
                     (
@@ -102,8 +152,10 @@ handleTaskSubmit(event) {
 function mapStateToProps(state) {
   return {
     user: state.user,
-    goals: state.goals
+    goals: state.goals,
+    tasks: state.tasks,
+    jobActions: state.jobActions
   }
 }
 
-export default connect(mapStateToProps, { getGoals })(DashBoard);
+export default connect(mapStateToProps, { getGoals, postGoal, getTasks, postTask, getJobActions, postJobAction })(DashBoard);

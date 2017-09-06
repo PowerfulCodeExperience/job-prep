@@ -4,14 +4,25 @@ const initialState = {
   user: {},
   resources: [],
   companies: [],
-  goals: [], 
+  goals: [],
+  tasks: [],
+  jobActions: [],
   weather: [],
   contacts: []
 };
 
 const GET_USER = 'GET_USER';
 const GET_RESOURCES = 'GET_RESOURCES';
+
 const GET_GOALS = 'GET_GOALS';
+const POST_GOAL = 'POST_GOAL';
+
+const GET_TASKS = 'GET_TASKS';
+const POST_TASK = 'POST_TASK';
+
+const GET_JOB_ACTIONS = 'GET_JOB_ACTIONS';
+const POST_JOB_ACTION = 'POST_JOB_ACTION';
+
 const GET_WEATHER = 'GET_WEATHER'
 const GET_COMPANIES = 'GET_COMPANIES';
 const GET_CONTACTS = 'GET_CONTACTS';
@@ -39,6 +50,22 @@ export default function reducer(state=initialState, action) {
       return state;
     case GET_GOALS + '_FULFILLED':
       return Object.assign({}, state, {goals: action.payload.data});
+    case POST_GOAL + '_PENDING':
+      return state;
+    case POST_GOAL + '_FULFILLED':
+      return Object.assign({}, state, {
+        goals: [...action.payload.data]
+      });
+    case POST_TASK + '_PENDING':
+      return state;
+    case POST_TASK + '_FULFILLED':
+      return Object.assign({}, state, {tasks: [...action.payload.data]});
+    case GET_TASKS + '_PENDING':
+      return state;
+    case GET_TASKS + '_FULFILLED':
+      return Object.assign({}, state, {tasks: action.payload.data});
+    case GET_JOB_ACTIONS + '_PENDING':
+      return Object.assign({}, state, {jobActions: action.payload.data})
     case GET_WEATHER + '_PENDING':
       return state;
     case GET_WEATHER + '_FULFILLED':
@@ -96,6 +123,7 @@ export default function reducer(state=initialState, action) {
 
     default: return state;
   }
+}
   export function getUser() {
     return {
       type: GET_USER,
@@ -103,16 +131,16 @@ export default function reducer(state=initialState, action) {
     }
   }
   
-  export function getResources(type) {
-    return {
-      type: GET_RESOURCES,
-      payload: axios.get(`/api/resources`)
-    }
-  }
   export function getGoals(user) {
     return {
       type: GET_GOALS,
       payload: axios.get('/api/getGoals')
+    }
+  }
+  export function postGoal(goal) {
+    return {
+      type: POST_GOAL,
+      payload: axios.post('/api/postGoal', {goal})
     }
   }
   export function getWeather() {
@@ -123,12 +151,7 @@ export default function reducer(state=initialState, action) {
     }
   }
   
-  
-
-
-}
-
-export function signOut() {
+  export function signOut() {
   return{
     type: SIGN_OUT,
     payload: axios.get('/api/signOut')
@@ -174,5 +197,31 @@ export function updateStatus(id, status, date, company_id){
   return {
     type: UPDATE_STATUS,
     payload: axios.put('/api/status', { id, status, date, company_id })
+  }
+}
+
+export function getTasks(user) {
+  return {
+    type: GET_TASKS,
+    payload: axios.get('/api/getTasks')
+  }
+}
+
+export function postTask(task) {
+  return {
+    type: POST_TASK,
+    payload: axios.post('/api/postTask', {task})
+  }
+}
+export function getJobActions(user) {
+  return {
+    type: GET_JOB_ACTIONS,
+    payload: axios.get('/api/getJobActions')
+  }
+}
+export function postJobAction(action) {
+  return {
+    type: POST_JOB_ACTION,
+    payload: axios.post('/api/postJobAction', {action})
   }
 }

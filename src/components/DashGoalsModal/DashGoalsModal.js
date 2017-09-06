@@ -5,10 +5,11 @@ import './DashGoalsModal.css'
 class DashGoalsModal extends Component {
   constructor(props) {
     super(props);
-
+    console.log(props)
     this.state = {
       open: false
     }
+
   }
 
   show = dimmer => () => this.setState({ dimmer, open: true })
@@ -27,10 +28,17 @@ class DashGoalsModal extends Component {
         <Modal dimmer={dimmer} open={open} onClose={this.close}>
           <Modal.Header>{this.props.header}</Modal.Header>
           <Modal.Content>
-            <Input type='text' onChange={this.props.onChange} fluid icon='add' inverted placeholder={this.props.placeholder}></Input>
+            <Input 
+            type='text' 
+            onChange={this.props.onChange} 
+            fluid icon='add' 
+            inverted placeholder={this.props.placeholder}
+            handleSubmit={this.props.handleSubmit}
+            value={this.props.value}
+            ></Input>
           </Modal.Content>
           <Modal.Actions>
-            <Button positive icon='checkmark' labelPosition='right' content="Add!" onClick={this.props.handleSubmit} />
+            <Button positive icon="checkmark" labelPosition='right' content="Add!" onClick={this.props.handleSubmit} />
           </Modal.Actions>
         </Modal>
       </div>

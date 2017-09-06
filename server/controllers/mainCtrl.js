@@ -29,24 +29,31 @@ module.exports = {
   },
   postGoal: (req,res) => {
     const db = req.app.get('db');
-    let added = req.body;
-
-    db.post_goal([
-      added.goal
-    ])
-    .then( goal => res.status(200).send('goal added backend'))
-    .catch(() => res.status(500).send());
-  },
-  postTask: (req, res) => {
+    db.post_goal([req.body.goal, req.user.id])
+    .then(response => {
+      db.get_goals(req.user.id).then(goals => {
+        res.status(200).send(goals)
+    })
+  })
+  .catch(err => console.log(err));
+},
+getTasks: (req, res) => {
+  const db = req.app.get('db')
+  db.get_tasks(req.user.id)
+  .then(task => res.status(200).send(task))
+  res.status(200);
+},
+  
+postTask: (req, res) => {
     const db = req.app.get('db')
-    let addedTask = req.body
 
-    db.post_task([
-      addedTask.task
-    ])
-    .then( task => res.status(200).send('task added backend'))
-    .catch(() => res.status(500).send(error))
-    .catch( err => console.log(err));
+    db.post_task([req.body.task, req.user.id])
+    .then( response => {
+      db.get_tasks(req.user.id).then(tasks => {
+        res.status(200).send(tasks)
+      })
+    })
+    .catch(err => console.log(err));
   },
 
   getCompany: (req, res) => {

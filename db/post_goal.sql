@@ -1,2 +1,3 @@
-INSERT INTO goals (goal) 
-VALUES ($1)
+INSERT INTO goals (goal, user_id) 
+VALUES ($1, $2)
+RETURNING *
