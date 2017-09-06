@@ -64,7 +64,7 @@ module.exports = {
   postCompany: (req, res) => {
     const db = req.app.get('db');
 
-    const {company, linedin} = req.body;
+    const {company, linkedin} = req.body;
     const {id} = req.user;
 
     db.post_company(company, linkedin, id)
