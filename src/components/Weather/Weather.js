@@ -16,6 +16,13 @@ class Weather extends Component {
         return (
             <div>
                 <p>{weather.city_name}</p>
+                {
+                    weather.data.map((e, i) => 
+                    (
+                        <p key={i}>{e.clouds}</p>
+                    )
+                    )
+                }
                    
             </div>
         )
