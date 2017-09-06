@@ -79,7 +79,7 @@ class Kard extends Component {
         
         <div style={{"display": "flex", "justify-content": "space-between"}}>   
           <p>Notes:</p>
-          <FA name="plus" id="note" onClick={(e) => this.postNote(e)}/>
+          <FA name="plus" id="note" onClick={(e) => alert(e)}/>
         </div>
         <div>
           <input onChange={(e) => this.addNote(e)}/>
