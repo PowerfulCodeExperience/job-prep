@@ -86,10 +86,10 @@
 
 .Card {
   width: 292px;
-  height: 335px;
+  height: 410px;
   color: gray;
   border: 2px solid gray;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
@@ -110,11 +110,11 @@
 }
 
 .Plus {
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   position: relative;
-  bottom: 130px; right: 15px;
-  font-size: 30px;
+  bottom: 160px; left: 5px;
+  font-size: 50px;
   color: #2AABE2;
   border: 2px solid #2AABE2;
   border-radius: 50%;
