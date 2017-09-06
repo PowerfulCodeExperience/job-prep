@@ -83,6 +83,18 @@ module.exports = {
       .catch( err => console.log(err));
   },
 
+  postNote: (req, res) => {
+    const db = req.app.get('db');
+
+    const {note, date, contact_id} = req.body;
+
+    db.post_note(note, date, contact_id)
+      .then(response => {
+        res.status(200).send(response)
+      })
+      .catch( err => console.log(err));
+  },
+
   updateStatus: (req, res) => {
     const db = req.app.get('db');
 
@@ -115,6 +127,6 @@ module.exports = {
           .catch( err => console.log(err));
       })
       .catch( err => console.log(err));
-  }
+  },
 
 }

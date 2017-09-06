@@ -13,10 +13,12 @@ class Kard extends Component {
     super(props)
     this.state = { 
       open: false,
+      notes: ""
     }
 
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
+    this.addNote = this.addNote.bind(this);
   }
 
   open(){
@@ -28,9 +30,9 @@ class Kard extends Component {
     this.setState({ open: false })
   }
 
-  // updateEmail(e){
-  //   this.setState({ input: e.target.value})
-  // }
+  addNote(e){
+    console.log("value", e.target.value)
+  }
 
   render(){
 
@@ -77,10 +79,10 @@ class Kard extends Component {
         
         <div style={{"display": "flex", "justify-content": "space-between"}}>   
           <p>Notes:</p>
-          <FA name="plus" id="note" onClick={() => alert("Add a note")}/>
+          <FA name="plus" id="note" onClick={(e) => this.postNote(e)}/>
         </div>
         <div>
-          <textarea form="note"/>
+          <input onChange={(e) => this.addNote(e)}/>
         </div>
       </Card.Content>
 

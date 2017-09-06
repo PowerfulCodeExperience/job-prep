@@ -16,3 +16,7 @@ textarea {
   margin: 15px 0px 15px 0px;
   border: 1px gray solid;
 }
+
+input {
+  width: 258px;
+}
