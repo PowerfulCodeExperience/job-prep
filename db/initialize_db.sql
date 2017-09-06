@@ -53,10 +53,11 @@ CREATE TABLE IF NOT EXISTS resources (
   link TEXT
 );
 
-CREATE TABLE IF NOT EXISTS application_actions (
+CREATE TABLE IF NOT EXISTS notes (
   id SERIAL PRIMARY KEY,
-  action TEXT,
-  application_id INTEGER REFERENCES contact(id) 
+  note text,
+  dateCreated DATE,
+  contact_id INTEGER REFERENCES contact(id)
 );
 
 -- Drop Tables --

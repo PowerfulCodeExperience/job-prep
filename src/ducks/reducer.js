@@ -1,13 +1,15 @@
 import axios from 'axios';
 
 const initialState = {
-  user: {},
+  user: false,
   resources: [],
   companies: [],
   goals: [],
   tasks: [],
   weather: [],
-  contacts: []
+  contacts: [],
+  email: '',
+  allContacts: []
 };
 
 const GET_USER = 'GET_USER';
@@ -22,10 +24,14 @@ const POST_TASK = 'POST_TASK';
 const GET_WEATHER = 'GET_WEATHER'
 const GET_COMPANIES = 'GET_COMPANIES';
 const GET_CONTACTS = 'GET_CONTACTS';
+const GET_ALL_CONTACTS = 'GET_ALL_CONTACTS';
 
 const POST_COMPANY = 'POST_COMPANY';
 const POST_CONTACT = 'POST_CONTACT';
+const POST_EMAIL = 'POST_EMAIL';
+
 const UPDATE_STATUS = 'UPDATE_STATUS';
+const UPDATE_EMAIL = 'UPDATE_EMAIL';
 
 const SIGN_OUT = 'SIGN_OUT';
 
@@ -83,6 +89,14 @@ export default function reducer(state=initialState, action) {
         contacts: [...action.payload.data]
       })
 
+    case GET_ALL_CONTACTS + '_PENDING':
+      return state;
+
+    case GET_ALL_CONTACTS + '_FULFILLED':
+      return Object.assign({}, state, {
+        allContacts: action.payload.data
+      })
+
     case POST_COMPANY + '_PENDING':
       return state;
 
@@ -99,6 +113,15 @@ export default function reducer(state=initialState, action) {
         contacts: [...action.payload.data]
       })
 
+    case POST_EMAIL + '_PENDING':
+      return state;
+
+    case POST_EMAIL + '_FULFILLED':
+      console.log("email posted", action.payload.data)
+      return Object.assign({}, state, {
+        contacts: action.payload.data
+      })
+
     case UPDATE_STATUS + '_PENDING':
       return state;
 
@@ -107,12 +130,18 @@ export default function reducer(state=initialState, action) {
         contacts: action.payload.data
       })
 
+    case UPDATE_EMAIL:
+      console.log("action", action.payload)
+      return Object.assign({}, state, {
+        email: action.payload
+      })
+
     case SIGN_OUT + '_PENDING':
       return state;
 
     case SIGN_OUT + '_FULFILLED':
       return Object.assign({}, state, {
-        user: {}
+        user: false
       })
 
     default: return state;
@@ -173,6 +202,13 @@ export function getContacts(id){
   }
 }
 
+export function getAllContacts() {
+  return {
+    type: GET_ALL_CONTACTS,
+    payload: axios.get('/api/allContacts')
+  }
+}
+
 export function postCompany(company) {
   return {
     type: POST_COMPANY,
@@ -205,5 +241,18 @@ export function postTask(task) {
   return {
     type: POST_TASK,
     payload: axios.post('/api/postTask', {task})
+  }
+}
+export function updateEmail(email){
+  return {
+    type: UPDATE_EMAIL,
+    payload: email.target.value
+  }
+}
+
+export function postEmail(email, id, company_id){
+  return {
+    type: POST_EMAIL,
+    payload: axios.put('/api/email', {email, id, company_id})
   }
 }

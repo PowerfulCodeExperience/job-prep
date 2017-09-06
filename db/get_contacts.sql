@@ -1,1 +1,1 @@
-SELECT * FROM contact WHERE company_id = $1
+SELECT * FROM contact WHERE company_id = $1 ORDER BY id DESC;

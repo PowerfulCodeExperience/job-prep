@@ -4,6 +4,7 @@
 
 .Container {
   position: fixed;
+  z-index: 900;
   background: #202020;
   width: 302px;
   height: 100vh;

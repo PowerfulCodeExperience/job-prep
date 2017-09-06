@@ -10,6 +10,7 @@ import DashBoard from './components/DashBoard/DashBoard.js';
 
 import Companies from './components/Companies/Companies.js';
 import Interviews from './components/Interviews/Interviews.js';
+import AllContacts from './components/AllContacts/AllContacts.js';
 import Contacts from './components/Contacts/Contacts.js';
 import JobResources from './components/JobResources/JobResources.js';
 
@@ -17,6 +18,7 @@ import './App.css';
 
 export class Wrapper extends Component {
   render() {
+
     return (
       <div className="App">
         <Navigation />
@@ -25,6 +27,7 @@ export class Wrapper extends Component {
             <Route exact path="/" component={ DashBoard } />
             <Route path="/companies" component={ Companies } />
             <Route path="/interviews" component={ Interviews } />
+            <Route path="/allcontacts/" component={ AllContacts } />
             <Route path="/contacts/:id" component={ Contacts } />
             <Route path="/resources" component={ JobResources } />
           </Switch>
@@ -41,10 +44,12 @@ class App extends Component {
   }
 
   render() {
-
+console.log('props', this.props.user);
     const checkStatus = () => {
       if(!this.props.user) {
-        return <Landing/>
+        return (
+          <Landing />
+        )
       }
       else {
         return (
@@ -61,15 +66,15 @@ class App extends Component {
     return (
       <div>
       <div>
-        {/* {checkStatus()} */}
+        {checkStatus()}
       </div>
       
-      <Router>
+      {/* <Router>
         <div>
           <Route path="/" component={ Wrapper } />
           <Route path="/landing" component={ Landing } />
         </div>
-      </Router>
+      </Router> */}
       </div>
     );
   }

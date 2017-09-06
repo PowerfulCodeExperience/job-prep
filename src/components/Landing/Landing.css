@@ -28,14 +28,18 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
-.ui.blue.button {
+.Overlap {
   position: fixed;
-  top: 60vh;
-  left: 45vw;
+  top: 0;
   z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media(max-width: 800px) {
