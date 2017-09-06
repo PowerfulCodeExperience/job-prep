@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
 
-import {Card, Input, Button, Dropdown, Table} from 'semantic-ui-react';
+import {Card, Input, Button, Dropdown} from 'semantic-ui-react';
 
-import {getContacts, postContact, updateStatus} from '../../ducks/reducer';
+import {getContacts, postContact, updateStatus, updateEmail} from '../../ducks/reducer';
 import Kard from '../Kard/Kard';
 
 import './Contacts.css';
@@ -63,15 +63,17 @@ class Contacts extends Component {
   }
 
   render() {
-
+    console.log("Contacts", this.props.contacts)
     return (
       <div className="Contacts">
 
         <div>
           <h1>{this.state.company.companyname}</h1>
+          <h2>Employees</h2>
         </div>
 
         <div className="ContactInput">
+          <div className="TopInput">
           <p>Name:</p>
             <Input 
               placeholder="Name" 
@@ -96,6 +98,7 @@ class Contacts extends Component {
               value={this.state.linkedin}
               onChange={(e) => {this.handleChange(e)}}
             />
+          </div>
           <p>Email: </p>
             <Input 
               placeholder="Email" 
@@ -121,6 +124,9 @@ class Contacts extends Component {
               <Kard
                 i = {i}
                 contact = {contact}
+                setStatus = {this.setStatus}
+                updateEmail = {this.props.updateEmail}
+                email = {this.props.email}
               />
             )
           })
@@ -139,4 +145,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {getContacts, postContact, updateStatus})(Contacts);
+export default connect(mapStateToProps, {getContacts, postContact, updateStatus, updateEmail})(Contacts);

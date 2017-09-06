@@ -45,7 +45,14 @@ CREATE TABLE IF NOT EXISTS resources (
   source TEXT,
   title TEXT,
   link TEXT
-)
+);
+
+CREATE TABLE IF NOT EXISTS notes (
+  id SERIAL PRIMARY KEY,
+  note text,
+  dateCreated DATE,
+  contact_id INTEGER REFERENCES contact(id)
+);
 
 -- Drop Tables --
 

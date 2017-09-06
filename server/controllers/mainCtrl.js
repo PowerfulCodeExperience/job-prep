@@ -64,7 +64,10 @@ module.exports = {
   postCompany: (req, res) => {
     const db = req.app.get('db');
 
-    db.post_company(req.body.company, req.body.linkedin, req.user.id)
+    const {company, linedin} = req.body;
+    const {id} = req.user;
+
+    db.post_company(company, linkedin, id)
       .then(response => {
         db.get_companies(req.user.id).then(companies => {
           res.status(200).send(companies)
@@ -78,13 +81,27 @@ module.exports = {
 
     const { company, name, position, linkedin, email } = req.body;
 
-    db.post_contact(name, position, linkedin, company.id, email)
+    let status = "No Action Taken";
+
+    db.post_contact(name, position, linkedin, company.id, email, status)
       .then(response => {
         db.get_contacts(company.id)
           .then(contacts => {
             console.log("contacts: ", contacts)
             res.status(200).send(contacts)
           })
+      })
+      .catch( err => console.log(err));
+  },
+
+  postNote: (req, res) => {
+    const db = req.app.get('db');
+
+    const {note, date, contact_id} = req.body;
+
+    db.post_note(note, date, contact_id)
+      .then(response => {
+        res.status(200).send(response)
       })
       .catch( err => console.log(err));
   },
@@ -104,6 +121,23 @@ module.exports = {
           })
       })
       .catch( err => console.log(err));
-  }
+  },
+
+  updateEmail: (req, res) => {
+    const db = req.app.get('db');
+
+    const {email, id, company_id} = req.body;
+    console.log("body", req.body)
+    db.update_email(email, id)
+      .then(response => {
+        db.get_contacts(company_id)
+          .then(contacts => {
+            console.log("contacts", contacts)
+            res.status(200).send(contacts)
+          })
+          .catch( err => console.log(err));
+      })
+      .catch( err => console.log(err));
+  },
 
 }

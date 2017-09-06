@@ -89,6 +89,7 @@ app.post('/api/contact', mainCtrl.postContact);
 // Update status of contact
 
 app.put('/api/status', mainCtrl.updateStatus);
+app.put('/api/email', mainCtrl.updateEmail);
 
 const port = 3001;
 app.listen( port, () => { console.log(`Server listening on port ${port}`)} );
