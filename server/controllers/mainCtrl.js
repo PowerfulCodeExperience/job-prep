@@ -50,6 +50,17 @@ module.exports = {
     .catch( err => console.log(err));
   },
 
+  allContacts: (req, res) => {
+    const db = req.app.get('db');
+
+    db.get_all_contacts(req.user.id)
+      .then(response => {
+        console.log('response', response);
+        res.status(200).send(response);
+      })
+      .catch( err => console.log(err));
+  },
+
   postCompany: (req, res) => {
     const db = req.app.get('db');
 

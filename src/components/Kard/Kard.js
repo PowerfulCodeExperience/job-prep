@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import React, {Component} from 'react';
 import {Card, Dropdown, Modal, Button, TextArea, Input} from 'semantic-ui-react';
+=======
+import React from 'react';
+import {Card, Dropdown} from 'semantic-ui-react';
+>>>>>>> master
 import FA from 'react-fontawesome';
 import moment from 'moment';
 import {connect} from 'react-redux';

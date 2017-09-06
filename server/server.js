@@ -79,6 +79,7 @@ app.get('/api/resources', mainCtrl.getResources);
 app.get('/api/company', mainCtrl.getCompany);
 app.get('/api/returnCompany/:id', mainCtrl.returnCompany);
 app.get('/api/getContacts/:id', mainCtrl.getContacts);
+app.get('/api/allContacts', mainCtrl.allContacts);
 
 // Add a company and a contact 
 

@@ -1,17 +1,19 @@
 import axios from 'axios';
 
 const initialState = {
-  user: {},
+  user: false,
   resources: [],
   companies: [],
   contacts: [],
   email: '',
+  allContacts: []
 };
 
 const GET_USER = 'GET_USER';
 const GET_RESOURCES = 'GET_RESOURCES';
 const GET_COMPANIES = 'GET_COMPANIES';
 const GET_CONTACTS = 'GET_CONTACTS';
+const GET_ALL_CONTACTS = 'GET_ALL_CONTACTS';
 
 const POST_COMPANY = 'POST_COMPANY';
 const POST_CONTACT = 'POST_CONTACT';
@@ -54,6 +56,14 @@ export default function reducer(state=initialState, action) {
     case GET_CONTACTS + '_FULFILLED':
       return Object.assign({}, state, {
         contacts: [...action.payload.data]
+      })
+
+    case GET_ALL_CONTACTS + '_PENDING':
+      return state;
+
+    case GET_ALL_CONTACTS + '_FULFILLED':
+      return Object.assign({}, state, {
+        allContacts: action.payload.data
       })
 
     case POST_COMPANY + '_PENDING':
@@ -100,7 +110,7 @@ export default function reducer(state=initialState, action) {
 
     case SIGN_OUT + '_FULFILLED':
       return Object.assign({}, state, {
-        user: {}
+        user: false
       })
 
     default: return state;
@@ -139,6 +149,13 @@ export function getContacts(id){
   return {
     type: GET_CONTACTS,
     payload: axios.get(`/api/getContacts/${id}`)
+  }
+}
+
+export function getAllContacts() {
+  return {
+    type: GET_ALL_CONTACTS,
+    payload: axios.get('/api/allContacts')
   }
 }
 
