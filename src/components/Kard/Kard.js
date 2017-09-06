@@ -24,7 +24,7 @@ class Kard extends Component {
   }
 
   close(){
-    this.props.postEmail(this.props.email, this.props.contact.id);
+    this.props.postEmail(this.props.email, this.props.contact.id, this.props.contact.company_id);
     this.setState({ open: false })
   }
 
@@ -38,7 +38,7 @@ class Kard extends Component {
     {key: "Request Sent", text: "Request Sent", value: "Request Sent"},  
     {key: "Connected", text: "Connected", value: "Connected"}
   ]
-
+  console.log("email", this.props.contact)
   return(
     <Card key={this.props.i}>
 
@@ -77,15 +77,15 @@ class Kard extends Component {
         
         <div style={{"display": "flex", "justify-content": "space-between"}}>   
           <p>Notes:</p>
-          <FA name="plus" onClick={() => alert("Add a note")}/>
+          <FA name="plus" id="note" onClick={() => alert("Add a note")}/>
         </div>
         <div>
-          <textarea />
+          <textarea form="note"/>
         </div>
       </Card.Content>
 
       <Card.Content extra>
-        {this.props.contact.note}
+        {JSON.stringify(this.props.contact.notes)}
       </Card.Content>
 
       <Modal size="mini" open={this.state.open} >
@@ -93,7 +93,7 @@ class Kard extends Component {
           Add an Email:
         </Modal.Header>
         <Modal.Content>
-          <input onChange={(e) => this.props.updateEmail(e)}/>
+          <input value={this.props.email} onChange={(e) => this.props.updateEmail(e)}/>
         </Modal.Content>
         <Modal.Actions>
           <Button onClick={() => this.close()}>Submit</Button>

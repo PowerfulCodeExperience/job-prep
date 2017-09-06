@@ -103,12 +103,16 @@ module.exports = {
   updateEmail: (req, res) => {
     const db = req.app.get('db');
 
-    const {email, id} = req.body;
-
+    const {email, id, company_id} = req.body;
+    console.log("body", req.body)
     db.update_email(email, id)
       .then(response => {
-        console.log("response", response)
-        res.status(200).send(response)
+        db.get_contacts(company_id)
+          .then(contacts => {
+            console.log("contacts", contacts)
+            res.status(200).send(contacts)
+          })
+          .catch( err => console.log(err));
       })
       .catch( err => console.log(err));
   }

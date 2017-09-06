@@ -76,8 +76,9 @@ export default function reducer(state=initialState, action) {
       return state;
 
     case POST_EMAIL + '_FULFILLED':
+      console.log("email posted", action.payload.data)
       return Object.assign({}, state, {
-        email: ''
+        contacts: action.payload.data
       })
 
     case UPDATE_STATUS + '_PENDING':
@@ -169,9 +170,9 @@ export function updateEmail(email){
   }
 }
 
-export function postEmail(email, id){
+export function postEmail(email, id, company_id){
   return {
     type: POST_EMAIL,
-    payload: axios.put('/api/email', {email, id})
+    payload: axios.put('/api/email', {email, id, company_id})
   }
 }

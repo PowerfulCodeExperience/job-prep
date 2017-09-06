@@ -126,7 +126,7 @@ class Contacts extends Component {
                 contact = {contact}
                 setStatus = {this.setStatus}
                 updateEmail = {this.props.updateEmail}
-                email = {this.state.email}
+                email = {this.props.email}
               />
             )
           })
