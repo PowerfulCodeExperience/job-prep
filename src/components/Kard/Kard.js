@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Card, Dropdown} from 'semantic-ui-react';
 import FA from 'react-fontawesome';
 import moment from 'moment';
@@ -41,7 +41,7 @@ function Kard (props){
       </Card.Content>
 
       <Card.Content extra>
-        Status:<Dropdown inline fluid placeholder="No Action Taken" options={options} onChange={(e, value) => {this.setStatus(props.contact.id, value, props.contact.company_id)}}/>
+        Status:<Dropdown inline fluid placeholder="No Action Taken" options={options} onChange={(e, value) => {props.setStatus(props.contact.id, value, props.contact.company_id)}}/>
       </Card.Content>
 
     </Card>
