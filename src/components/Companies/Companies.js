@@ -75,7 +75,7 @@ class Companies extends Component {
               onChange={(e) => {this.handleChange(e)}}
             />
 
-            <Button style={{'fontFamily':'"Nunito", sans-serif', 'fontWeight':'700'}} size='large' inverted onClick={this.handleSubmit}>Submit</Button>
+            <Button style={{'fontFamily':'"Nunito", sans-serif', 'fontWeight':'700'}} size='large' inverted onClick={this.handleSubmit}>SUBMIT</Button>
           </section>
 
           <section className="TableWrap">
@@ -92,14 +92,14 @@ class Companies extends Component {
                 this.props.companies.map((company, i) => {
                   return (
                     <Table.Row key={i}>
-                      <Table.Cell><Link to={`/contacts/${company.id}`}>{company.companyname}</Link></Table.Cell>
-                      <Table.Cell><a href={company.companylinkedin} target={"_blank"}>{company.companylinkedin}</a></Table.Cell>
+                      <Table.Cell><Link to={`/contacts/${company.id}`} className="RowFill">{company.companyname}</Link></Table.Cell>
+                      <Table.Cell><a className="RowFill" href={company.companylinkedin} target={"_blank"}>{company.companylinkedin}</a></Table.Cell>
                     </Table.Row>
                   )
                 })
               }
               </Table.Body>
-              <Table.Footer><br/><br/><br/></Table.Footer>
+              <Table.Footer></Table.Footer>
             </Table>
           </section>
         </main>

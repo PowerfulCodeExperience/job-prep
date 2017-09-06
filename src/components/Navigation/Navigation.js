@@ -32,8 +32,9 @@ class Navigation extends Component {
     else {return "MobileNav Swap"}
   }
 
+
   componentDidMount() {
-    this.props.getUser();
+    // this.props.getUser();
   }
 
   render() {

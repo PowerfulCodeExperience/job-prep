@@ -70,33 +70,67 @@
   .TableWrap {
     width: 90%;
   }
+
+  /* All Rows */
+  .ui.table tbody tr {
+    border-top: 2px solid #28AAE2;
+  }
 }
 
 /* Table Styles */
 .ui.table {
-  background: #4E4E4E;
-  border: none;
+  width: 100%;
+  background: transparent;
+  border: 2px solid #2AABE2;
 }
 
 .ui.table thead tr>th {
-  height: 100px;
-  text-indent: 50px;
-  background: #4E4E4E;
-  font-size: 30px;
-  color: #29ABE2;
+  width: 15%;
+  background: transparent;
+  font-size: 40px;
+  color: #2AABE2;
+  border-bottom: 2px solid #2AABE2;
+  padding: 20px 0 20px 30px;
 }
 
+/* Odd Rows */
 .ui.table tbody tr {
-  height: 60px;
-  text-indent: 50px;
+  background: transparent;
 }
 
-.ui.table tbody a {
-  font-size: 20px;
+/* Even Rows */
+.ui.table tbody {
+  background: transparent;  
+}
+
+/* Single Row & Column */
+.ui.table tbody tr>td {
+  padding: 0;
+  margin: 0;
+}
+
+.ui.table tbody tr>td:hover {
+  background: #2AABE2;
+}
+
+/* All Rows */
+.ui.table tbody td {
+  height: 80px;
+}
+
+/* Row Links */
+.RowFill {
+  width: 100%;
+  height: 100%;
+  font-size: 25px;
   font-weight: 700;
-  color: #29ABE2;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
 }
 
-.ui.table tbody td a:hover {
-  color: white;
+.RowFill:hover {
+  color: black;
+  cursor: pointer;
 }

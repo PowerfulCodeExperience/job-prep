@@ -18,6 +18,7 @@ import './App.css';
 
 export class Wrapper extends Component {
   render() {
+
     return (
       <div className="App">
         <Navigation />
@@ -43,10 +44,12 @@ class App extends Component {
   }
 
   render() {
-
+console.log('props', this.props.user);
     const checkStatus = () => {
-      if(!this.props.user.id) {
-        return <Landing/>
+      if(!this.props.user) {
+        return (
+          <Landing />
+        )
       }
       else {
         return (
@@ -63,15 +66,15 @@ class App extends Component {
     return (
       <div>
       <div>
-        {/* {checkStatus()} */}
+        {checkStatus()}
       </div>
       
-      <Router>
+      {/* <Router>
         <div>
           <Route path="/" component={ Wrapper } />
           <Route path="/landing" component={ Landing } />
         </div>
-      </Router>
+      </Router> */}
       </div>
     );
   }
