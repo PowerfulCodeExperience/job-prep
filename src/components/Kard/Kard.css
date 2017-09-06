@@ -1,0 +1,18 @@
+textarea {
+  width: 250px;
+}
+
+.ui.card, .ui.cards>.card {
+  border-radius: 0px;
+}
+
+.fa {
+  padding-left: 15px;
+  padding-right: 5px;
+}
+
+.ui.fluid.dropdown {
+  padding: 10px;
+  margin: 15px 0px 15px 0px;
+  border: 1px gray solid;
+}

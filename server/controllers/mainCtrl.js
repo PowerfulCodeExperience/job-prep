@@ -53,7 +53,10 @@ module.exports = {
   postCompany: (req, res) => {
     const db = req.app.get('db');
 
-    db.post_company(req.body.company, req.body.linkedin, req.user.id)
+    const {company, linedin} = req.body;
+    const {id} = req.user;
+
+    db.post_company(company, linkedin, id)
       .then(response => {
         db.get_companies(req.user.id).then(companies => {
           res.status(200).send(companies)
@@ -93,6 +96,19 @@ module.exports = {
             console.log("contacts", contacts)
             res.status(200).send(contacts)
           })
+      })
+      .catch( err => console.log(err));
+  },
+
+  updateEmail: (req, res) => {
+    const db = req.app.get('db');
+
+    const {email, id} = req.body;
+
+    db.update_email(email, id)
+      .then(response => {
+        console.log("response", response)
+        res.status(200).send(response)
       })
       .catch( err => console.log(err));
   }

@@ -4,7 +4,8 @@ const initialState = {
   user: {},
   resources: [],
   companies: [],
-  contacts: []
+  contacts: [],
+  email: '',
 };
 
 const GET_USER = 'GET_USER';
@@ -14,7 +15,10 @@ const GET_CONTACTS = 'GET_CONTACTS';
 
 const POST_COMPANY = 'POST_COMPANY';
 const POST_CONTACT = 'POST_CONTACT';
+const POST_EMAIL = 'POST_EMAIL';
+
 const UPDATE_STATUS = 'UPDATE_STATUS';
+const UPDATE_EMAIL = 'UPDATE_EMAIL';
 
 const SIGN_OUT = 'SIGN_OUT';
 
@@ -68,12 +72,26 @@ export default function reducer(state=initialState, action) {
         contacts: [...action.payload.data]
       })
 
+    case POST_EMAIL + '_PENDING':
+      return state;
+
+    case POST_EMAIL + '_FULFILLED':
+      return Object.assign({}, state, {
+        email: ''
+      })
+
     case UPDATE_STATUS + '_PENDING':
       return state;
 
     case UPDATE_STATUS + '_FULFILLED':
       return Object.assign({}, state, {
         contacts: action.payload.data
+      })
+
+    case UPDATE_EMAIL:
+      console.log("action", action.payload)
+      return Object.assign({}, state, {
+        email: action.payload
       })
 
     case SIGN_OUT + '_PENDING':
@@ -141,5 +159,19 @@ export function updateStatus(id, status, date, company_id){
   return {
     type: UPDATE_STATUS,
     payload: axios.put('/api/status', { id, status, date, company_id })
+  }
+}
+
+export function updateEmail(email){
+  return {
+    type: UPDATE_EMAIL,
+    payload: email.target.value
+  }
+}
+
+export function postEmail(email, id){
+  return {
+    type: POST_EMAIL,
+    payload: axios.put('/api/email', {email, id})
   }
 }
