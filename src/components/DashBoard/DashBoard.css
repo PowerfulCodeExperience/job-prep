@@ -47,3 +47,12 @@
   width: 100%;
   height: 100px;
 }
+.goals_list {
+  list-style-type: square;
+  padding-left: 1rem;
+}
+.ui.button.goal_add_button {
+  margin-left: 12em;
+  color: blue;
+  background-color: #15A336;
+}

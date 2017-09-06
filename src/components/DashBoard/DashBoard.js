@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { Grid, Segment } from 'semantic-ui-react';
-import axios from 'axios';
 import './DashBoard.css';
 import Weather from '../Weather/Weather'
-import { Button, Modal, Input, Icon } from 'semantic-ui-react'
+import { Button, Modal, Input, List, Icon, Card } from 'semantic-ui-react'
 
-import { getGoals, postGoal, getTasks, postTask, getJobActions, postJobAction } from '../../ducks/reducer'
+import { getGoals, postGoal, getTasks, postTask } from '../../ducks/reducer'
 
 class DashBoard extends Component {
   constructor(props) {
@@ -15,13 +14,11 @@ class DashBoard extends Component {
     this.state = {
       goal: '',
       task: '',
-      jobAction: '',
       open: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleGoalSubmit = this.handleGoalSubmit.bind(this)
     this.handleTaskSubmit = this.handleTaskSubmit.bind(this)
-    this.handleJobActionSubmit = this.handleJobActionSubmit.bind(this)
   }
   show = dimmer => () => this.setState({ dimmer, open: true })
   close = () => this.setState({ open: false })
@@ -29,7 +26,6 @@ class DashBoard extends Component {
   componentDidMount() {
     this.props.getGoals(this.props.user.id)
     this.props.getTasks(this.props.user.id)
-    this.props.getJobActions(this.props.user.id)
 }
 handleChange(event) {
   let name = event.target.name
@@ -53,26 +49,18 @@ handleTaskSubmit(event) {
     task: ''
   })
 }
-handleJobActionSubmit(event) {
-  event.preventDefault();
-  this.props.postJobAction(this.state.jobAction);
-  this.setState({
-    jobAction: ''
-  })
-}
   render(){
     const { open, dimmer } = this.state
     const {
       goals,
-      tasks,
-      jobActions
+      tasks
     } = this.props
     return(
       <Grid columns={3} divided>
             <Grid.Row stretched>
               <Grid.Column className="column_dash">
                 <Segment>Portfolio Piece</Segment>
-                <Segment>My Tasks
+                <Card>My Tasks
                 
                 {/* <Button onClick={this.show('inverted')}>
                   <Icon name='add' size='large'/>
@@ -104,19 +92,18 @@ handleJobActionSubmit(event) {
                   )
                 }
 
-                </Segment>
+                </Card>
               </Grid.Column>
               <Grid.Column>
-                <Segment>Jobs Applied Action</Segment>
+                <Card>Jobs Applied Action</Card>
               </Grid.Column>
               <Grid.Column>
-              <Segment>Interview Status
+              <Card>Interview Status
                 <Weather/>
-              </Segment>
-                <Segment>Goals
-                <Button onClick={this.show('inverted')}>
-          <Icon name='add' size='large'/>
-        </Button>
+              </Card>
+                <Card>Goals
+                <Button size="mini" icon='add' onClick={this.show('inverted')} className="goal_add_button">
+                </Button>
                 <Modal dimmer={dimmer} open={open} onClose={this.close}>
           <Modal.Header>Add a Goal</Modal.Header>
           <Modal.Content>
@@ -132,16 +119,18 @@ handleJobActionSubmit(event) {
             <Button positive icon="checkmark" labelPosition='right' content="Add!" onClick={this.handleGoalSubmit} />
           </Modal.Actions>
         </Modal>
-                {
-                  goals.map((e, i) => 
-                    (
-                      <p key={i}>
-                          {e.goal}
-                      </p>
-                    )
-                  )
-                }
-                </Segment>
+        <ul className="goals_list">
+        {
+          goals.map((e, j) => 
+            (
+              <li key={j}>
+                  {e.goal}
+              </li>
+            )
+          )
+        }
+        </ul>
+                </Card>
               </Grid.Column>
             </Grid.Row>
           </Grid>
@@ -153,9 +142,8 @@ function mapStateToProps(state) {
   return {
     user: state.user,
     goals: state.goals,
-    tasks: state.tasks,
-    jobActions: state.jobActions
+    tasks: state.tasks
   }
 }
 
-export default connect(mapStateToProps, { getGoals, postGoal, getTasks, postTask, getJobActions, postJobAction })(DashBoard);
+export default connect(mapStateToProps, { getGoals, postGoal, getTasks, postTask })(DashBoard);

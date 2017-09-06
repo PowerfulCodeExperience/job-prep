@@ -6,7 +6,6 @@ const initialState = {
   companies: [],
   goals: [],
   tasks: [],
-  jobActions: [],
   weather: [],
   contacts: []
 };
@@ -19,9 +18,6 @@ const POST_GOAL = 'POST_GOAL';
 
 const GET_TASKS = 'GET_TASKS';
 const POST_TASK = 'POST_TASK';
-
-const GET_JOB_ACTIONS = 'GET_JOB_ACTIONS';
-const POST_JOB_ACTION = 'POST_JOB_ACTION';
 
 const GET_WEATHER = 'GET_WEATHER'
 const GET_COMPANIES = 'GET_COMPANIES';
@@ -64,8 +60,6 @@ export default function reducer(state=initialState, action) {
       return state;
     case GET_TASKS + '_FULFILLED':
       return Object.assign({}, state, {tasks: action.payload.data});
-    case GET_JOB_ACTIONS + '_PENDING':
-      return Object.assign({}, state, {jobActions: action.payload.data})
     case GET_WEATHER + '_PENDING':
       return state;
     case GET_WEATHER + '_FULFILLED':
@@ -211,17 +205,5 @@ export function postTask(task) {
   return {
     type: POST_TASK,
     payload: axios.post('/api/postTask', {task})
-  }
-}
-export function getJobActions(user) {
-  return {
-    type: GET_JOB_ACTIONS,
-    payload: axios.get('/api/getJobActions')
-  }
-}
-export function postJobAction(action) {
-  return {
-    type: POST_JOB_ACTION,
-    payload: axios.post('/api/postJobAction', {action})
   }
 }
