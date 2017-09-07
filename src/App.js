@@ -18,7 +18,6 @@ import './App.css';
 
 export class Wrapper extends Component {
   render() {
-
     return (
       <div className="App">
         <Navigation />
@@ -65,16 +64,16 @@ console.log('props', this.props.user);
 
     return (
       <div>
-      <div>
+      {/* <div>
         {checkStatus()}
-      </div>
+      </div> */}
       
-      {/* <Router>
+      <Router>
         <div>
           <Route path="/" component={ Wrapper } />
           <Route path="/landing" component={ Landing } />
         </div>
-      </Router> */}
+      </Router>
       </div>
     );
   }

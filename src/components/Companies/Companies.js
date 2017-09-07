@@ -23,8 +23,9 @@ class Companies extends Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.getCompanies();
+    window.scrollTo(0, 0);
   }
 
   handleChange(e){

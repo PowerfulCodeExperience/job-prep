@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import './AllContacts.css';
 
 import Kard from './../Kard/Kard.js';
@@ -20,6 +21,7 @@ class AllContacts extends Component {
   componentDidMount() {
     this.props.getCompanies();
     this.props.getAllContacts();
+    window.scrollTo(0, 0);
   }
 
   filterContacts(event) {
@@ -31,7 +33,10 @@ class AllContacts extends Component {
       <div className="AllContacts">
 
         <header className="AllHeader">
-          <h1 className="AllTitle"> Contacts </h1>
+          <div className="WrapTitle">
+            <h1 className="AllTitle" tabIndex="1"> Contacts </h1>
+            <h1 className="AllTitle" tabIndex="2"> Companies </h1>
+          </div>
           <div className="SearchWrap">
             <input className="Search" placeholder="Search Contacts" onChange={(e) => {
               let value = e.target.value.toLowerCase();
@@ -45,19 +50,13 @@ class AllContacts extends Component {
         </header>
 
         <main className="AllWrap">
-
+{/* setup 2 routes */}
         {
           this.props.companies.map( (company) => {
             return (
               <section className="SingleWrap" key={company.companyid}>
-                <h1 className="SingleTitle"> {company.companyname} </h1>
-                <Card.Group>
-
-                <div className="Card">
-                  <div className="Plus"> + </div>
-                  <span> New Contact </span>
-                </div>
-                
+                <h1 className="SingleTitle"><Link to={`/contacts/${company.id}`} className="TitleLink"> {company.companyname} </Link></h1>
+                <Card.Group>   
                 {
                   this.props.allContacts.map((contact, i) => {
                     if(contact.companyname === company.companyname) {
