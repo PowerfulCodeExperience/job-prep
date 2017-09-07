@@ -66,15 +66,15 @@ console.log('props', this.props.user);
     return (
       <div>
       <div>
-        {checkStatus()}
+        {/* {checkStatus()} */}
       </div>
       
-      {/* <Router>
+      <Router>
         <div>
           <Route path="/" component={ Wrapper } />
           <Route path="/landing" component={ Landing } />
         </div>
-      </Router> */}
+      </Router>
       </div>
     );
   }

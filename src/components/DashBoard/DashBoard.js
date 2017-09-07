@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { Grid, Segment } from 'semantic-ui-react';
 import './DashBoard.css';
 import Weather from '../Weather/Weather'
-import { Button, Modal, Input, List, Icon, Card } from 'semantic-ui-react'
+import { Accordion, Button, Modal, Input, List, Icon, Card } from 'semantic-ui-react'
 
 import { getGoals, postGoal, getTasks, postTask } from '../../ducks/reducer'
 
@@ -56,44 +56,62 @@ handleTaskSubmit(event) {
       tasks
     } = this.props
 
+    const renderedTasks = tasks.map((e, j) => 
+      (
+      <li key={j}>
+        {e.task}
+      </li>
+      )
+    )
 
     return(
       <Grid columns={3} divided>
             <Grid.Row stretched>
               <Grid.Column className="column_dash">
                 <Segment>Portfolio Piece</Segment>
-                <Segment>My Tasks
                 
-                <Button onClick={this.show('inverted')}>
-                  <Icon name='add' size='large'/>
-                  </Button>
-
-                  <Modal dimmer={dimmer} open={open} onClose={this.close}>
-                  <Modal.Header>Add a Task</Modal.Header>
-                  <Modal.Content>
-                    <Input 
-                    type='text'
-                    name='task'
-                    onChange={(e) => {this.handleChange(e)}}
-                    inverted placeholder={'Add task here...'}
-                    value={this.state.task}
-                    ></Input>
-                    <Button positive icon="checkmark" labelPosition='right' content="Add!" onClick={this.handleTaskSubmit} />
-                  </Modal.Content>
-                  <Modal.Actions>
-                  </Modal.Actions>
-                </Modal>
-
+                <Card className="card_dash">
+                  <Card.Content>
+                  <Card.Header className="task_header">My Tasks</Card.Header>
+                  <Accordion>
+                    <Accordion.Title><Icon name='add' className="icons"/>Add a Task</Accordion.Title>
+                      <Accordion.Content>
+                        <Input 
+                        type='text'
+                        name='task'
+                        onChange={this.handleChange}
+                        inverted placeholder={'Add task here...'}
+                        value={this.state.task}
+                        ></Input>
+                         <Button animated onClick={this.handleTaskSubmit}>
+                            <Button.Content visible>Add</Button.Content>
+                              <Button.Content hidden>
+                                <Icon name='right arrow' />
+                              </Button.Content>
+                           </Button>
+                        {/* <Button positive icon="checkmark" labelPosition='right' content="Add" onClick={this.handleTaskSubmit} /> */}
+                     </Accordion.Content>
+                  </Accordion>
+                  <div>
+                    <span>Most Recently Added Tasks</span>
+                  <ul>
                 {
-                  tasks.map((e, j) => 
-                    (
-                      <p key={j}>
-                          {e.task}
-                      </p>
-                    )
-                  )
+                  renderedTasks.splice(3)
                 }
-            </Segment>
+              </ul>
+                  </div>
+              <Accordion>
+                <Accordion.Title><Icon name='dropdown' className="drops"/>View All Tasks</Accordion.Title>
+                <Accordion.Content>
+              <ul>
+                {
+                  renderedTasks
+                }
+              </ul>
+              </Accordion.Content>
+              </Accordion>
+              </Card.Content>
+            </Card>
             </Grid.Column>
               <Grid.Column>
                 <Segment>Jobs Applied Action</Segment>
@@ -103,24 +121,30 @@ handleTaskSubmit(event) {
                 <Weather/>
               </Segment>
 
-                <Segment>Goals
-                <Button size="mini" icon='add' onClick={this.show('inverted')} className="goal_add_button">
-                </Button>
-                <Modal dimmer={dimmer} open={open} onClose={this.close}>
-          <Modal.Header>Add a Goal</Modal.Header>
-          <Modal.Content>
-            <Input 
-            type='text'
-            name='goal'
-            onChange={this.handleChange} 
-            inverted placeholder={'Add goal here...'}
-            value={this.state.goal}
-            ></Input>
-          </Modal.Content>
-          <Modal.Actions>
-            <Button positive icon="checkmark" labelPosition='right' content="Add!" onClick={this.handleGoalSubmit} />
-          </Modal.Actions>
-        </Modal>
+                <Card>
+                  <Card.Content>
+                    <Card.Header>Daily Essentials</Card.Header>
+                    
+            <Accordion>
+              <Accordion.Title><Icon name='add' className="icons" />Add Goal</Accordion.Title>
+              <Accordion.Content>
+              <Input 
+                type='text'
+                name='goal'
+                onChange={this.handleChange} 
+                inverted placeholder={'Add goal here...'}
+                value={this.state.goal}
+                >
+              </Input>
+           <Button positive icon="checkmark" labelPosition='right' content="Add!" onClick={this.handleGoalSubmit} />
+              </Accordion.Content>
+            </Accordion>
+                
+            
+
+         <Accordion>
+           <Accordion.Title><Icon name='dropdown' className="drops"/>View Goals</Accordion.Title>
+           <Accordion.Content>
         <ul className="goals_list">
         {
           goals.map((e, j) => 
@@ -132,7 +156,11 @@ handleTaskSubmit(event) {
           )
         }
         </ul>
-                </Segment>
+           </Accordion.Content>
+         </Accordion>
+            
+                  </Card.Content>
+                </Card>
                 </Grid.Column>
               </Grid.Row>
               </Grid>

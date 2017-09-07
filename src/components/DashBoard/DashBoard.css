@@ -47,12 +47,20 @@
   width: 100%;
   height: 100px;
 }
-.goals_list {
-  list-style-type: square;
-  padding-left: 1rem;
+li {
+  margin: 18px 0;
 }
-.ui.button.goal_add_button {
-  margin-left: 12em;
-  color: blue;
-  background-color: #15A336;
+
+.button.ui.animated.button {
+  background-color: #2AAAE0;
+}
+.task_card {
+  height: 80vh;
+  overflow: hidden;
+}
+.icons {
+  color: #2AAAE0;
+}
+.drops {
+  color: #CF521E
 }
