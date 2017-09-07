@@ -7,7 +7,7 @@ class Interviews extends Component {
   render() {
     return (
       <div className="Interviews">
-        Interviews
+        Jobs I've Applied For
       </div>
     )
   }
