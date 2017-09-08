@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
 
-import {Card, Input, Button, Dropdown} from 'semantic-ui-react';
+import {Card, Input, Button} from 'semantic-ui-react';
 import {getContacts, postContact, updateStatus, updateEmail} from '../../ducks/reducer';
 
 import Kard from '../Kard/Kard';
@@ -165,7 +165,7 @@ class Contacts extends Component {
               this.props.contacts.map((contact, i) => {
                 return(
                   <Kard
-                    i = {i}
+                    key = {i}
                     contact = {contact}
                     setStatus = {this.setStatus}
                     updateEmail = {this.props.updateEmail}

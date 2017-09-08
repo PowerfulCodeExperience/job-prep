@@ -43,7 +43,7 @@ class App extends Component {
   }
 
   render() {
-console.log('props', this.props.user);
+// console.log('props', this.props.user);
     const checkStatus = () => {
       if(!this.props.user) {
         return (

@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 
 // import axios from 'axios';
 
-import {Button, Input, Table} from 'semantic-ui-react';
+import {Button, Input, Table, Checkbox} from 'semantic-ui-react';
 
 import { postCompany, getCompanies } from '../../ducks/reducer';
 
@@ -16,11 +16,13 @@ class Companies extends Component {
 
     this.state = {
       company: "",
-      linkedin: ""
+      linkedin: "",
+      applied: null,
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.applied = this.applied.bind(this)
   }
 
   componentDidMount() {
@@ -46,8 +48,15 @@ class Companies extends Component {
     })
   }
 
-  render() {
+  applied(event, data){
+    console.log("data", data.checked)
+    this.setState({
+      applied: data.checked
+    })
+  }
 
+  render() {
+    console.log("Applied:", this.state.applied)
     return (
       <div className="Companies">
 
@@ -85,6 +94,7 @@ class Companies extends Component {
                 <Table.Row>
                   <Table.HeaderCell>Name</Table.HeaderCell>
                   <Table.HeaderCell>LinkedIn</Table.HeaderCell>
+                  <Table.HeaderCell>Applied</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
 
@@ -95,6 +105,7 @@ class Companies extends Component {
                     <Table.Row key={i}>
                       <Table.Cell><Link to={`/contacts/${company.id}`} className="RowFill">{company.companyname}</Link></Table.Cell>
                       <Table.Cell><a className="RowFill" href={company.companylinkedin} target={"_blank"}>{company.companylinkedin}</a></Table.Cell>
+                      <Table.Cell><Checkbox onChange={(e, data) => {this.applied(e, data)}}/></Table.Cell>
                     </Table.Row>
                   )
                 })

@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import {Card, Dropdown, Modal, Button, TextArea, Input} from 'semantic-ui-react';
+import {Card, Dropdown, Modal, Button} from 'semantic-ui-react';
 import FA from 'react-fontawesome';
 import moment from 'moment';
 import {connect} from 'react-redux';
+import axios from 'axios';
 
-import { updateEmail, postEmail } from '../../ducks/reducer';
+import { updateEmail, postEmail, updateNote, postNote } from '../../ducks/reducer';
 
 import './Kard.css';
 
@@ -13,12 +14,25 @@ class Kard extends Component {
     super(props)
     this.state = { 
       open: false,
-      notes: ""
+      log: [],
+      note: ''
     }
 
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
     this.addNote = this.addNote.bind(this);
+    this.postitNote = this.postitNote.bind(this);
+  }
+
+  componentWillMount(){
+    let id = this.props.contact.id
+    console.log("id", this.props.contact.id)
+    axios.get(`/api/note/${id}`)
+    .then(response => {
+      this.setState({
+        log: response.data
+      })
+    })
   }
 
   open(){
@@ -31,7 +45,28 @@ class Kard extends Component {
   }
 
   addNote(e){
-    console.log("value", e.target.value)
+    let note = e.target.value
+
+    this.setState({
+      note: note
+    })
+
+    this.props.updateNote(e.target.value)
+  }
+
+  postitNote(e){
+    let date = new Date()
+    let bundle = {note: this.props.note, date, contact_id: this.props.contact.id, company_id: this.props.contact.company_id}
+    axios.put('/api/note', bundle)
+      .then(response => {
+        this.setState({
+          log: response.data
+        })
+      })
+    // this.props.postNote(this.props.note, date, this.props.contact.id, this.props.contact.company_id);
+    this.setState({
+      note: ''
+    })
   }
 
   render(){
@@ -40,14 +75,14 @@ class Kard extends Component {
     {key: "Request Sent", text: "Request Sent", value: "Request Sent"},  
     {key: "Connected", text: "Connected", value: "Connected"}
   ]
-  console.log("email", this.props.contact)
+  console.log("log", this.state.log)
   return(
     <Card key={this.props.i}>
 
       <Card.Content>
         <Card.Header content={this.props.contact.firstname} />
         <Card.Meta content={this.props.contact.position} />
-        <Card.Description style={{"display": "flex", "justify-content":"center"}}>
+        <Card.Description className="CardDescription" >
           <a href={this.props.contact.linkedin} target="_blank"><FA name="linkedin-square" size="3x"/></a>
           {
             (this.props.contact.email) ?
@@ -79,16 +114,26 @@ class Kard extends Component {
         
         <div style={{"display": "flex", "justify-content": "space-between"}}>   
           <p>Notes:</p>
-          <FA name="plus" id="note" onClick={(e) => alert(e)}/>
+          <FA name="plus" onClick={(e) => this.postitNote(e)}/>
         </div>
         <div>
-          <input onChange={(e) => this.addNote(e)}/>
+          <input value={this.state.note} onChange={(e) => this.addNote(e)}/>
         </div>
       </Card.Content>
 
-      <Card.Content extra>
-        {JSON.stringify(this.props.contact.notes)}
-      </Card.Content>
+        <Card.Content className="Notes" extra>
+          {
+            this.state.log.map((item, i) => {
+              return (
+                <div key={i}>
+                  {moment(item.datecreated).format("l")}
+                  <p>{item.note}</p>
+                </div>
+              )
+            })
+          }
+          {/* {JSON.stringify(this.props.contact.notes)} */}
+        </Card.Content>
 
       <Modal size="mini" open={this.state.open} >
         <Modal.Header>
@@ -114,8 +159,9 @@ class Kard extends Component {
 function mapStateToProps(state){
   return {
     user: state.user,
-    email: state.email
+    email: state.email,
+    note: state.note
   }
 }
 
-export default connect(mapStateToProps, {updateEmail, postEmail})(Kard);
+export default connect(mapStateToProps, {updateEmail, postEmail, updateNote, postNote})(Kard);
