@@ -64,3 +64,14 @@ li {
 .drops {
   color: #CF521E
 }
+.port_circle {
+  color: #2AAAE0;
+  padding: 10px;
+}
+.circle_div {
+  display: flex;
+  justify-content: space-around;
+}
+.port_number {
+  
+}

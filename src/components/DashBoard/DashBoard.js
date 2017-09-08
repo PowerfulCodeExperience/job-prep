@@ -64,11 +64,25 @@ handleTaskSubmit(event) {
       )
     )
 
+    const renderedGoals = goals.map((e, i) => 
+    (
+      <li key={i}>
+          {e.goal}
+      </li>
+    )
+  )
     return(
       <Grid columns={3} divided>
             <Grid.Row stretched>
               <Grid.Column className="column_dash">
-                <Segment>Portfolio Piece</Segment>
+                <Card>
+                  <Card.Content>
+                    <Card.Header>Portfolio Pieces Complete</Card.Header>
+                    <div className="circle_div">
+                      <Icon size='massive' className="port_circle">3</Icon>
+                    </div>
+                  </Card.Content>
+                </Card>
                 
                 <Card className="card_dash">
                   <Card.Content>
@@ -84,19 +98,21 @@ handleTaskSubmit(event) {
                         value={this.state.task}
                         ></Input>
                          <Button animated onClick={this.handleTaskSubmit}>
-                            <Button.Content visible>Add</Button.Content>
+                            <Button.Content visible>
+                            <Icon name='right arrow' />
+                            </Button.Content>
                               <Button.Content hidden>
-                                <Icon name='right arrow' />
+                                Add
                               </Button.Content>
                            </Button>
                         {/* <Button positive icon="checkmark" labelPosition='right' content="Add" onClick={this.handleTaskSubmit} /> */}
                      </Accordion.Content>
                   </Accordion>
                   <div>
-                    <span>Most Recently Added Tasks</span>
+                    <span>Most Recent Tasks</span>
                   <ul>
                 {
-                  renderedTasks.splice(3)
+                  renderedTasks
                 }
               </ul>
                   </div>
@@ -105,7 +121,7 @@ handleTaskSubmit(event) {
                 <Accordion.Content>
               <ul>
                 {
-                  renderedTasks
+                  renderedTasks.splice(3)
                 }
               </ul>
               </Accordion.Content>
@@ -136,10 +152,25 @@ handleTaskSubmit(event) {
                 value={this.state.goal}
                 >
               </Input>
-           <Button positive icon="checkmark" labelPosition='right' content="Add!" onClick={this.handleGoalSubmit} />
+              <Button animated onClick={this.handleGoalSubmit}>
+                            <Button.Content visible>
+                            <Icon name='right arrow' />
+                            </Button.Content>
+                              <Button.Content hidden>
+                                Add
+                              </Button.Content>
+                           </Button>
+           {/* <Button positive icon="checkmark" labelPosition='right' content="Add!" onClick={this.handleGoalSubmit} /> */}
               </Accordion.Content>
             </Accordion>
-                
+            <div>
+              <span>Most Recent Goals</span>
+                  <ul>
+                {
+                  renderedTasks.splice(3)
+                }
+              </ul>
+            </div>
             
 
          <Accordion>
@@ -147,13 +178,7 @@ handleTaskSubmit(event) {
            <Accordion.Content>
         <ul className="goals_list">
         {
-          goals.map((e, j) => 
-            (
-              <li key={j}>
-                  {e.goal}
-              </li>
-            )
-          )
+          renderedGoals
         }
         </ul>
            </Accordion.Content>
