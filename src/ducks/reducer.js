@@ -6,7 +6,8 @@ const initialState = {
   companies: [],
   contacts: [],
   email: '',
-  allContacts: []
+  allContacts: [],
+  search: false
 };
 
 const GET_USER = 'GET_USER';
@@ -23,6 +24,7 @@ const UPDATE_STATUS = 'UPDATE_STATUS';
 const UPDATE_EMAIL = 'UPDATE_EMAIL';
 
 const SIGN_OUT = 'SIGN_OUT';
+const SET_SEARCH = 'SET_SEARCH';
 
 
 export default function reducer(state=initialState, action) {
@@ -113,6 +115,11 @@ export default function reducer(state=initialState, action) {
         user: false
       })
 
+    case SET_SEARCH:
+      return Object.assign({}, state, {
+        search: action.payload
+      })
+
     default: return state;
   }
 }
@@ -191,5 +198,12 @@ export function postEmail(email, id, company_id){
   return {
     type: POST_EMAIL,
     payload: axios.put('/api/email', {email, id, company_id})
+  }
+}
+
+export function setSearch(value) {
+  return {
+    type: SET_SEARCH,
+    payload: value
   }
 }

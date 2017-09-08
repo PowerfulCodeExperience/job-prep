@@ -9,7 +9,7 @@
 .ResourceWrap {
   width: 80%;
   height: 100%;
-  padding-top: 50px;
+  padding-top: 20px;
 }
 
 .ResourceHeader {
@@ -19,8 +19,9 @@
   color: #2AABE2;
   font-size: 60px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 }
 
 .PanelContent {
@@ -47,7 +48,7 @@
   .ResourceHeader {
     font-size: 40px;
     justify-content: center;
-    margin-bottom: 20px;
+    padding-top: 40px;
   }
 
   .PanelRow {
@@ -66,13 +67,13 @@
   color: #2AABE2;
   font-family: 'Nunito', sans-serif;
   font-size: 25px;
-  border-radius: 5px;
+  border-radius: 0px;
 }
 
 .ui.styled.accordion>.title.active {
   border-radius: 0;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
   background: #2AABE2;
 }
 
@@ -81,7 +82,7 @@
 }
 
 .ui.styled.accordion>.content {
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
   background: #0072A2;
 }

@@ -7,7 +7,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 80px 80px 0 80px;
+  padding: 30px 60px 20px 65px;
 }
 
 .WrapTitle {
@@ -23,14 +23,14 @@
   cursor: pointer;
 }
 
-.AllTitle:focus {
+.On {
   color: #2AABE2;
   opacity: 1;
-  outline: none;
 }
 
 .SearchWrap {
   display: flex;
+  padding-right: 5px;
 }
 
 .Search {
@@ -42,9 +42,15 @@
   color: white;
   border: 2px solid #2AABE2;
   border-right: none;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
   outline: none;
+}
+
+.Search:disabled {
+  border: 2px solid white;
+  border-right: none;
+  opacity: 0.4;
 }
 
 .SearchButton {
@@ -53,14 +59,13 @@
   color: white;
   font-size: 35px;
   border: 2px solid #2AABE2;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  cursor: pointer;
-  outline: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
-.SearchButton:hover {
-  background: #2AABE2;
+.SearchButton:disabled {
+  border-color: white;
+  opacity: 0.4;
 }
 
 .Mag {
@@ -73,13 +78,12 @@
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
-  padding-top: 50px;
 }
 
 .SingleWrap {
   width: 90%;
   border: 2px solid #2AABE2;
-  border-radius: 20px;
+  border-radius: 5px;
   padding: 0 0 50px 100px;
   margin-bottom: 50px;
 }
@@ -95,6 +99,79 @@
   color: white;
 }
 
-.TitleLink:hover {
+.SingleTitle:hover {
   color: #2AABE2;
+}
+
+/* Mobile View */
+
+@media(max-width: 800px) {
+  .AllHeader {
+    flex-direction: column;
+    padding: 70px 0 20px 0;
+  }
+
+  .WrapTitle {
+    padding-left: 30px;
+  }
+
+  .AllTitle {
+    font-size: 32px;
+    font-weight: 700;
+    color: white;
+    opacity: 0.3;
+    cursor: pointer;
+  }
+
+  .On {
+    color: #2AABE2;
+    opacity: 1;
+  }
+
+  .SearchWrap {
+    padding: 20px 0 0 0;
+  }
+
+  .Search {
+    width: 250px;
+    height: 50px;
+  }
+  
+  .SingleWrap {
+    width: 90%;
+    border: 2px solid #2AABE2;
+    border-radius: 5px;
+    padding: 0 0 50px 0px;
+    margin: 10px;
+  }
+  
+  .SingleTitle {
+    text-align: center;
+    height: 100px;
+    padding-top: 30px;
+  }
+
+  .AllWrap {
+    padding-right: 5px;
+  }
+}
+
+@media(min-width: 600px) and (max-width: 800px) {
+  .AllHeader {
+    flex-direction: row;
+    padding: 70px 50px 20px 0;
+  }
+
+  .WrapTitle {
+    padding-top: 20px;
+  }
+
+  .Search {
+    width: 200px;
+    height: 50px;
+  }
+
+  .AllWrap {
+    padding-right: 10px;
+  }
 }
