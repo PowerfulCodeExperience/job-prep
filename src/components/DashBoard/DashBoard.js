@@ -4,28 +4,26 @@ import './DashBoard.css';
 // import Weather from '../Weather/Weather'
 import { Accordion, Button, Input, Icon, Card, Popup } from 'semantic-ui-react'
 
-import { getGoals, postGoal, getTasks, postTask, postUrl, getUrl } from '../../ducks/reducer'
+import { getGoals, postGoal } from '../../ducks/reducer'
 
 class DashBoard extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      goal: '',
-      task: '',
-      url: ''
+      goal: ''
+      // task: '',
+      
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleGoalSubmit = this.handleGoalSubmit.bind(this)
-    this.handleTaskSubmit = this.handleTaskSubmit.bind(this)
-    this.handleUrlSubmit = this.handleUrlSubmit.bind(this)
+    // this.handleTaskSubmit = this.handleTaskSubmit.bind(this)
   }
   
 
   componentDidMount() {
     this.props.getGoals(this.props.user.id)
-    this.props.getTasks(this.props.user.id)
-    this.props.getUrl(this.props.user.id)
+    // this.props.getTasks(this.props.user.id)
 }
 handleChange(event) {
   let name = event.target.name
@@ -42,34 +40,26 @@ handleGoalSubmit(event) {
     goal: ''
   })
 }
-handleTaskSubmit(event) {
-  event.preventDefault();
-  this.props.postTask(this.state.task);
-  this.setState({
-    task: ''
-  })
-}
-handleUrlSubmit(event) {
-  event.preventDefault();
-  this.props.postUrl(this.state.url)
-  this.setState({
-    url: ''
-  })
-}
+// handleTaskSubmit(event) {
+//   event.preventDefault();
+//   this.props.postTask(this.state.task);
+//   this.setState({
+//     task: ''
+//   })
+// }
   render(){
     const {
       goals,
-      tasks,
-      url
+
     } = this.props
 
-    const renderedTasks = tasks.map((e, j) => 
-      (
-      <li key={j}>
-        {e.task}
-      </li>
-      )
-    )
+    // const renderedTasks = tasks.map((e, j) => 
+    //   (
+    //   <li key={j}>
+    //     {e.task}
+    //   </li>
+    //   )
+    // )
 
     const renderedGoals = goals.map((e, i) => 
     (
@@ -80,7 +70,7 @@ handleUrlSubmit(event) {
   )
     return(
       <div className="dash_container">
-        
+          <div className="top_row">
                 <div className="portfolio_main">
                   
                     <span className="port_header">Portfolio Pieces</span>
@@ -108,7 +98,7 @@ handleUrlSubmit(event) {
                  
                 </div>
                 
-                <div className="card_dash">
+                {/* <div className="card_dash">
                   
                   <span className="task_header">Tasks</span>
                   <Accordion>
@@ -138,20 +128,12 @@ handleUrlSubmit(event) {
                     position='bottom right'
                   />
               
-            </div>
+            </div> */}
            
-                <Card>
-                  <Card.Content>
-                    <Card.Header>Application Actions</Card.Header>
-                  </Card.Content>
-                </Card>
-             
-              <Card>
-                <Card.Content>
-                  <Card.Header>Interview Status</Card.Header>
-                </Card.Content>
-              </Card>
-
+                <div className="app_status">
+                  <span>Application Status</span>
+                </div>
+          </div>
                 <div className="daily_e">
                     <span className="daily_header">Daily Essentials</span>
                     
@@ -193,9 +175,8 @@ function mapStateToProps(state) {
   return {
     user: state.user,
     goals: state.goals,
-    tasks: state.tasks,
-    url: state.url
+    // tasks: state.tasks
   }
 }
 
-export default connect(mapStateToProps, { getGoals, postGoal, getTasks, postTask, postUrl, getUrl })(DashBoard);
+export default connect(mapStateToProps, { getGoals, postGoal })(DashBoard);

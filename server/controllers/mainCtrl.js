@@ -37,42 +37,24 @@ module.exports = {
   })
   .catch(err => console.log(err));
 },
-getTasks: (req, res) => {
-  const db = req.app.get('db')
-  db.get_tasks(req.user.id)
-  .then(task => res.status(200).send(task))
-  res.status(200);
-},
+// getTasks: (req, res) => {
+//   const db = req.app.get('db')
+//   db.get_tasks(req.user.id)
+//   .then(task => res.status(200).send(task))
+//   res.status(200);
+// },
   
-postTask: (req, res) => {
-    const db = req.app.get('db')
+// postTask: (req, res) => {
+//     const db = req.app.get('db')
 
-    db.post_task([req.body.task, req.user.id])
-    .then( response => {
-      db.get_tasks(req.user.id).then(tasks => {
-        res.status(200).send(tasks)
-      })
-    })
-    .catch(err => console.log(err));
-  },
-  getUrl: (req, res) => {
-    const db = req.app.get('db')
-
-    db.get_url(req.user.id)
-    .then(url => res.status(200).send(url))
-    .catch(err => console.log(err));
-  },
-  postUrl: (req, res) => {
-    const db = req.app.get('db')
-
-    db.postUrl([req.body.url, req.user.id])
-    .then(response => {
-      db.get_url(req.user.id).then(url => {
-        res.status(200).send(url)
-      })
-    })
-    .catch(err => console.log(err));
-  },
+//     db.post_task([req.body.task, req.user.id])
+//     .then( response => {
+//       db.get_tasks(req.user.id).then(tasks => {
+//         res.status(200).send(tasks)
+//       })
+//     })
+//     .catch(err => console.log(err));
+//   },
   getCompany: (req, res) => {
     const db = req.app.get('db');
 

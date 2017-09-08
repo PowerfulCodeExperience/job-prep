@@ -77,7 +77,7 @@ passport.deserializeUser(function(profileFromSession, done) {
 app.get('/api/signIn', mainCtrl.signIn);
 app.get('/api/signOut', mainCtrl.signOut);
 app.get('/api/getGoals', mainCtrl.getGoals);
-app.get('/api/getTasks', mainCtrl.getTasks);
+// app.get('/api/getTasks', mainCtrl.getTasks);
 app.get('/api/resources', mainCtrl.getResources);
 app.get('/api/getWeather', function getWeather(req, res) {
   return axios.get(`http://api.weatherbit.io/v2.0/forecast/hourly?ip=auto&units=I&key=${config.API_KEY}`)
@@ -86,8 +86,7 @@ app.get('/api/getWeather', function getWeather(req, res) {
 });
 
 app.post('/api/postGoal', mainCtrl.postGoal);
-app.post('/api/postTask', mainCtrl.postTask);
-app.post('/api/getUrl', mainCtrl.postUrl);
+// app.post('/api/postTask', mainCtrl.postTask);
 app.get('/api/resources', mainCtrl.getResources);
 app.get('/api/company', mainCtrl.getCompany);
 app.get('/api/returnCompany/:id', mainCtrl.returnCompany);

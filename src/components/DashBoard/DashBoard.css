@@ -8,9 +8,6 @@ li {
 .icons {
   color: #2AAAE0;
 }
-.drops {
-  color: #CF521E
-}
 .port_circle {
   color: #2AAAE0;
   padding: 10px;
@@ -82,4 +79,14 @@ li {
 }
 .port_add {
   margin-bottom: 5px;
+}
+.app_status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 29vh;
+  width: 25vw;
+  background-color: white;
+  border: 2px solid #2AAAE0;
 }

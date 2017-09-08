@@ -5,12 +5,10 @@ const initialState = {
   resources: [],
   companies: [],
   goals: [],
-  tasks: [],
-  weather: [],
+  // tasks: [],
   contacts: [],
   email: '',
-  allContacts: [],
-  url: []
+  allContacts: []
 };
 
 const GET_USER = 'GET_USER';
@@ -19,8 +17,8 @@ const GET_RESOURCES = 'GET_RESOURCES';
 const GET_GOALS = 'GET_GOALS';
 const POST_GOAL = 'POST_GOAL';
 
-const GET_TASKS = 'GET_TASKS';
-const POST_TASK = 'POST_TASK';
+// const GET_TASKS = 'GET_TASKS';
+// const POST_TASK = 'POST_TASK';
 
 const GET_WEATHER = 'GET_WEATHER'
 const GET_COMPANIES = 'GET_COMPANIES';
@@ -30,9 +28,6 @@ const GET_ALL_CONTACTS = 'GET_ALL_CONTACTS';
 const POST_COMPANY = 'POST_COMPANY';
 const POST_CONTACT = 'POST_CONTACT';
 const POST_EMAIL = 'POST_EMAIL';
-
-const GET_URL = 'GET_URL';
-const POST_URL = 'POST_URL';
 
 const UPDATE_STATUS = 'UPDATE_STATUS';
 const UPDATE_EMAIL = 'UPDATE_EMAIL';
@@ -62,22 +57,14 @@ export default function reducer(state=initialState, action) {
       return Object.assign({}, state, {
         goals: [...action.payload.data]
       });
-    case POST_TASK + '_PENDING':
-      return state;
-    case POST_TASK + '_FULFILLED':
-      return Object.assign({}, state, {tasks: [...action.payload.data]});
-    case POST_URL + '_PENDING':
-      return state;
-    case POST_URL + '_FULFILLED':
-      return Object.assign({}, state, {url: [...action.payload.data]});
-    case GET_URL + '_PENDING':
-      return state;
-    case GET_URL + '_FULFILLED':
-      return Object.assign({}, state, {goals: action.payload.data});
-    case GET_TASKS + '_PENDING':
-      return state;
-    case GET_TASKS + '_FULFILLED':
-      return Object.assign({}, state, {tasks: action.payload.data});
+    // case POST_TASK + '_PENDING':
+    //   return state;
+    // case POST_TASK + '_FULFILLED':
+    //   return Object.assign({}, state, {tasks: [...action.payload.data]});
+    // case GET_TASKS + '_PENDING':
+    //   return state;
+    // case GET_TASKS + '_FULFILLED':
+    //   return Object.assign({}, state, {tasks: action.payload.data});
     case GET_WEATHER + '_PENDING':
       return state;
     case GET_WEATHER + '_FULFILLED':
@@ -178,18 +165,6 @@ export default function reducer(state=initialState, action) {
       payload: axios.post('/api/postGoal', {goal})
     }
   }
-  export function postUrl(url) {
-    return {
-      type: POST_URL,
-      payload: axios.post('/api/postUrl', {url})
-    }
-  }
-  export function getUrl() {
-    return {
-      type: GET_URL,
-      payload: axios.get('/api/getUrl')
-    }
-  }
   export function getWeather() {
     console.log('action')
     return {
@@ -254,19 +229,19 @@ export function updateStatus(id, status, date, company_id){
   }
 }
 
-export function getTasks(user) {
-  return {
-    type: GET_TASKS,
-    payload: axios.get('/api/getTasks')
-  }
-}
+// export function getTasks(user) {
+//   return {
+//     type: GET_TASKS,
+//     payload: axios.get('/api/getTasks')
+//   }
+// }
 
-export function postTask(task) {
-  return {
-    type: POST_TASK,
-    payload: axios.post('/api/postTask', {task})
-  }
-}
+// export function postTask(task) {
+//   return {
+//     type: POST_TASK,
+//     payload: axios.post('/api/postTask', {task})
+//   }
+// }
 export function updateEmail(email){
   return {
     type: UPDATE_EMAIL,
