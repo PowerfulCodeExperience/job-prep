@@ -55,7 +55,24 @@ postTask: (req, res) => {
     })
     .catch(err => console.log(err));
   },
+  getUrl: (req, res) => {
+    const db = req.app.get('db')
 
+    db.get_url(req.user.id)
+    .then(url => res.status(200).send(url))
+    .catch(err => console.log(err));
+  },
+  postUrl: (req, res) => {
+    const db = req.app.get('db')
+
+    db.postUrl([req.body.url, req.user.id])
+    .then(response => {
+      db.get_url(req.user.id).then(url => {
+        res.status(200).send(url)
+      })
+    })
+    .catch(err => console.log(err));
+  },
   getCompany: (req, res) => {
     const db = req.app.get('db');
 

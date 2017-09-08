@@ -1,62 +1,9 @@
-.DashBoard {
-  width: 80vw;
-  height: 100vh;
-  color: #2AABE2;
-}
-
-.Status {
-  height: 100px;
-  font-size: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: flex-end;
-  margin: 30px 0 0 0;
-  padding-right: 50px;
-}
-
-.DashHead {
-  width: 100%;
-  height: 100px;
-  font-size: 50px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  padding-left: 50px;
-  margin-bottom: 100px;
-}
-
-.DashBoard img {
-  width: 200px;
-  height: 200px;
-  border: 3px solid #2AABE2;
-  border-radius: 50%;
-  margin-right: 50px;
-}
-
-.Portal {
-  display: flex;
-  justify-content: space-around;
-}
-
-.Goals{
-  background-color: blue;
-}
-
-.Footer {
-  width: 100%;
-  height: 100px;
-}
 li {
   margin: 18px 0;
 }
 
 .button.ui.animated.button {
   background-color: #2AAAE0;
-}
-.task_card {
-  height: 80vh;
-  overflow: hidden;
 }
 .icons {
   color: #2AAAE0;
@@ -69,9 +16,70 @@ li {
   padding: 10px;
 }
 .circle_div {
+  font-size: 7em;
+}
+.circle_div:hover {
+  cursor: pointer;
+}
+.dash_main {
+  display: flex;
+  flex-direction: row;
+}
+.dash_container {
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 4em;
 }
-.port_number {
-  
+.portfolio_main {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: space-between;
+  height: 25vh;
+  width: 25vw;
+  background-color: white;
+  border: 2px solid #2AAAE0;
+}
+.port_header {
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 19px;
+}
+.card_dash {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 29vh;
+  width: 25vw;
+  background-color: white;
+  border: 2px solid #2AAAE0;
+}
+.task_header {
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.daily_e {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 29vh;
+  width: 25vw;
+  background-color: white;
+  border: 2px solid #2AAAE0;
+}
+.daily_header {
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.ui.input input {
+  width: 124px;
+}
+.port_add {
+  margin-bottom: 5px;
 }

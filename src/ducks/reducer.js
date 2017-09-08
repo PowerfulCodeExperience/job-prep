@@ -9,7 +9,8 @@ const initialState = {
   weather: [],
   contacts: [],
   email: '',
-  allContacts: []
+  allContacts: [],
+  url: []
 };
 
 const GET_USER = 'GET_USER';
@@ -29,6 +30,9 @@ const GET_ALL_CONTACTS = 'GET_ALL_CONTACTS';
 const POST_COMPANY = 'POST_COMPANY';
 const POST_CONTACT = 'POST_CONTACT';
 const POST_EMAIL = 'POST_EMAIL';
+
+const GET_URL = 'GET_URL';
+const POST_URL = 'POST_URL';
 
 const UPDATE_STATUS = 'UPDATE_STATUS';
 const UPDATE_EMAIL = 'UPDATE_EMAIL';
@@ -62,6 +66,14 @@ export default function reducer(state=initialState, action) {
       return state;
     case POST_TASK + '_FULFILLED':
       return Object.assign({}, state, {tasks: [...action.payload.data]});
+    case POST_URL + '_PENDING':
+      return state;
+    case POST_URL + '_FULFILLED':
+      return Object.assign({}, state, {url: [...action.payload.data]});
+    case GET_URL + '_PENDING':
+      return state;
+    case GET_URL + '_FULFILLED':
+      return Object.assign({}, state, {goals: action.payload.data});
     case GET_TASKS + '_PENDING':
       return state;
     case GET_TASKS + '_FULFILLED':
@@ -164,6 +176,18 @@ export default function reducer(state=initialState, action) {
     return {
       type: POST_GOAL,
       payload: axios.post('/api/postGoal', {goal})
+    }
+  }
+  export function postUrl(url) {
+    return {
+      type: POST_URL,
+      payload: axios.post('/api/postUrl', {url})
+    }
+  }
+  export function getUrl() {
+    return {
+      type: GET_URL,
+      payload: axios.get('/api/getUrl')
     }
   }
   export function getWeather() {

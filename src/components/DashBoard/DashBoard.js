@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { Grid, Segment } from 'semantic-ui-react';
 import './DashBoard.css';
-import Weather from '../Weather/Weather'
-import { Accordion, Button, Modal, Input, List, Icon, Card } from 'semantic-ui-react'
+// import Weather from '../Weather/Weather'
+import { Accordion, Button, Input, Icon, Card, Popup } from 'semantic-ui-react'
 
-import { getGoals, postGoal, getTasks, postTask } from '../../ducks/reducer'
+import { getGoals, postGoal, getTasks, postTask, postUrl, getUrl } from '../../ducks/reducer'
 
 class DashBoard extends Component {
   constructor(props) {
@@ -14,18 +13,19 @@ class DashBoard extends Component {
     this.state = {
       goal: '',
       task: '',
-      open: false
+      url: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleGoalSubmit = this.handleGoalSubmit.bind(this)
     this.handleTaskSubmit = this.handleTaskSubmit.bind(this)
+    this.handleUrlSubmit = this.handleUrlSubmit.bind(this)
   }
-  show = dimmer => () => this.setState({ dimmer, open: true })
-  close = () => this.setState({ open: false })
+  
 
   componentDidMount() {
     this.props.getGoals(this.props.user.id)
     this.props.getTasks(this.props.user.id)
+    this.props.getUrl(this.props.user.id)
 }
 handleChange(event) {
   let name = event.target.name
@@ -49,11 +49,18 @@ handleTaskSubmit(event) {
     task: ''
   })
 }
+handleUrlSubmit(event) {
+  event.preventDefault();
+  this.props.postUrl(this.state.url)
+  this.setState({
+    url: ''
+  })
+}
   render(){
-    const { open, dimmer } = this.state
     const {
       goals,
-      tasks
+      tasks,
+      url
     } = this.props
 
     const renderedTasks = tasks.map((e, j) => 
@@ -72,29 +79,46 @@ handleTaskSubmit(event) {
     )
   )
     return(
-      <Grid columns={3} divided>
-            <Grid.Row stretched>
-              <Grid.Column className="column_dash">
-                <Card>
-                  <Card.Content>
-                    <Card.Header>Portfolio Pieces Complete</Card.Header>
+      <div className="dash_container">
+        
+                <div className="portfolio_main">
+                  
+                    <span className="port_header">Portfolio Pieces</span>
                     <div className="circle_div">
-                      <Icon size='massive' className="port_circle">3</Icon>
+                      <Popup
+                      trigger={<Icon className="port_circle">3</Icon>}
+                      content=
+                      {<div>
+                        <Input 
+                      className='port_add'
+                      label='http://' 
+                      placeholder='mysite.com' 
+                      type='text'
+                      name='url'
+                      onChange={this.handleChange}
+                      value={this.state.url}
+                      ></Input>
+                      <Button className='port_add_button' animated onClick={this.handleTaskSubmit}><Icon name='plus' size='large'></Icon></Button>
+                      </div>
+                      }
+                      on='click'
+                      position='top right'
+                      />
                     </div>
-                  </Card.Content>
-                </Card>
+                 
+                </div>
                 
-                <Card className="card_dash">
-                  <Card.Content>
-                  <Card.Header className="task_header">My Tasks</Card.Header>
+                <div className="card_dash">
+                  
+                  <span className="task_header">Tasks</span>
                   <Accordion>
-                    <Accordion.Title><Icon name='add' className="icons"/>Add a Task</Accordion.Title>
+                    <Accordion.Title><Icon name='add' className="icons" size='huge'/></Accordion.Title>
                       <Accordion.Content>
                         <Input 
                         type='text'
                         name='task'
                         onChange={this.handleChange}
-                        inverted placeholder={'Add task here...'}
+                        inverted placeholder={'Add task...'}
                         value={this.state.task}
                         ></Input>
                          <Button animated onClick={this.handleTaskSubmit}>
@@ -105,44 +129,34 @@ handleTaskSubmit(event) {
                                 Add
                               </Button.Content>
                            </Button>
-                        {/* <Button positive icon="checkmark" labelPosition='right' content="Add" onClick={this.handleTaskSubmit} /> */}
                      </Accordion.Content>
                   </Accordion>
-                  <div>
-                    <span>Most Recent Tasks</span>
-                  <ul>
-                {
-                  renderedTasks
-                }
-              </ul>
-                  </div>
-              <Accordion>
-                <Accordion.Title><Icon name='dropdown' className="drops"/>View All Tasks</Accordion.Title>
-                <Accordion.Content>
-              <ul>
-                {
-                  renderedTasks.splice(3)
-                }
-              </ul>
-              </Accordion.Content>
-              </Accordion>
-              </Card.Content>
-            </Card>
-            </Grid.Column>
-              <Grid.Column>
-                <Segment>Jobs Applied Action</Segment>
-              </Grid.Column>
-              <Grid.Column>
-              <Segment>Interview Status
-                <Weather/>
-              </Segment>
-
+                  <Popup
+                    trigger={<Button color='purple' icon='send' content='Task Viewer'/>}
+                    content={renderedTasks}
+                    on='click'
+                    position='bottom right'
+                  />
+              
+            </div>
+           
                 <Card>
                   <Card.Content>
-                    <Card.Header>Daily Essentials</Card.Header>
+                    <Card.Header>Application Actions</Card.Header>
+                  </Card.Content>
+                </Card>
+             
+              <Card>
+                <Card.Content>
+                  <Card.Header>Interview Status</Card.Header>
+                </Card.Content>
+              </Card>
+
+                <div className="daily_e">
+                    <span className="daily_header">Daily Essentials</span>
                     
             <Accordion>
-              <Accordion.Title><Icon name='add' className="icons" />Add Goal</Accordion.Title>
+              <Accordion.Title><Icon name='add' className="icons" size='huge' /></Accordion.Title>
               <Accordion.Content>
               <Input 
                 type='text'
@@ -160,35 +174,17 @@ handleTaskSubmit(event) {
                                 Add
                               </Button.Content>
                            </Button>
-           {/* <Button positive icon="checkmark" labelPosition='right' content="Add!" onClick={this.handleGoalSubmit} /> */}
+           
               </Accordion.Content>
             </Accordion>
-            <div>
-              <span>Most Recent Goals</span>
-                  <ul>
-                {
-                  renderedTasks.splice(3)
-                }
-              </ul>
+            <Popup
+              trigger={<Button color='red' icon='send' content='Activate Essentials'/>}
+              content={renderedGoals}
+              on='click'
+              position='bottom right'
+            />                 
+                </div>
             </div>
-            
-
-         <Accordion>
-           <Accordion.Title><Icon name='dropdown' className="drops"/>View Goals</Accordion.Title>
-           <Accordion.Content>
-        <ul className="goals_list">
-        {
-          renderedGoals
-        }
-        </ul>
-           </Accordion.Content>
-         </Accordion>
-            
-                  </Card.Content>
-                </Card>
-                </Grid.Column>
-              </Grid.Row>
-              </Grid>
     )
   }
 }
@@ -197,8 +193,9 @@ function mapStateToProps(state) {
   return {
     user: state.user,
     goals: state.goals,
-    tasks: state.tasks
+    tasks: state.tasks,
+    url: state.url
   }
 }
 
-export default connect(mapStateToProps, { getGoals, postGoal, getTasks, postTask })(DashBoard);
+export default connect(mapStateToProps, { getGoals, postGoal, getTasks, postTask, postUrl, getUrl })(DashBoard);

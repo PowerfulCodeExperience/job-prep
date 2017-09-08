@@ -85,8 +85,9 @@ app.get('/api/getWeather', function getWeather(req, res) {
   .catch(error => error)
 });
 
-app.post('/api/postGoal', mainCtrl.postGoal)
-app.post('/api/postTask', mainCtrl.postTask)
+app.post('/api/postGoal', mainCtrl.postGoal);
+app.post('/api/postTask', mainCtrl.postTask);
+app.post('/api/getUrl', mainCtrl.postUrl);
 app.get('/api/resources', mainCtrl.getResources);
 app.get('/api/company', mainCtrl.getCompany);
 app.get('/api/returnCompany/:id', mainCtrl.returnCompany);
