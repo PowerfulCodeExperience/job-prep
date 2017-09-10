@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import './DashBoard.css';
 // import Weather from '../Weather/Weather'
-import { Accordion, Button, Input, Icon, Card, Popup } from 'semantic-ui-react'
+import { Accordion, Button, Input, Icon, Card, Popup, Segment } from 'semantic-ui-react'
 
 import { getGoals, postGoal } from '../../ducks/reducer'
 
@@ -63,81 +63,26 @@ handleGoalSubmit(event) {
 
     const renderedGoals = goals.map((e, i) => 
     (
-      <li key={i}>
+      <li key={i} className="list">
           {e.goal}
       </li>
+
     )
   )
     return(
       <div className="dash_container">
           <div className="top_row">
-                <div className="portfolio_main">
-                  
-                    <span className="port_header">Portfolio Pieces</span>
-                    <div className="circle_div">
-                      <Popup
-                      trigger={<Icon className="port_circle">3</Icon>}
-                      content=
-                      {<div>
-                        <Input 
-                      className='port_add'
-                      label='http://' 
-                      placeholder='mysite.com' 
-                      type='text'
-                      name='url'
-                      onChange={this.handleChange}
-                      value={this.state.url}
-                      ></Input>
-                      <Button className='port_add_button' animated onClick={this.handleTaskSubmit}><Icon name='plus' size='large'></Icon></Button>
+                      <span className="link_spans">LinkedIn</span>
+                      <span className="link_spans">Resume</span>
+                      <span className="link_spans">Portfolio</span>
                       </div>
-                      }
-                      on='click'
-                      position='top right'
-                      />
-                    </div>
-                 
-                </div>
+         <div className="side_by">
                 
-                {/* <div className="card_dash">
-                  
-                  <span className="task_header">Tasks</span>
-                  <Accordion>
-                    <Accordion.Title><Icon name='add' className="icons" size='huge'/></Accordion.Title>
-                      <Accordion.Content>
-                        <Input 
-                        type='text'
-                        name='task'
-                        onChange={this.handleChange}
-                        inverted placeholder={'Add task...'}
-                        value={this.state.task}
-                        ></Input>
-                         <Button animated onClick={this.handleTaskSubmit}>
-                            <Button.Content visible>
-                            <Icon name='right arrow' />
-                            </Button.Content>
-                              <Button.Content hidden>
-                                Add
-                              </Button.Content>
-                           </Button>
-                     </Accordion.Content>
-                  </Accordion>
-                  <Popup
-                    trigger={<Button color='purple' icon='send' content='Task Viewer'/>}
-                    content={renderedTasks}
-                    on='click'
-                    position='bottom right'
-                  />
-              
-            </div> */}
-           
-                <div className="app_status">
-                  <span>Application Status</span>
-                </div>
-          </div>
-                <div className="daily_e">
+  
+                <div className="goal_renderings">
                     <span className="daily_header">Daily Essentials</span>
                     
-            <Accordion>
+            {/* <Accordion>
               <Accordion.Title><Icon name='add' className="icons" size='huge' /></Accordion.Title>
               <Accordion.Content>
               <Input 
@@ -158,13 +103,14 @@ handleGoalSubmit(event) {
                            </Button>
            
               </Accordion.Content>
-            </Accordion>
-            <Popup
-              trigger={<Button color='red' icon='send' content='Activate Essentials'/>}
-              content={renderedGoals}
-              on='click'
-              position='bottom right'
-            />                 
+            </Accordion> */}
+            <Segment className="list_rendered" vertical>
+              {renderedGoals}
+            </Segment>
+                </div>
+                <div className="jobs_applied">
+                  <span>Jobs Applied</span>
+                </div>
                 </div>
             </div>
     )

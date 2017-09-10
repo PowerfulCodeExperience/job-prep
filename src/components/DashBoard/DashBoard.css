@@ -1,76 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Libre+Barcode+39+Text');
+
 li {
   margin: 18px 0;
 }
-
-.button.ui.animated.button {
-  background-color: #2AAAE0;
-}
-.icons {
-  color: #2AAAE0;
-}
-.port_circle {
-  color: #2AAAE0;
-  padding: 10px;
-}
-.circle_div {
-  font-size: 7em;
-}
-.circle_div:hover {
-  cursor: pointer;
-}
-.dash_main {
-  display: flex;
-  flex-direction: row;
-}
 .dash_container {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-  margin: 4em;
+  flex-direction: column;
 }
 .portfolio_main {
   display: flex;
-  /* flex-direction: column; */
-  align-items: center;
-  justify-content: space-between;
-  height: 25vh;
-  width: 25vw;
-  background-color: white;
-  border: 2px solid #2AAAE0;
-}
-.port_header {
-  font-size: 25px;
-  font-weight: bold;
-  margin-top: 19px;
-}
-.card_dash {
-  display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-around;
-  height: 29vh;
-  width: 25vw;
-  background-color: white;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 2em;
+  margin-bottom: 3em;
+  height: 20vh;
+  width: 80%;
   border: 2px solid #2AAAE0;
 }
-.task_header {
-  font-size: 25px;
-  font-weight: bold;
-  margin-top: 10px;
+.goal_renderings {
+  height: 80vh;
+  width: 45vw;
+  border: 2px solid #2AAAE0;
+  overflow: auto;
+  margin: 4px;
 }
-.daily_e {
+.side_by {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: space-around;
-  height: 29vh;
-  width: 25vw;
-  background-color: white;
-  border: 2px solid #2AAAE0;
 }
 .daily_header {
-  font-size: 25px;
+  display: flex;
+  justify-content: space-around;
+  font-size: 45px;
+  color: white;
   font-weight: bold;
   margin-top: 10px;
 }
@@ -80,13 +44,49 @@ li {
 .port_add {
   margin-bottom: 5px;
 }
-.app_status {
+.jobs_applied {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: space-around;
-  height: 29vh;
+  color: white;
+  height: 80vh;
   width: 25vw;
-  background-color: white;
+  font-size: 30px;
+  padding-top: 16px;
   border: 2px solid #2AAAE0;
+}
+.top_row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 10vh;
+  font-family: 'Libre Barcode 39 Text', cursive;
+  font-size: 4em;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+.link_spans {
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  overflow: hidden;
+  transition-duration: 0.3s;
+  transition-property: color, background-color;
+}
+.link_spans:hover {
+  cursor: pointer;
+  background: hsl(0, 0%, 88%);
+  text-decoration: none;
+  color: #4795E9;
+}
+.list_rendered {
+  background-color: #303030;
+  color: white;
+  padding: 4px;
+}
+.list {
+  list-style-type: none;
+}
+.ui.vertical.segment.list_rendered {
+  padding: 18px;
+  font-size: 24px;
 }
