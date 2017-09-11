@@ -233,10 +233,10 @@ export function postEmail(email, id, company_id){
     payload: axios.put('/api/email', {email, id, company_id})
   }
 }
-export function postProfile(linked, resume, portfolio) {
+export function postProfile(profile) {
   return {
     type: POST_PROFILE,
-    payload: axios.post('/api/postProfile', {linked, resume, portfolio})
+    payload: axios.post('/api/postProfile', profile)
   }
 }
 export function getProfile(user) {

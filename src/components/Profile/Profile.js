@@ -33,13 +33,12 @@ class Profile extends Component {
         })
       }
       handleSubmit(event) {
-        const {linked, resume, portfolio} = this.state
         event.preventDefault();
-        this.props.postProfile(linked, resume, portfolio);
+        this.props.postProfile(this.state);
         this.setState({
-          linked,
-          resume,
-          portfolio
+          linked: '',
+          resume: '',
+          portfolio: ''
         })
       }
 
@@ -96,7 +95,7 @@ class Profile extends Component {
                     </div>
                     </div>
                     <br/>
-                        <Button type='submit'>Submit</Button>
+                        <Button type='submit' value='submit'>Submit</Button>
                     </form>
                 </div>
                 </div>

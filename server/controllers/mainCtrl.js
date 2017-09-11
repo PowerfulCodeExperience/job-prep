@@ -63,9 +63,12 @@ module.exports = {
   },
   postProfile: (req, res) => {
     const db = req.app.get('db');
-    db.post_profile([req.body.profile, req.user.id])
+    const {linked, resume, portfolio} = req.body;
+    const {id} = req.user
+
+    db.post_profile([linked, resume, portfolio, id])
     .then(response => {
-      db.get_profile(req.user.id).then(profile => {
+      db.get_profile(id).then(profile => {
         res.status(200).send(profile)
       })
     })

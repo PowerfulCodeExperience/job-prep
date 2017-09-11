@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import './DashBoard.css';
 // import Weather from '../Weather/Weather'
-import { Button, Icon, Card, Popup, Segment } from 'semantic-ui-react'
+import { Input, Button, Icon, Card, Popup, Segment } from 'semantic-ui-react'
 
 import { getGoals, postGoal } from '../../ducks/reducer'
 
