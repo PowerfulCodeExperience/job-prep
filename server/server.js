@@ -92,6 +92,7 @@ app.post('/api/contact', mainCtrl.postContact);
 app.put('/api/status', mainCtrl.updateStatus);
 app.put('/api/email', mainCtrl.updateEmail);
 app.put('/api/note', mainCtrl.updateNote);
+app.put('/api/applied', mainCtrl.updateApplied);
 
 const port = 3001;
 app.listen( port, () => { console.log(`Server listening on port ${port}`)} );

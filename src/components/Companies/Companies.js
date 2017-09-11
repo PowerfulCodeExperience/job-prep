@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
-// import axios from 'axios';
+import axios from 'axios';
 
 import {Button, Input, Table, Checkbox} from 'semantic-ui-react';
 
-import { postCompany, getCompanies } from '../../ducks/reducer';
+import { postCompany, getCompanies, updateApplied } from '../../ducks/reducer';
 
 import './Companies.css';
 
@@ -16,8 +16,7 @@ class Companies extends Component {
 
     this.state = {
       company: "",
-      linkedin: "",
-      applied: null,
+      linkedin: ""
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -32,7 +31,6 @@ class Companies extends Component {
 
   handleChange(e){
     let updatedName = e.target.name
-    // console.log("updatedName", updatedName);
     let updatedValue = e.target.value
     this.setState({
       [updatedName]: updatedValue 
@@ -48,15 +46,12 @@ class Companies extends Component {
     })
   }
 
-  applied(event, data){
-    console.log("data", data.checked)
-    this.setState({
-      applied: data.checked
-    })
+  applied(event, data, id){
+    let applied = data.checked;
+    this.props.updateApplied(applied, id)
   }
 
   render() {
-    console.log("Applied:", this.state.applied)
     return (
       <div className="Companies">
 
@@ -105,7 +100,12 @@ class Companies extends Component {
                     <Table.Row key={i}>
                       <Table.Cell><Link to={`/contacts/${company.id}`} className="RowFill">{company.companyname}</Link></Table.Cell>
                       <Table.Cell><a className="RowFill" href={company.companylinkedin} target={"_blank"}>{company.companylinkedin}</a></Table.Cell>
-                      <Table.Cell><Checkbox onChange={(e, data) => {this.applied(e, data)}}/></Table.Cell>
+                      <Table.Cell>
+                      {
+                        company.applied ? <Checkbox checked={company.applied} /> :
+                        <Checkbox onChange={(e, data) => {this.applied(e, data, company.id)}} />
+                      }
+                      </Table.Cell>
                     </Table.Row>
                   )
                 })
@@ -130,4 +130,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {postCompany, getCompanies})(Companies);
+export default connect(mapStateToProps, {postCompany, getCompanies, updateApplied})(Companies);

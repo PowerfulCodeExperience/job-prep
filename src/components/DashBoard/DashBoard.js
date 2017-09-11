@@ -83,11 +83,11 @@ class Essentials extends Component {
   render(){
     return(
       <div className = "Self">
-        <h1>Essentials</h1>
+        {/* <h1>Essentials</h1>
           <div className = "LinksToSelf">
-            <div className = "Item">
+            <div className = "Item"> */}
               {/* <a href="http://www.linkedin.com/in/imkhem" target="_blank"> */}
-              <FA name="linkedin-square" size="3x" onClick={()=>this.show('modal1')}/>
+              {/* <FA name="linkedin-square" size="3x" onClick={()=>this.show('modal1')}/>
               <p>LinkedIn</p>
             </div>
             <div className = "Item">
@@ -98,7 +98,7 @@ class Essentials extends Component {
               <a href="https://www.canva.com/design/DACfXYz8Azo/_egtGmpKv1tEMn5pgrE9ag/edit" target="_blank"><FA name="file" size="3x"/>
               <p>Resume</p></a>
             </div>
-          </div>
+          </div> */}
 
           {/* <Modal open={this.open} onClose={this.close}>
             <Modal.Header>
@@ -170,7 +170,7 @@ class DashBoard extends Component {
 
       <div className = "DashBoard">
         <h1>DashBoard</h1>
-        <div className = "Top">
+        {/* <div className = "Top">
           <div className = "TopLeft">
             <Essentials  />
             <Applied  />
@@ -182,7 +182,7 @@ class DashBoard extends Component {
           />
         </div>
 
-        <Goals />
+        <Goals /> */}
 
       </div>
     )

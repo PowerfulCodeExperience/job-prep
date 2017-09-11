@@ -158,6 +158,19 @@ module.exports = {
           .catch( err => console.log(err));
       })
       .catch( err => console.log(err));
+  },
+
+  updateApplied: (req, res) => {
+    const db = req.app.get('db');
+
+    const { applied, id } = req.body;
+
+    db.update_applied(applied, id)
+      .then(response => {
+        console.log("res", response)
+        res.status(200).send(response)
+      })
+      .catch( err => console.log(err));
   }
 
 }

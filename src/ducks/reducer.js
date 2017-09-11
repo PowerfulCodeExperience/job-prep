@@ -24,6 +24,7 @@ const POST_NOTE = 'POST_NOTE';
 const UPDATE_STATUS = 'UPDATE_STATUS';
 const UPDATE_EMAIL = 'UPDATE_EMAIL';
 const UPDATE_NOTE = 'UPDATE_NOTE';
+const UPDATE_APPLIED = 'UPDATE_APPLIED';
 
 const SIGN_OUT = 'SIGN_OUT';
 
@@ -122,6 +123,14 @@ export default function reducer(state=initialState, action) {
         note: action.payload
       })
 
+    case UPDATE_APPLIED + '_PENDING':
+      return state;
+
+    case UPDATE_APPLIED + '_FULFILLED':
+      return Object.assign({}, state, {
+        contacts: action.payload.data
+      })
+
     case SIGN_OUT + '_PENDING':
       return state;
 
@@ -211,6 +220,14 @@ export function postEmail(email, id, company_id){
   }
 }
 
+export function postNote(note, date, contact_id, company_id){
+  console.log("note", note, date, contact_id, company_id)
+  return {
+    type: POST_NOTE,
+    payload: axios.put('/api/note', {note, date, contact_id, company_id})
+  }
+}
+
 export function updateNote(note){
   return {
     type: UPDATE_NOTE,
@@ -218,10 +235,9 @@ export function updateNote(note){
   }
 }
 
-export function postNote(note, date, contact_id, company_id){
-  console.log("note", note, date, contact_id, company_id)
+export function updateApplied(applied, id){
   return {
-    type: POST_NOTE,
-    payload: axios.put('/api/note', {note, date, contact_id, company_id})
+    type: UPDATE_APPLIED,
+    payload: axios.put('/api/applied', {applied, id})
   }
 }
