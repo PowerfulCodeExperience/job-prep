@@ -20,3 +20,13 @@ textarea {
 input {
   width: 258px;
 }
+
+.Notes {
+  overflow-y: scroll;
+  height: 100px;
+}
+
+.CardDescription {
+  display: flex;
+  justify-content: center;
+}

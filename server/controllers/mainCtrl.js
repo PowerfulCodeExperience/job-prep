@@ -45,7 +45,21 @@ module.exports = {
 
     db.get_contacts(req.params.id)
       .then(response => {
+        console.log("Returned contacts", response)
         res.status(200).send(response)
+    })
+    .catch( err => console.log(err));
+  },
+
+  getNotes: (req, res) => {
+    const db = req.app.get('db');
+
+    const { id } = req.params
+
+    db.get_notes(id)
+    .then(response => {
+      console.log("res", response)
+      res.status(200).send(response)
     })
     .catch( err => console.log(err));
   },
@@ -69,7 +83,9 @@ module.exports = {
 
     db.post_company(company, linkedin, id)
       .then(response => {
-        db.get_companies(req.user.id).then(companies => {
+        console.log("response", response)
+        db.get_companies(id).then(companies => {
+          console.log("companies", companies)
           res.status(200).send(companies)
       })
     })
@@ -94,14 +110,19 @@ module.exports = {
       .catch( err => console.log(err));
   },
 
-  postNote: (req, res) => {
+  updateNote: (req, res) => {
     const db = req.app.get('db');
 
-    const {note, date, contact_id} = req.body;
-
+    const {note, date, contact_id, company_id} = req.body;
+    console.log("req.body", req.body)
     db.post_note(note, date, contact_id)
-      .then(response => {
-        res.status(200).send(response)
+      .then(note => {
+        db.get_notes(contact_id)
+        .then(response => {
+          console.log("res", response)
+          res.status(200).send(response)
+        })
+        .catch( err => console.log(err));
       })
       .catch( err => console.log(err));
   },
@@ -139,5 +160,18 @@ module.exports = {
       })
       .catch( err => console.log(err));
   },
+
+  updateApplied: (req, res) => {
+    const db = req.app.get('db');
+
+    const { applied, id } = req.body;
+
+    db.update_applied(applied, id)
+      .then(response => {
+        console.log("res", response)
+        res.status(200).send(response)
+      })
+      .catch( err => console.log(err));
+  }
 
 }

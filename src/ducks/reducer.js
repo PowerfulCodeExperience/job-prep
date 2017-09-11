@@ -6,6 +6,7 @@ const initialState = {
   companies: [],
   contacts: [],
   email: '',
+  note: '',
   allContacts: [],
   search: false
 };
@@ -19,9 +20,12 @@ const GET_ALL_CONTACTS = 'GET_ALL_CONTACTS';
 const POST_COMPANY = 'POST_COMPANY';
 const POST_CONTACT = 'POST_CONTACT';
 const POST_EMAIL = 'POST_EMAIL';
+const POST_NOTE = 'POST_NOTE';
 
 const UPDATE_STATUS = 'UPDATE_STATUS';
 const UPDATE_EMAIL = 'UPDATE_EMAIL';
+const UPDATE_NOTE = 'UPDATE_NOTE';
+const UPDATE_APPLIED = 'UPDATE_APPLIED';
 
 const SIGN_OUT = 'SIGN_OUT';
 const SET_SEARCH = 'SET_SEARCH';
@@ -34,7 +38,6 @@ export default function reducer(state=initialState, action) {
       return state;
 
     case GET_USER + '_FULFILLED':
-      console.log('User:', action.payload.data);
       return Object.assign({}, state, {user: action.payload.data});
 
     case GET_RESOURCES + '_PENDING':
@@ -57,6 +60,7 @@ export default function reducer(state=initialState, action) {
     
     case GET_CONTACTS + '_FULFILLED':
       return Object.assign({}, state, {
+        // contacts: action.payload.data
         contacts: [...action.payload.data]
       })
 
@@ -90,7 +94,17 @@ export default function reducer(state=initialState, action) {
     case POST_EMAIL + '_FULFILLED':
       console.log("email posted", action.payload.data)
       return Object.assign({}, state, {
-        contacts: action.payload.data
+        contacts: action.payload.data,
+        email: ''
+      })
+
+    case POST_NOTE + '_PENDING':
+      return state;
+
+    case POST_NOTE + '_FULFILLED':
+      console.log("action", action.payload.data)
+      return Object.assign({}, state, {
+        note: ''
       })
 
     case UPDATE_STATUS + '_PENDING':
@@ -105,6 +119,19 @@ export default function reducer(state=initialState, action) {
       console.log("action", action.payload)
       return Object.assign({}, state, {
         email: action.payload
+      })
+
+    case UPDATE_NOTE:
+      return Object.assign({}, state, {
+        note: action.payload
+      })
+
+    case UPDATE_APPLIED + '_PENDING':
+      return state;
+
+    case UPDATE_APPLIED + '_FULFILLED':
+      return Object.assign({}, state, {
+        contacts: action.payload.data
       })
 
     case SIGN_OUT + '_PENDING':
@@ -198,6 +225,28 @@ export function postEmail(email, id, company_id){
   return {
     type: POST_EMAIL,
     payload: axios.put('/api/email', {email, id, company_id})
+  }
+}
+
+export function postNote(note, date, contact_id, company_id){
+  console.log("note", note, date, contact_id, company_id)
+  return {
+    type: POST_NOTE,
+    payload: axios.put('/api/note', {note, date, contact_id, company_id})
+  }
+}
+
+export function updateNote(note){
+  return {
+    type: UPDATE_NOTE,
+    payload: note
+  }
+}
+
+export function updateApplied(applied, id){
+  return {
+    type: UPDATE_APPLIED,
+    payload: axios.put('/api/applied', {applied, id})
   }
 }
 

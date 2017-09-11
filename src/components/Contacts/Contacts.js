@@ -31,7 +31,7 @@ class Contacts extends Component {
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     axios.get(`/api/returnCompany/${this.props.match.params.id}`)
       .then(response => (
         this.setState({
@@ -167,7 +167,7 @@ class Contacts extends Component {
               this.props.contacts.map((contact, i) => {
                 return(
                   <Kard
-                    i = {i}
+                    key = {contact.id}
                     contact = {contact}
                     setStatus = {this.setStatus}
                     updateEmail = {this.props.updateEmail}

@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
-// import axios from 'axios';
+import axios from 'axios';
 
-import {Button, Input, Table} from 'semantic-ui-react';
+import {Button, Input, Table, Checkbox} from 'semantic-ui-react';
 
-import { postCompany, getCompanies } from '../../ducks/reducer';
+import { postCompany, getCompanies, updateApplied } from '../../ducks/reducer';
 
 import './Companies.css';
 
@@ -21,6 +21,7 @@ class Companies extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.applied = this.applied.bind(this)
   }
 
   componentDidMount() {
@@ -45,8 +46,12 @@ class Companies extends Component {
     })
   }
 
-  render() {
+  applied(event, data, id){
+    let applied = data.checked;
+    this.props.updateApplied(applied, id)
+  }
 
+  render() {
     return (
       <div className="Companies">
 
@@ -86,8 +91,9 @@ class Companies extends Component {
             <Table striped selectable>
               <Table.Header>
                 <Table.Row>
-                  <Table.HeaderCell>Company</Table.HeaderCell>
-                  <Table.HeaderCell><span className="Lnk">LinkedIn</span></Table.HeaderCell>
+                  <Table.HeaderCell>Name</Table.HeaderCell>
+                  <Table.HeaderCell>LinkedIn</Table.HeaderCell>
+                  <Table.HeaderCell>Applied</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
 
@@ -98,6 +104,12 @@ class Companies extends Component {
                     <Table.Row key={i}>
                       <Table.Cell><Link to={`/contacts/${company.id}`} className="RowFill"><span className="Comp">{company.companyname}</span></Link></Table.Cell>
                       <Table.Cell><a className="RowFill" href={company.companylinkedin} target={"_blank"}>{company.companylinkedin}</a></Table.Cell>
+                      <Table.Cell>
+                      {
+                        company.applied ? <Checkbox checked={company.applied} /> :
+                        <Checkbox onChange={(e, data) => {this.applied(e, data, company.id)}} />
+                      }
+                      </Table.Cell>
                     </Table.Row>
                   )
                 })
@@ -122,4 +134,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {postCompany, getCompanies})(Companies);
+export default connect(mapStateToProps, {postCompany, getCompanies, updateApplied})(Companies);
