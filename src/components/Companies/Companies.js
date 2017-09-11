@@ -80,7 +80,11 @@ class Companies extends Component {
               onChange={(e) => {this.handleChange(e)}}
             />
 
-            <Button style={{'fontFamily':'"Nunito", sans-serif', 'fontWeight':'700'}} size='large' inverted onClick={this.handleSubmit}>SUBMIT</Button>
+            <Button style={{'fontFamily':'"Nunito", sans-serif', 'fontWeight':'700'}} size='large' inverted
+              disabled={this.state.company && this.state.linkedin?false:true}
+              onClick={this.handleSubmit}>
+              SUBMIT
+            </Button>
           </section>
 
           <section className="TableWrap">
@@ -90,6 +94,8 @@ class Companies extends Component {
                   <Table.HeaderCell>Name</Table.HeaderCell>
                   <Table.HeaderCell>LinkedIn</Table.HeaderCell>
                   <Table.HeaderCell>Applied</Table.HeaderCell>
+                  <Table.HeaderCell>Company</Table.HeaderCell>
+                  <Table.HeaderCell><span className="Lnk">LinkedIn</span></Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
 
@@ -98,7 +104,7 @@ class Companies extends Component {
                 this.props.companies.map((company, i) => {
                   return (
                     <Table.Row key={i}>
-                      <Table.Cell><Link to={`/contacts/${company.id}`} className="RowFill">{company.companyname}</Link></Table.Cell>
+                      <Table.Cell><Link to={`/contacts/${company.id}`} className="RowFill"><span className="Comp">{company.companyname}</span></Link></Table.Cell>
                       <Table.Cell><a className="RowFill" href={company.companylinkedin} target={"_blank"}>{company.companylinkedin}</a></Table.Cell>
                       <Table.Cell>
                       {

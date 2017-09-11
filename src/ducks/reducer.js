@@ -7,7 +7,8 @@ const initialState = {
   contacts: [],
   email: '',
   note: '',
-  allContacts: []
+  allContacts: [],
+  search: false
 };
 
 const GET_USER = 'GET_USER';
@@ -27,6 +28,7 @@ const UPDATE_NOTE = 'UPDATE_NOTE';
 const UPDATE_APPLIED = 'UPDATE_APPLIED';
 
 const SIGN_OUT = 'SIGN_OUT';
+const SET_SEARCH = 'SET_SEARCH';
 
 
 export default function reducer(state=initialState, action) {
@@ -140,6 +142,11 @@ export default function reducer(state=initialState, action) {
         user: false
       })
 
+    case SET_SEARCH:
+      return Object.assign({}, state, {
+        search: action.payload
+      })
+
     default: return state;
   }
 }
@@ -221,6 +228,7 @@ export function postEmail(email, id, company_id){
   }
 }
 
+<<<<<<< HEAD
 export function postNote(note, date, contact_id, company_id){
   console.log("note", note, date, contact_id, company_id)
   return {
@@ -240,5 +248,11 @@ export function updateApplied(applied, id){
   return {
     type: UPDATE_APPLIED,
     payload: axios.put('/api/applied', {applied, id})
+=======
+export function setSearch(value) {
+  return {
+    type: SET_SEARCH,
+    payload: value
+>>>>>>> master
   }
 }

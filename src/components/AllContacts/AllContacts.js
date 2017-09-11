@@ -1,20 +1,23 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import './AllContacts.css';
 
-import Kard from './../Kard/Kard.js';
-import {Card} from 'semantic-ui-react';
-import {getCompanies, getAllContacts} from '../../ducks/reducer';
+import AllCon from './AllCon.js';
+import ComCon from './ComCon.js';
+// import Kard from './../Kard/Kard.js';
+// import {Card} from 'semantic-ui-react';
+import {getCompanies, getAllContacts, setSearch} from '../../ducks/reducer';
 
 class AllContacts extends Component {
   constructor(props) {
     super(props);
 
-    this.filterContacts = this.filterContacts.bind(this);
-
     this.state = {
-      search: false
+      contacts: "AllTitle On",
+      companies: "AllTitle",
+      disable: false
     }
   }
 
@@ -24,8 +27,21 @@ class AllContacts extends Component {
     window.scrollTo(0, 0);
   }
 
-  filterContacts(event) {
+  onContacts() {
+    this.setState({
+      contacts: "AllTitle On",
+      companies: "AllTitle",
+      disable: false
+    });
+    this.props.setSearch(false);
+  }
 
+  onCompanies() {
+    this.setState({
+      contacts: "AllTitle",
+      companies: "AllTitle On",
+      disable: true
+    });
   }
 
   render() {
@@ -34,47 +50,29 @@ class AllContacts extends Component {
 
         <header className="AllHeader">
           <div className="WrapTitle">
-            <h1 className="AllTitle" tabIndex="1"> Contacts </h1>
-            <h1 className="AllTitle" tabIndex="2"> Companies </h1>
+            <Link to="/allcontacts"><h1 className={this.state.contacts} onClick={() => this.onContacts()}>
+              Contacts
+            </h1></Link>
+            <Link to="/allcontacts/cc"><h1 className={this.state.companies} onClick={() => this.onCompanies()}>
+              Companies
+            </h1></Link>
           </div>
           <div className="SearchWrap">
-            <input className="Search" placeholder="Search Contacts" onChange={(e) => {
+            <input className="Search" placeholder="Search Contacts" disabled={this.state.disable} onBlur={(e) => e.target.value = ''} onChange={(e) => {
               let value = e.target.value.toLowerCase();
-              console.log('search', value)
-              this.setState({search: value});
+              this.props.setSearch(value);
             }}/>
-            <button className="SearchButton">
+            <button className="SearchButton" disabled={this.state.disable}>
               <div className="Mag"> &#9906; </div>
             </button>
           </div>
         </header>
 
-        <main className="AllWrap">
-{/* setup 2 routes */}
-        {
-          this.props.companies.map( (company) => {
-            return (
-              <section className="SingleWrap" key={company.companyid}>
-                <h1 className="SingleTitle"><Link to={`/contacts/${company.id}`} className="TitleLink"> {company.companyname} </Link></h1>
-                <Card.Group>   
-                {
-                  this.props.allContacts.map((contact, i) => {
-                    if(contact.companyname === company.companyname) {
-                      return (
-                        <Kard key={i}
-                          i = {i}
-                          contact = {contact}
-                          setStatus = {this.setStatus} />
-                    )}
-                  })
-                }
-                </Card.Group>
-              </section>
-            )
-          })
-        }
+          <Switch>
+            <Route exact path="/allcontacts" component={ AllCon } />
+            <Route path="/allcontacts/cc" component={ ComCon } />
+          </Switch>
 
-        </main>
         <footer className="Footer"></footer>
       </div>
     )
@@ -88,4 +86,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {getCompanies, getAllContacts})(AllContacts);
+export default connect(mapStateToProps, {getCompanies, getAllContacts, setSearch})(AllContacts);
