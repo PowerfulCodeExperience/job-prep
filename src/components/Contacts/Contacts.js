@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
+import FA from 'react-fontawesome';
 
-import {Card, Input, Button, Dropdown} from 'semantic-ui-react';
+import {Card, Input, Button} from 'semantic-ui-react';
 import {getContacts, postContact, updateStatus, updateEmail} from '../../ducks/reducer';
 
 import Kard from '../Kard/Kard';
@@ -138,11 +139,12 @@ class Contacts extends Component {
 
         <header className="ContactsHeader">
           <h1 className="ContactsTitle">{this.state.company.companyname}</h1>
+          <a href={this.state.company.companylinkedin} target="_blank"><FA name="linkedin-square" size="4x"/></a>
         </header>
 
         <main className="MainWrap">
           <section className="ContactsWrap">
-          <h2 className="WrapTitle"> Contacts </h2>
+            <h2 className="InnerTitle"> Contacts </h2>
 
             <Card.Group>
 
