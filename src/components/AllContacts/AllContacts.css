@@ -7,17 +7,30 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 80px 80px 0 80px;
+  padding: 30px 60px 20px 65px;
+}
+
+.WrapTitle {
+  display: flex;
 }
 
 .AllTitle {
-  font-size: 60px;
+  font-size: 55px;
   font-weight: 700;
+  color: white;
+  padding-right: 30px;
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+.On {
   color: #2AABE2;
+  opacity: 1;
 }
 
 .SearchWrap {
   display: flex;
+  padding-right: 5px;
 }
 
 .Search {
@@ -29,9 +42,15 @@
   color: white;
   border: 2px solid #2AABE2;
   border-right: none;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
   outline: none;
+}
+
+.Search:disabled {
+  border: 2px solid white;
+  border-right: none;
+  opacity: 0.4;
 }
 
 .SearchButton {
@@ -40,14 +59,13 @@
   color: white;
   font-size: 35px;
   border: 2px solid #2AABE2;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  cursor: pointer;
-  outline: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
-.SearchButton:hover {
-  background: #2AABE2;
+.SearchButton:disabled {
+  border-color: white;
+  opacity: 0.4;
 }
 
 .Mag {
@@ -60,65 +78,100 @@
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
-  padding-top: 50px;
 }
 
 .SingleWrap {
   width: 90%;
   border: 2px solid #2AABE2;
-  border-radius: 20px;
+  border-radius: 5px;
   padding: 0 0 50px 100px;
   margin-bottom: 50px;
 }
 
 .SingleTitle {
   height: 100px;
-  font-size: 40px;
-  font-weight: 700;
-  color: white;
   padding-top: 30px;
 }
 
-.InnerWrap {
-  display: flex;
-  flex-wrap: wrap;
+.TitleLink {
+  font-size: 40px;
+  font-weight: 700;
+  color: white;
 }
 
-.Card {
-  width: 292px;
-  height: 335px;
-  color: gray;
-  border: 2px solid gray;
-  border-radius: 5px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  padding: 10px;
-  opacity: 0.5;
-  margin: 12px 7px 0 7px;
-}
-
-.Card:hover {
-  border-color: #2AABE2;
+.SingleTitle:hover {
   color: #2AABE2;
-  opacity: 1;
-  cursor: pointer;
 }
 
-.Card span {
-  font-style: italic;
+/* Mobile View */
+
+@media(max-width: 800px) {
+  .AllHeader {
+    flex-direction: column;
+    padding: 70px 0 20px 0;
+  }
+
+  .WrapTitle {
+    padding-left: 30px;
+  }
+
+  .AllTitle {
+    font-size: 32px;
+    font-weight: 700;
+    color: white;
+    opacity: 0.3;
+    cursor: pointer;
+  }
+
+  .On {
+    color: #2AABE2;
+    opacity: 1;
+  }
+
+  .SearchWrap {
+    padding: 20px 0 0 0;
+  }
+
+  .Search {
+    width: 250px;
+    height: 50px;
+  }
+  
+  .SingleWrap {
+    width: 90%;
+    border: 2px solid #2AABE2;
+    border-radius: 5px;
+    padding: 0 0 50px 0px;
+    margin: 10px;
+  }
+  
+  .SingleTitle {
+    text-align: center;
+    height: 100px;
+    padding-top: 30px;
+  }
+
+  .AllWrap {
+    padding-right: 5px;
+  }
 }
 
-.Plus {
-  width: 50px;
-  height: 50px;
-  position: relative;
-  bottom: 130px; right: 15px;
-  font-size: 30px;
-  color: #2AABE2;
-  border: 2px solid #2AABE2;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@media(min-width: 600px) and (max-width: 800px) {
+  .AllHeader {
+    flex-direction: row;
+    padding: 70px 50px 20px 0;
+  }
+
+  .WrapTitle {
+    padding-top: 20px;
+  }
+
+  .Search {
+    width: 200px;
+    height: 50px;
+  }
+
+  .AllWrap {
+    padding-right: 10px;
+  }
 }

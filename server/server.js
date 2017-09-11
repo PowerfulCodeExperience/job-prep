@@ -90,6 +90,7 @@ app.get('/api/allContacts', mainCtrl.allContacts);
 app.get('/api/getProfile', mainCtrl.getProfile);
 
 app.post('/api/postProfile', mainCtrl.postProfile);
+app.get('/api/note/:id', mainCtrl.getNotes);
 
 // Add a company and a contact 
 
@@ -100,6 +101,8 @@ app.post('/api/contact', mainCtrl.postContact);
 
 app.put('/api/status', mainCtrl.updateStatus);
 app.put('/api/email', mainCtrl.updateEmail);
+app.put('/api/note', mainCtrl.updateNote);
+app.put('/api/applied', mainCtrl.updateApplied);
 
 const port = 3001;
 app.listen( port, () => { console.log(`Server listening on port ${port}`)} );

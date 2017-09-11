@@ -4,10 +4,15 @@ import {connect} from 'react-redux';
 import './Interviews.css';
 
 class Interviews extends Component {
+
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     return (
       <div className="Interviews">
-        Interviews
+        Jobs I've Applied For
       </div>
     )
   }

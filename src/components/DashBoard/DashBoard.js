@@ -6,6 +6,7 @@ import { Input, Button, Icon, Card, Popup, Segment } from 'semantic-ui-react'
 
 import { getGoals, postGoal } from '../../ducks/reducer'
 
+
 class DashBoard extends Component {
   constructor(props) {
     super(props);

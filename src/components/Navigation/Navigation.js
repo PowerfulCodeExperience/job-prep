@@ -50,6 +50,7 @@ class Navigation extends Component {
           <img src={require("./logowhiteblue.png")} alt="logo" />
         </Link>
         <div className="Links">
+          <Link to="/">DASHBOARD</Link>
           <Link to="/companies">20 COMPANY CHALLENGE</Link>
           <Link to="/interviews">INTERVIEWS</Link>
           <Link to="/allcontacts">CONTACTS</Link>

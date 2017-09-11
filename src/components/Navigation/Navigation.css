@@ -129,7 +129,7 @@
   
   .Swap {
     animation: "Swap";
-    animation-duration: 2.5s;
+    animation-duration: 1s;
     animation-fill-mode: forwards;
   }
 

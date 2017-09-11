@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
-// import axios from 'axios';
+import axios from 'axios';
 
-import {Button, Input, Table} from 'semantic-ui-react';
+import {Button, Input, Table, Checkbox} from 'semantic-ui-react';
 
-import { postCompany, getCompanies } from '../../ducks/reducer';
+import { postCompany, getCompanies, updateApplied } from '../../ducks/reducer';
 
 import './Companies.css';
 
@@ -21,15 +21,16 @@ class Companies extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.applied = this.applied.bind(this)
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.getCompanies();
+    window.scrollTo(0, 0);
   }
 
   handleChange(e){
     let updatedName = e.target.name
-    // console.log("updatedName", updatedName);
     let updatedValue = e.target.value
     this.setState({
       [updatedName]: updatedValue 
@@ -47,8 +48,12 @@ class Companies extends Component {
     })
   }
 
-  render() {
+  applied(event, data, id){
+    let applied = data.checked;
+    this.props.updateApplied(applied, id)
+  }
 
+  render() {
     return (
       <div className="Companies">
 
@@ -77,7 +82,11 @@ class Companies extends Component {
               onChange={(e) => {this.handleChange(e)}}
             />
 
-            <Button style={{'fontFamily':'"Nunito", sans-serif', 'fontWeight':'700'}} size='large' inverted onClick={this.handleSubmit}>SUBMIT</Button>
+            <Button style={{'fontFamily':'"Nunito", sans-serif', 'fontWeight':'700'}} size='large' inverted
+              disabled={this.state.company && this.state.linkedin?false:true}
+              onClick={this.handleSubmit}>
+              SUBMIT
+            </Button>
           </section>
 
           <section className="TableWrap">
@@ -86,6 +95,7 @@ class Companies extends Component {
                 <Table.Row>
                   <Table.HeaderCell>Name</Table.HeaderCell>
                   <Table.HeaderCell>LinkedIn</Table.HeaderCell>
+                  <Table.HeaderCell>Applied</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
 
@@ -94,8 +104,14 @@ class Companies extends Component {
                 this.props.companies.map((company, i) => {
                   return (
                     <Table.Row key={i}>
-                      <Table.Cell><Link to={`/contacts/${company.id}`} className="RowFill">{company.companyname}</Link></Table.Cell>
+                      <Table.Cell><Link to={`/contacts/${company.id}`} className="RowFill"><span className="Comp">{company.companyname}</span></Link></Table.Cell>
                       <Table.Cell><a className="RowFill" href={company.companylinkedin} target={"_blank"}>{company.companylinkedin}</a></Table.Cell>
+                      <Table.Cell>
+                      {
+                        company.applied ? <Checkbox checked={company.applied} /> :
+                        <Checkbox onChange={(e, data) => {this.applied(e, data, company.id)}} />
+                      }
+                      </Table.Cell>
                     </Table.Row>
                   )
                 })
@@ -120,4 +136,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, {postCompany, getCompanies})(Companies);
+export default connect(mapStateToProps, {postCompany, getCompanies, updateApplied})(Companies);
