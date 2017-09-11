@@ -79,11 +79,6 @@ app.get('/api/signOut', mainCtrl.signOut);
 app.get('/api/getGoals', mainCtrl.getGoals);
 // app.get('/api/getTasks', mainCtrl.getTasks);
 app.get('/api/resources', mainCtrl.getResources);
-app.get('/api/getWeather', function getWeather(req, res) {
-  return axios.get(`http://api.weatherbit.io/v2.0/forecast/hourly?ip=auto&units=I&key=${config.API_KEY}`)
-  .then(response => res.status(200).send(response.data))
-  .catch(error => error)
-});
 
 app.post('/api/postGoal', mainCtrl.postGoal);
 // app.post('/api/postTask', mainCtrl.postTask);
@@ -92,6 +87,9 @@ app.get('/api/company', mainCtrl.getCompany);
 app.get('/api/returnCompany/:id', mainCtrl.returnCompany);
 app.get('/api/getContacts/:id', mainCtrl.getContacts);
 app.get('/api/allContacts', mainCtrl.allContacts);
+app.get('/api/getProfile', mainCtrl.getProfile);
+
+app.post('/api/postProfile', mainCtrl.postProfile);
 
 // Add a company and a contact 
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import './DashBoard.css';
 // import Weather from '../Weather/Weather'
-import { Accordion, Button, Input, Icon, Card, Popup, Segment } from 'semantic-ui-react'
+import { Button, Icon, Card, Popup, Segment } from 'semantic-ui-react'
 
 import { getGoals, postGoal } from '../../ducks/reducer'
 
@@ -72,18 +72,35 @@ handleGoalSubmit(event) {
     return(
       <div className="dash_container">
           <div className="top_row">
-                      <span className="link_spans">LinkedIn</span>
-                      <span className="link_spans">Resume</span>
-                      <span className="link_spans">Portfolio</span>
-                      </div>
-         <div className="side_by">
-                
-  
-                <div className="goal_renderings">
-                    <span className="daily_header">Daily Essentials</span>
+            <a href=""><span className="link_spans">LinkedIn</span></a>
+            <a href=""><span className="link_spans">Resume</span></a>
+            <a href=""><span className="link_spans">Portfolio</span></a>
+          </div>
+      <div className="side_by">
+          <div className="goal_renderings">
+              <span className="daily_header">Daily Essentials
+              </span>
+              <div className="empty_input">
+              <input 
+                type='text'
+                name='goal'
+                inverted
+                onChange={this.handleChange} 
+                value={this.state.goal}
+                className="input_input"
+                >
+              </input>
+              <Button onClick={this.handleGoalSubmit} size="tiny">
+                            <Button.Content visible>
+                            </Button.Content>
+                              <Button.Content hidden>
+                                Add
+                              </Button.Content>
+                           </Button>
+              </div>
                     
             {/* <Accordion>
-              <Accordion.Title><Icon name='add' className="icons" size='huge' /></Accordion.Title>
+              <Accordion.Title>Add</Accordion.Title>
               <Accordion.Content>
               <Input 
                 type='text'

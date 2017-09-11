@@ -60,6 +60,14 @@ CREATE TABLE IF NOT EXISTS notes (
   contact_id INTEGER REFERENCES contact(id)
 );
 
+CREATE TABLE IF NOT EXISTS profile (
+  id SERIAL PRIMARY KEY,
+  linkedin text,
+  resume text, 
+  portfolio text,
+  user_id INTEGER REFERENCES users(id)
+);
+
 -- Drop Tables --
 
 -- DROP TABLE IF EXISTS users

@@ -38,9 +38,6 @@ li {
   font-weight: bold;
   margin-top: 10px;
 }
-.ui.input input {
-  width: 124px;
-}
 .port_add {
   margin-bottom: 5px;
 }
@@ -89,4 +86,15 @@ li {
 .ui.vertical.segment.list_rendered {
   padding: 18px;
   font-size: 24px;
+}
+.empty_input {
+  display: flex;
+  padding-top: 10px;
+  width: 80%;
+  justify-content: flex-end;
+  align-items: center;
+}
+.input_input {
+  margin-right: 2em;
+  height: 5vh;
 }

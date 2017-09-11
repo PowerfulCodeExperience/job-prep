@@ -13,6 +13,7 @@ import Interviews from './components/Interviews/Interviews.js';
 import AllContacts from './components/AllContacts/AllContacts.js';
 import Contacts from './components/Contacts/Contacts.js';
 import JobResources from './components/JobResources/JobResources.js';
+import Profile from './components/Profile/Profile';
 
 import './App.css';
 
@@ -29,6 +30,7 @@ export class Wrapper extends Component {
             <Route path="/interviews" component={ Interviews } />
             <Route path="/allcontacts/" component={ AllContacts } />
             <Route path="/contacts/:id" component={ Contacts } />
+            <Route path="/profile" component={ Profile } />
             <Route path="/resources" component={ JobResources } />
           </Switch>
         </div>

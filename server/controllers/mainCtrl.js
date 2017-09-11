@@ -55,6 +55,22 @@ module.exports = {
 //     })
 //     .catch(err => console.log(err));
 //   },
+  getProfile: (req, res) => {
+    const db = req.app.get('db');
+    db.get_profile(req.user.id)
+    .then(profile => res.status(200).send(profile))
+    .catch(err => err);
+  },
+  postProfile: (req, res) => {
+    const db = req.app.get('db');
+    db.post_profile([req.body.profile, req.user.id])
+    .then(response => {
+      db.get_profile(req.user.id).then(profile => {
+        res.status(200).send(profile)
+      })
+    })
+    .catch(err => err);
+  },
   getCompany: (req, res) => {
     const db = req.app.get('db');
 
