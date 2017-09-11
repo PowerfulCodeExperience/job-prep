@@ -94,8 +94,6 @@ class Companies extends Component {
                   <Table.HeaderCell>Name</Table.HeaderCell>
                   <Table.HeaderCell>LinkedIn</Table.HeaderCell>
                   <Table.HeaderCell>Applied</Table.HeaderCell>
-                  <Table.HeaderCell>Company</Table.HeaderCell>
-                  <Table.HeaderCell><span className="Lnk">LinkedIn</span></Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
 

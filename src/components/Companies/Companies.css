@@ -114,7 +114,7 @@
   color: #2AABE2;
   border-bottom: 2px solid #2AABE2;
   padding: 20px 0 20px 30px;
-} */
+}
 
 /* Odd Rows */
 /* .ui.table tbody tr {
@@ -137,15 +137,9 @@
 } */
 
 /* All Rows */
-<<<<<<< HEAD
-/* .ui.table tbody td {
-  height: 80px;
-} */
-=======
 .ui.table tbody td {
   height: 60px;
 }
->>>>>>> master
 
 /* Row Links */
 /* .RowFill {

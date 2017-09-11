@@ -228,7 +228,6 @@ export function postEmail(email, id, company_id){
   }
 }
 
-<<<<<<< HEAD
 export function postNote(note, date, contact_id, company_id){
   console.log("note", note, date, contact_id, company_id)
   return {
@@ -248,11 +247,12 @@ export function updateApplied(applied, id){
   return {
     type: UPDATE_APPLIED,
     payload: axios.put('/api/applied', {applied, id})
-=======
+  }
+}
+
 export function setSearch(value) {
   return {
     type: SET_SEARCH,
     payload: value
->>>>>>> master
   }
 }
