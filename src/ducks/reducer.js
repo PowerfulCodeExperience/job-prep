@@ -58,6 +58,7 @@ export default function reducer(state=initialState, action) {
     
     case GET_CONTACTS + '_FULFILLED':
       return Object.assign({}, state, {
+        // contacts: action.payload.data
         contacts: [...action.payload.data]
       })
 

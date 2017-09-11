@@ -24,11 +24,13 @@ class Kard extends Component {
     this.postitNote = this.postitNote.bind(this);
   }
 
-  componentWillMount(){
+  componentDidMount(){
     let id = this.props.contact.id
     console.log("id", this.props.contact.id)
+    console.log("mounted")
     axios.get(`/api/note/${id}`)
     .then(response => {
+      console.log("res", response)
       this.setState({
         log: response.data
       })
@@ -60,13 +62,14 @@ class Kard extends Component {
     axios.put('/api/note', bundle)
       .then(response => {
         this.setState({
-          log: response.data
+          log: response.data,
+          note: ''
         })
       })
-    // this.props.postNote(this.props.note, date, this.props.contact.id, this.props.contact.company_id);
-    this.setState({
-      note: ''
-    })
+
+    // this.setState({
+    //   note: ''
+    // })
   }
 
   render(){
@@ -79,6 +82,7 @@ class Kard extends Component {
   return(
     <Card key={this.props.i}>
 
+      {/* Name, Position, Linkedin, Add Email */}
       <Card.Content>
         <Card.Header content={this.props.contact.firstname} />
         <Card.Meta content={this.props.contact.position} />
@@ -96,22 +100,25 @@ class Kard extends Component {
         </Card.Description>
       </Card.Content>
 
+      {/* Date of last action taken */}
       <Card.Content extra>
-      Date of Last Action Taken:
-      {
-        (this.props.contact.status !== "No Action Taken") ?
-        <div>
-          {moment(this.props.contact.datecontacted).format("l")}
-        </div> : null
-      }
+        Date of Last Action Taken:
+        {
+          (this.props.contact.status !== "No Action Taken") ?
+          <div>
+            {moment(this.props.contact.datecontacted).format("l")}
+          </div> : null
+        }
       </Card.Content>
 
+      {/* Status bar dropdown */}
       <Card.Content extra>
         Status:<Dropdown inline fluid placeholder={this.props.contact.status} options={options} onChange={(e, value) => {this.props.setStatus(this.props.contact.id, value, this.props.contact.company_id)}}/>
       </Card.Content>
-
+      
+      {/* Adding and posting a note */}
       <Card.Content extra>
-        
+
         <div style={{"display": "flex", "justify-content": "space-between"}}>   
           <p>Notes:</p>
           <FA name="plus" onClick={(e) => this.postitNote(e)}/>
@@ -121,20 +128,21 @@ class Kard extends Component {
         </div>
       </Card.Content>
 
-        <Card.Content className="Notes" extra>
-          {
-            this.state.log.map((item, i) => {
-              return (
-                <div key={i}>
-                  {moment(item.datecreated).format("l")}
-                  <p>{item.note}</p>
-                </div>
-              )
-            })
-          }
-          {/* {JSON.stringify(this.props.contact.notes)} */}
-        </Card.Content>
+      {/* Displaying a note */}
+      <Card.Content className="Notes" extra>
+        {
+          this.state.log.map((item, i) => {
+            return (
+              <div key={i}>
+                {moment(item.datecreated).format("l")}
+                <p>{item.note}</p>
+              </div>
+            )
+          })
+        }
+      </Card.Content>
 
+      {/* Modal to add an email */}
       <Modal size="mini" open={this.state.open} >
         <Modal.Header>
           Add an Email:
@@ -146,10 +154,6 @@ class Kard extends Component {
           <Button onClick={() => this.close()}>Submit</Button>
         </Modal.Actions>
       </Modal>
-
-      {/* <Card.Content extra>
-        Delete
-      </Card.Content> */}
 
     </Card>
   )

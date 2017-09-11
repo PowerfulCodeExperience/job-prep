@@ -45,6 +45,7 @@ module.exports = {
 
     db.get_contacts(req.params.id)
       .then(response => {
+        console.log("Returned contacts", response)
         res.status(200).send(response)
     })
     .catch( err => console.log(err));
