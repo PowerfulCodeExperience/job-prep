@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import './DashBoard.css';
-// import Weather from '../Weather/Weather'
 import { Input, Button, Icon, Card, Popup, Segment } from 'semantic-ui-react'
 
-import { getGoals, postGoal } from '../../ducks/reducer'
+import { getGoals } from '../../ducks/reducer'
 
 
 class DashBoard extends Component {
@@ -70,4 +69,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { getGoals, postGoal })(DashBoard);
+export default connect(mapStateToProps, { getGoals })(DashBoard);

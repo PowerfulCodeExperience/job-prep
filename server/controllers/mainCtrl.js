@@ -37,41 +37,19 @@ module.exports = {
   })
   .catch(err => console.log(err));
 },
-// getTasks: (req, res) => {
-//   const db = req.app.get('db')
-//   db.get_tasks(req.user.id)
-//   .then(task => res.status(200).send(task))
-//   res.status(200);
-// },
-  
-// postTask: (req, res) => {
-//     const db = req.app.get('db')
-
-//     db.post_task([req.body.task, req.user.id])
-//     .then( response => {
-//       db.get_tasks(req.user.id).then(tasks => {
-//         res.status(200).send(tasks)
-//       })
-//     })
-//     .catch(err => console.log(err));
-//   },
-  getProfile: (req, res) => {
-    const db = req.app.get('db');
-    db.get_profile(req.user.id)
-    .then(profile => res.status(200).send(profile))
-    .catch(err => err);
-  },
+  // getProfile: (req, res) => {
+  //   const db = req.app.get('db');
+  //   db.get_profile(req.user.id)
+  //   .then(profile => res.status(200).send(profile))
+  //   .catch(err => err);
+  // },
   postProfile: (req, res) => {
     const db = req.app.get('db');
     const {linked, resume, portfolio} = req.body;
     const {id} = req.user
-
-    db.post_profile([linked, resume, portfolio, id])
-    .then(response => {
-      db.get_profile(id).then(profile => {
-        res.status(200).send(profile)
-      })
-    })
+    console.log("l:",linked," r:", resume, " p:", portfolio, " id: ",id)
+    db.post_profile([id, linked, resume, portfolio])
+    .then(response => console.log(response))
     .catch(err => err);
   },
   getCompany: (req, res) => {

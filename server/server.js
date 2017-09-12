@@ -77,17 +77,14 @@ passport.deserializeUser(function(profileFromSession, done) {
 app.get('/api/signIn', mainCtrl.signIn);
 app.get('/api/signOut', mainCtrl.signOut);
 app.get('/api/getGoals', mainCtrl.getGoals);
-// app.get('/api/getTasks', mainCtrl.getTasks);
 app.get('/api/resources', mainCtrl.getResources);
 
 app.post('/api/postGoal', mainCtrl.postGoal);
-// app.post('/api/postTask', mainCtrl.postTask);
 app.get('/api/resources', mainCtrl.getResources);
 app.get('/api/company', mainCtrl.getCompany);
 app.get('/api/returnCompany/:id', mainCtrl.returnCompany);
 app.get('/api/getContacts/:id', mainCtrl.getContacts);
 app.get('/api/allContacts', mainCtrl.allContacts);
-app.get('/api/getProfile', mainCtrl.getProfile);
 
 app.post('/api/postProfile', mainCtrl.postProfile);
 app.get('/api/note/:id', mainCtrl.getNotes);

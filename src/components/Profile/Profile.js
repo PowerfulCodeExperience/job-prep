@@ -118,6 +118,7 @@ class Profile extends Component {
                         name='goal'
                         onChange={this.handleChange} 
                         value={this.state.goal}
+                        className="form-control"
                         />
                     </div>
                     <br/>
@@ -129,7 +130,15 @@ class Profile extends Component {
                 </div>
                 </div>
                     <div className="rendered_url">
-                        Rendered List here 
+                        <p>
+                            {/* {
+                                if(this.props.companies.applied === true) {
+                                    this.props.companies.applied
+                                } else {
+                                    !this.props.companies.applied
+                                }
+                            } */}
+                        </p> 
                     </div>
                     
               
@@ -143,7 +152,8 @@ class Profile extends Component {
     function mapStateToProps(state) {
         return {
             user: state.user,
-            goals: state.goals
+            goals: state.goals,
+            companies: state.companies
         }
 }
     export default connect(mapStateToProps, {postProfile, postGoal})(Profile)

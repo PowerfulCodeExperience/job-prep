@@ -1,3 +1,3 @@
-INSERT INTO profile (linked, resume, portfolio, user_id) 
-VALUES ($1, $2, $3)
+INSERT INTO users (id, linked, resume, portfolio) 
+VALUES ($1, $2, $3, $4)
 RETURNING *

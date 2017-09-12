@@ -5,7 +5,6 @@ const initialState = {
   resources: [],
   companies: [],
   goals: [],
-  // tasks: [],
   contacts: [],
   email: '',
   allContacts: [],
@@ -34,7 +33,7 @@ const UPDATE_NOTE = 'UPDATE_NOTE';
 const UPDATE_APPLIED = 'UPDATE_APPLIED';
 
 const POST_PROFILE = 'POST_PROFILE';
-const GET_PROFILE = 'GET_PROFILE';
+// const GET_PROFILE = 'GET_PROFILE';
 
 const SIGN_OUT = 'SIGN_OUT';
 const SET_SEARCH = 'SET_SEARCH';
@@ -143,12 +142,12 @@ export default function reducer(state=initialState, action) {
       return Object.assign({}, state, {
         profile: [...action.payload.data]
       })
-    case GET_PROFILE + '_PENDING':
-      return state;
-    case GET_PROFILE + '_FULFILLED':
-      return Object.assign({}, state, {
-        profile: action.payload.data
-      })
+    // case GET_PROFILE + '_PENDING':
+    //   return state;
+    // case GET_PROFILE + '_FULFILLED':
+    //   return Object.assign({}, state, {
+    //     profile: action.payload.data
+    //   })
     case UPDATE_NOTE:
       return Object.assign({}, state, {
         note: action.payload
@@ -295,9 +294,9 @@ export function setSearch(value) {
     payload: value
   }
 }
-export function postProfile(linked, resume, portfolio) {
+export function postProfile(profileObj) {
   return {
     type: POST_PROFILE,
-    payload: axios.post('/api/postProfile', {linked, resume, portfolio})
+    payload: axios.post('/api/postProfile', profileObj)
   }
 }
