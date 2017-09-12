@@ -130,8 +130,9 @@ export default function reducer(state=initialState, action) {
       return state;
 
     case UPDATE_APPLIED + '_FULFILLED':
+      console.log("data", action.payload.data)
       return Object.assign({}, state, {
-        contacts: action.payload.data
+        companies: action.payload.data
       })
 
     case SIGN_OUT + '_PENDING':
