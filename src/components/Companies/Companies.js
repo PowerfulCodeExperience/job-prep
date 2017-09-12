@@ -89,7 +89,7 @@ class Companies extends Component {
             <Table striped selectable>
               <Table.Header>
                 <Table.Row>
-                  <Table.HeaderCell>Name</Table.HeaderCell>
+                  <Table.HeaderCell>Company</Table.HeaderCell>
                   <Table.HeaderCell>LinkedIn</Table.HeaderCell>
                   <Table.HeaderCell>Applied</Table.HeaderCell>
                 </Table.Row>
