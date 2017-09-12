@@ -168,8 +168,12 @@ module.exports = {
 
     db.update_applied(applied, id)
       .then(response => {
-        console.log("res", response)
-        res.status(200).send(response)
+        db.get_companies(req.user.id)
+          .then(companies => {
+            console.log("comp", companies)
+            res.status(200).send(companies)
+          })
+          .catch( err => console.log(err));
       })
       .catch( err => console.log(err));
   }

@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import axios from 'axios';
-import moment from 'moment';
 
-import FA from 'react-fontawesome';
 
 // import { Grid, Segment, Modal } from 'semantic-ui-react';
 
@@ -22,9 +19,7 @@ class DashBoard extends Component {
   render(){
 
     return(
-
       <div className = "DashBoard">
-        <h1>DashBoard</h1>
 
       </div>
     )
