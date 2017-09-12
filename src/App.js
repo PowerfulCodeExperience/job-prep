@@ -9,7 +9,6 @@ import Navigation from './components/Navigation/Navigation.js';
 import DashBoard from './components/DashBoard/DashBoard.js';
 
 import Companies from './components/Companies/Companies.js';
-import Interviews from './components/Interviews/Interviews.js';
 import AllContacts from './components/AllContacts/AllContacts.js';
 import Contacts from './components/Contacts/Contacts.js';
 import JobResources from './components/JobResources/JobResources.js';
@@ -25,7 +24,6 @@ export class Wrapper extends Component {
           <Switch>
             <Route exact path="/" component={ DashBoard } />
             <Route path="/companies" component={ Companies } />
-            <Route path="/interviews" component={ Interviews } />
             <Route path="/allcontacts/" component={ AllContacts } />
             <Route path="/contacts/:id" component={ Contacts } />
             <Route path="/resources" component={ JobResources } />
@@ -63,9 +61,9 @@ class App extends Component {
 
     return (
       <div>
-      {/* <div>
+      <div>
         {checkStatus()}
-      </div> */}
+      </div>
       
       <Router>
         <div>
