@@ -99,3 +99,7 @@ li {
   margin-right: 2em;
   height: 5vh;
 }
+.not_active {
+  pointer-events: none;
+  cursor: default;
+}

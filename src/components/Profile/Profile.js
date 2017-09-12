@@ -122,7 +122,7 @@ class Profile extends Component {
                         />
                     </div>
                     <br/>
-                    <Button onClick={this.handleGoalSubmit} size="tiny">
+                    <Button disabled={!this.state.goal} onClick={this.handleGoalSubmit} size="tiny">
                             <Button.Content visible>
                             </Button.Content>
                               <Button.Content>Add</Button.Content>
