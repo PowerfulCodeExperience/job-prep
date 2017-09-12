@@ -5,6 +5,7 @@ const massive = require('massive');
 const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 const path = require('path');
+const axios = require('axios');
 
 const mainCtrl = require('./controllers/mainCtrl');
 
@@ -75,15 +76,21 @@ passport.deserializeUser(function(profileFromSession, done) {
 
 app.get('/api/signIn', mainCtrl.signIn);
 app.get('/api/signOut', mainCtrl.signOut);
+app.get('/api/getGoals', mainCtrl.getGoals);
+app.get('/api/resources', mainCtrl.getResources);
+
 app.get('/api/resources', mainCtrl.getResources);
 app.get('/api/company', mainCtrl.getCompany);
 app.get('/api/returnCompany/:id', mainCtrl.returnCompany);
 app.get('/api/getContacts/:id', mainCtrl.getContacts);
 app.get('/api/allContacts', mainCtrl.allContacts);
+
 app.get('/api/note/:id', mainCtrl.getNotes);
 
 // Add a company and a contact 
 
+app.post('/api/postGoal', mainCtrl.postGoal);
+app.post('/api/postProfile', mainCtrl.postProfile);
 app.post('/api/company', mainCtrl.postCompany);
 app.post('/api/contact', mainCtrl.postContact);
 

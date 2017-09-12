@@ -1,129 +1,105 @@
-/* .DashBoard {
-  width: 80vw;
-  height: 100vh;
-  color: #2AABE2;
-}
+@import url('https://fonts.googleapis.com/css?family=Libre+Barcode+39+Text');
 
-.Status {
-  height: 100px;
-  font-size: 20px;
+li {
+  margin: 18px 0;
+}
+.dash_container {
+  display: flex;
+  flex-direction: column;
+}
+.portfolio_main {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: flex-end;
-  margin: 30px 0 0 0;
-  padding-right: 50px;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 2em;
+  margin-bottom: 3em;
+  height: 20vh;
+  width: 80%;
+  border: 2px solid #2AAAE0;
 }
-
-.DashHead {
-  width: 100%;
-  height: 100px;
-  font-size: 50px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  padding-left: 50px;
-  margin-bottom: 100px;
+.goal_renderings {
+  height: 80vh;
+  width: 45vw;
+  border: 2px solid #2AAAE0;
+  overflow: auto;
+  margin: 4px;
 }
-
-.DashBoard img {
-  width: 200px;
-  height: 200px;
-  border: 3px solid #2AABE2;
-  border-radius: 50%;
-  margin-right: 50px;
-}
-
-.Portal {
+.side_by {
   display: flex;
   justify-content: space-around;
 }
-
-.Footer {
-  width: 100%;
-  height: 100px;
-} */
-
-.Top {
+.daily_header {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-h1 {
-  text-align: center;
-  font-size: 32px;
+  justify-content: space-around;
+  font-size: 45px;
+  color: white;
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 5px 0px 15px 0px;
+  margin-top: 10px;
 }
-
-.Self {
-  background-color: white;
-  height: 200px;
-  margin: 30px 30px 50px 30px;
-  padding: 20px;
+.port_add {
+  margin-bottom: 5px;
 }
-
-p {
-  padding: 15px;
-  text-align: center;
-}
-
-.Item {
-  text-align: center;
-}
-
-.LinksToSelf {
+.jobs_applied {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  color: white;
+  height: 80vh;
+  width: 25vw;
+  font-size: 30px;
+  padding-top: 16px;
+  border: 2px solid #2AAAE0;
 }
-
-.LinksToSelf .fa {
-  padding: 0px;
+.top_row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 10vh;
+  font-family: 'Libre Barcode 39 Text', cursive;
+  font-size: 4em;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  color: white;
 }
-
-.Applied {
-  background-color: white;
-  height: 200px;
-  margin: 50px 30px 30px 30px;
-  overflow: scroll;
+.link_spans {
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  overflow: hidden;
+  transition-duration: 0.3s;
+  transition-property: color, background-color;
 }
-
-.Applied ul {
-  list-style-type: square;
-  padding: 20px;
+.link_spans:hover {
+  cursor: pointer;
+  background: hsl(0, 0%, 88%);
+  text-decoration: none;
+  color: #4795E9;
 }
-
-.Applied li {
-  padding: 10px;
-  margin-left: 30px;
+.list_rendered {
+  background-color: #303030;
+  color: white;
+  padding: 4px;
 }
-
-.TopLeft {
-  width: 50%;
+.list {
+  list-style-type: none;
 }
-
-.Weather-Date {
-  background-color: white;
-  text-align: center;
-  height: 450px;
-  margin: 30px;
-  width: 50%;
+.ui.vertical.segment.list_rendered {
+  padding: 18px;
+  font-size: 24px;
 }
-
-.Goals {
-  background-color: white;
-  margin: 30px;
-  height: 400px;
+.empty_input {
+  display: flex;
+  padding-top: 10px;
+  width: 80%;
+  justify-content: flex-end;
+  align-items: center;
 }
-
-.Goals ul {
-  list-style-type: square;
-  padding: 20px;
+.input_input {
+  margin-right: 2em;
+  height: 5vh;
 }
-
-.Goals li {
-  padding: 10px;
-  margin-left: 30px;
+.not_active {
+  pointer-events: none;
+  cursor: default;
 }

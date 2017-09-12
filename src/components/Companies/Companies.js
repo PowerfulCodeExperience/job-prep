@@ -35,6 +35,8 @@ class Companies extends Component {
     })
   }
 
+  
+
   handleSubmit(event){
     this.props.postCompany(this.state);
 

@@ -12,6 +12,7 @@ import Companies from './components/Companies/Companies.js';
 import AllContacts from './components/AllContacts/AllContacts.js';
 import Contacts from './components/Contacts/Contacts.js';
 import JobResources from './components/JobResources/JobResources.js';
+import Profile from './components/Profile/Profile';
 
 import './App.css';
 
@@ -26,6 +27,7 @@ export class Wrapper extends Component {
             <Route path="/companies" component={ Companies } />
             <Route path="/allcontacts/" component={ AllContacts } />
             <Route path="/contacts/:id" component={ Contacts } />
+            <Route path="/profile" component={ Profile } />
             <Route path="/resources" component={ JobResources } />
           </Switch>
         </div>
@@ -64,13 +66,6 @@ class App extends Component {
       <div>
         {checkStatus()}
       </div>
-      
-      <Router>
-        <div>
-          <Route path="/" component={ Wrapper } />
-          <Route path="/landing" component={ Landing } />
-        </div>
-      </Router>
       </div>
     );
   }

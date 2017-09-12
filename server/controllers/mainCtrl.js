@@ -1,3 +1,5 @@
+
+
 module.exports = {
   signIn: (req, res) => {
     console.log('User:', req.user);
@@ -17,9 +19,42 @@ module.exports = {
       .then(resources => {
         res.status(200).send(resources)
     })
-    .catch( err => console.log(err));
   },
+  getGoals: (req, res) => {
+    const db = req.app.get('db');
 
+    db.get_goals(req.user.id)
+    .then(goal => res.status(200).send(goal))
+    res.status(200);
+  },
+  postGoal: (req,res) => {
+    const db = req.app.get('db');
+    db.post_goal([req.body.goal, req.user.id])
+    .then(response => {
+      db.get_goals(req.user.id).then(goals => {
+        res.status(200).send(goals)
+    })
+  })
+  .catch(err => console.log(err));
+},
+  // getProfile: (req, res) => {
+  //   const db = req.app.get('db');
+  //   db.get_profile(req.user.id)
+  //   .then(profile => res.status(200).send(profile))
+  //   .catch(err => err);
+  // },
+  postProfile: (req, res) => {
+    const db = req.app.get('db');
+    const {linked, resume, portfolio} = req.body;
+    console.log(req.user)
+    const {id} = req.user
+    // console.log("l:",linked," r:", resume, " p:", portfolio, " id: ",id)
+    db.update_profile(id, linked, resume, portfolio)
+    .then(response => {
+      res.status(200).send(response)
+    })
+    .catch(err => err);
+  },
   getCompany: (req, res) => {
     const db = req.app.get('db');
 

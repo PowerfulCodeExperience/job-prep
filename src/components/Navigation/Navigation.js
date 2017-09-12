@@ -54,6 +54,7 @@ class Navigation extends Component {
           <Link to="/companies">20 COMPANY CHALLENGE</Link>
           <Link to="/allcontacts">CONTACTS</Link>
           <Link to="/resources">RESOURCES</Link>
+          <Link to="/profile">PROFILE</Link>
           <Link to="/landing" onClick={this.props.signOut}><span>LOGOUT</span></Link>
         </div>
       </div>

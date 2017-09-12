@@ -4,15 +4,20 @@ const initialState = {
   user: false,
   resources: [],
   companies: [],
+  goals: [],
   contacts: [],
   email: '',
-  note: '',
   allContacts: [],
+  note: '',
   search: false
 };
 
 const GET_USER = 'GET_USER';
 const GET_RESOURCES = 'GET_RESOURCES';
+
+const GET_GOALS = 'GET_GOALS';
+const POST_GOAL = 'POST_GOAL';
+
 const GET_COMPANIES = 'GET_COMPANIES';
 const GET_CONTACTS = 'GET_CONTACTS';
 const GET_ALL_CONTACTS = 'GET_ALL_CONTACTS';
@@ -27,24 +32,34 @@ const UPDATE_EMAIL = 'UPDATE_EMAIL';
 const UPDATE_NOTE = 'UPDATE_NOTE';
 const UPDATE_APPLIED = 'UPDATE_APPLIED';
 
+const POST_PROFILE = 'POST_PROFILE';
+// const GET_PROFILE = 'GET_PROFILE';
+
 const SIGN_OUT = 'SIGN_OUT';
 const SET_SEARCH = 'SET_SEARCH';
 
 
 export default function reducer(state=initialState, action) {
   switch(action.type) {
-
     case GET_USER + '_PENDING':
       return state;
-
     case GET_USER + '_FULFILLED':
       return Object.assign({}, state, {user: action.payload.data});
-
     case GET_RESOURCES + '_PENDING':
       return state;
-
     case GET_RESOURCES + '_FULFILLED':
       return Object.assign({}, state, {resources: action.payload.data});
+    case GET_GOALS + '_PENDING': 
+    // console.log(action.payload)
+      return state;
+    case GET_GOALS + '_FULFILLED':
+      return Object.assign({}, state, {goals: action.payload.data});
+    case POST_GOAL + '_PENDING':
+      return state;
+    case POST_GOAL + '_FULFILLED':
+      return Object.assign({}, state, {
+        goals: [...action.payload.data]
+      });
 
     case GET_COMPANIES + '_PENDING':
       return state;
@@ -120,7 +135,12 @@ export default function reducer(state=initialState, action) {
       return Object.assign({}, state, {
         email: action.payload
       })
+    case POST_PROFILE + '_PENDING':
+      return state;
 
+    case POST_PROFILE + '_FULFILLED':
+    console.log('action payload', action.payload.data)
+      return Object.assign({}, state, {user: action.payload.data[0]})
     case UPDATE_NOTE:
       return Object.assign({}, state, {
         note: action.payload
@@ -151,15 +171,27 @@ export default function reducer(state=initialState, action) {
     default: return state;
   }
 }
-
-export function getUser() {
-  return {
-    type: GET_USER,
-    payload: axios.get('/api/signIn')
+  export function getUser() {
+    return {
+      type: GET_USER,
+      payload: axios.get('/api/signIn')
+    }
   }
-}
-
-export function signOut() {
+  
+  export function getGoals(user) {
+    return {
+      type: GET_GOALS,
+      payload: axios.get('/api/getGoals')
+    }
+  }
+  export function postGoal(goal) {
+    return {
+      type: POST_GOAL,
+      payload: axios.post('/api/postGoal', {goal})
+    }
+  }
+  
+  export function signOut() {
   return{
     type: SIGN_OUT,
     payload: axios.get('/api/signOut')
@@ -214,7 +246,6 @@ export function updateStatus(id, status, date, company_id){
     payload: axios.put('/api/status', { id, status, date, company_id })
   }
 }
-
 export function updateEmail(email){
   return {
     type: UPDATE_EMAIL,
@@ -255,5 +286,12 @@ export function setSearch(value) {
   return {
     type: SET_SEARCH,
     payload: value
+  }
+}
+export function postProfile(profileObj) {
+  console.log('profile', profileObj)
+  return {
+    type: POST_PROFILE,
+    payload: axios.post('/api/postProfile', profileObj)
   }
 }
