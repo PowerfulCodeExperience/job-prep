@@ -37,13 +37,15 @@ class DashBoard extends Component {
 
     )
   )
-  const renderedApplied = companies.map((e, j) => 
-    (
-      <li key={j} className="list">
-          {e.companyname}
-      </li>
-
-    )
+  const renderedApplied = companies.filter((e, j) => 
+    {
+      return(e.applied)
+      // if(e.applied) {
+      //   <li key={j} className="list">
+      //       {e.companyname}
+      //   </li>
+      // }
+    }
   )
   console.log("companies", this.props.companies)
   console.log('renderedapplied', renderedApplied)
@@ -54,26 +56,23 @@ class DashBoard extends Component {
             <a href={this.props.user.resume} target="_blank"><span className="link_spans">Resume</span></a>
             <a href={this.props.user.portfolio} target="_blank"><span className="link_spans">Portfolio</span></a>
           </div>
-      <div className="side_by">
+        <div className="side_by">
           <div className="goal_renderings">
             <span className="daily_header">Daily Essentials</span>
-            <div className="empty_input"></div>
             <Segment className="list_rendered" vertical>{renderedGoals}</Segment>
           </div>
           <div className="jobs_applied">
             <span className="daily_header">Jobs Applied</span>
-            {/* <div className="empty_input"></div> */}
-            <Segment className="list_rendered" vertical>{renderedApplied}</Segment>
+            <Segment className="list_rendered" vertical>
+              {
+                renderedApplied.map((e, i) => {
+                  return <li key={i}>{e.companyname}</li>
+                })
+              }
+            </Segment>
           </div>
-                {/* <div className="jobs_applied">
-                  <span>Jobs Applied</span>
-                
-                <ul>
-                {renderedApplied}
-                </ul>
-                </div> */}
-                </div>
-            </div>
+        </div>
+      </div>
     )
   }
 }
