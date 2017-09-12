@@ -140,15 +140,7 @@ export default function reducer(state=initialState, action) {
 
     case POST_PROFILE + '_FULFILLED':
     console.log('action payload', action.payload.data)
-      return Object.assign({}, state, {
-        user: [...action.payload.data]
-      })
-    // case GET_PROFILE + '_PENDING':
-    //   return state;
-    // case GET_PROFILE + '_FULFILLED':
-    //   return Object.assign({}, state, {
-    //     profile: action.payload.data
-    //   })
+      return Object.assign({}, state, {user: action.payload.data[0]})
     case UPDATE_NOTE:
       return Object.assign({}, state, {
         note: action.payload

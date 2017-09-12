@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-<<<<<<< HEAD
-=======
 
 
 // import { Grid, Segment, Modal } from 'semantic-ui-react';
 
->>>>>>> master
 import './DashBoard.css';
 import { Button, Segment } from 'semantic-ui-react'
 
@@ -43,9 +40,9 @@ class DashBoard extends Component {
     return(
       <div className="dash_container">
           <div className="top_row">
-            <a href={this.props.user.linked} target="_blank" className={!this.props.user.resume ? "not_active" : null}><span className="link_spans">LinkedIn</span></a>
+            <a href={this.props.user.linked} target="_blank" className={!this.props.user.linked ? "not_active" : null}><span className="link_spans">LinkedIn</span></a>
             <a href={this.props.user.resume} target="_blank" className={!this.props.user.resume ? "not_active" : null}><span className="link_spans">Resume</span></a>
-            <a href={this.props.user.portfolio} target="_blank" className={!this.props.user.resume ? "not_active" : null}><span className="link_spans">Portfolio</span></a>
+            <a href={this.props.user.portfolio} target="_blank" className={!this.props.user.portfolio ? "not_active" : null}><span className="link_spans">Portfolio</span></a>
           </div>
         <div className="side_by">
           <div className="goal_renderings">

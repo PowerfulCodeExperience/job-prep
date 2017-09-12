@@ -12,9 +12,9 @@ class Profile extends Component {
         super(props);
 
         this.state = {
-            linked: '',
-            resume: '',
-            portfolio: '',
+            linked: this.props.user.linked,
+            resume: this.props.user.resume,
+            portfolio: this.props.user.portfolio,
             goal: ''
         }
 
@@ -38,11 +38,6 @@ class Profile extends Component {
       handleSubmit(event) {
         event.preventDefault();
         this.props.postProfile(this.state);
-        this.setState({
-          linked: '',
-          resume: '',
-          portfolio: ''
-        })
       }
       handleGoalSubmit(event) {
         event.preventDefault();
