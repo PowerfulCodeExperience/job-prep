@@ -9,7 +9,10 @@ CREATE TABLE IF NOT EXISTS users (
   email TEXT NOT NULL,
   organization TEXT,
   location TEXT,
-  picture TEXT
+  picture TEXT,
+  linked TEXT,
+  resume TEXT,
+  portfolio TEXT
 );
 
 CREATE TABLE IF NOT EXISTS goals (
@@ -22,20 +25,18 @@ CREATE TABLE IF NOT EXISTS users_companies (
   id SERIAL PRIMARY KEY,
   companyName TEXT,
   companyLinkedIn TEXT,
+  applied BOOLEAN,
   user_id INTEGER REFERENCES users(id)
 );
 
 CREATE TABLE IF NOT EXISTS contact (
   id SERIAL PRIMARY KEY,
   firstName TEXT,
-  lastName TEXT,
   position TEXT,
   linkedIn TEXT,
   status TEXT,
   email TEXT,
   dateContacted DATE,
-  notes TEXT,
-  outcome TEXT,
   company_id INTEGER REFERENCES users_companies(id)
 );
 

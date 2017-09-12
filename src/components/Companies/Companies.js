@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
-import axios from 'axios';
-
 import {Button, Input, Table, Checkbox} from 'semantic-ui-react';
 
 import { postCompany, getCompanies, updateApplied } from '../../ducks/reducer';
