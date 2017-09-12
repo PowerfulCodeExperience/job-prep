@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {Button} from 'semantic-ui-react';
 
-import {postProfile, getProfile} from '../../ducks/reducer';
+import {postProfile, postGoal} from '../../ducks/reducer';
 
 import '../Profile/Profile.css';
 
@@ -14,16 +14,19 @@ class Profile extends Component {
         this.state = {
             linked: '',
             resume: '',
-            portfolio: ''
+            portfolio: '',
+            goal: ''
         }
 
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
+        // this.handleChange = this.handleChange.bind(this)
+        this.handleGoalSubmit = this.handleGoalSubmit.bind(this)
       }
     
-      componentDidMount(){
-        this.props.getProfile();
-      }
+    //   componentDidMount(){
+    //     this.props.getProfile();
+    //   }
     
       handleChange(event) {
         let name = event.target.name
@@ -39,6 +42,13 @@ class Profile extends Component {
           linked: '',
           resume: '',
           portfolio: ''
+        })
+      }
+      handleGoalSubmit(event) {
+        event.preventDefault();
+        this.props.postGoal(this.state.goal);
+        this.setState({
+          goal: ''
         })
       }
 
@@ -97,11 +107,32 @@ class Profile extends Component {
                     <br/>
                         <Button type='submit' value='submit'>Submit</Button>
                     </form>
+                    <br/>
+                    <span>Add a Goal</span>
+                    <p className="form_sub">Goals will display on your <Link to="/dashboard">Dashboard</Link></p>
+                    <br/>
+                    <div className="input-group">
+                    <span className="input-group-addon">Goal</span>
+                    <input 
+                        type='text'
+                        name='goal'
+                        onChange={this.handleChange} 
+                        value={this.state.goal}
+                        />
+                    </div>
+                    <br/>
+                    <Button onClick={this.handleGoalSubmit} size="tiny">
+                            <Button.Content visible>
+                            </Button.Content>
+                              <Button.Content>Add</Button.Content>
+                           </Button>
                 </div>
                 </div>
                     <div className="rendered_url">
                         Rendered List here 
                     </div>
+                    
+              
               </div>
           )
       }
@@ -112,8 +143,7 @@ class Profile extends Component {
     function mapStateToProps(state) {
         return {
             user: state.user,
-            goals: state.goals,
-            profile: state.profile
+            goals: state.goals
         }
 }
-    export default connect(mapStateToProps, {postProfile, getProfile})(Profile)
+    export default connect(mapStateToProps, {postProfile, postGoal})(Profile)

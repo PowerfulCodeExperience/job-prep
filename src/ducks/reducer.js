@@ -8,8 +8,7 @@ const initialState = {
   // tasks: [],
   contacts: [],
   email: '',
-  allContacts: [], 
-  profile: [],
+  allContacts: [],
   note: '',
   search: false
 };
@@ -267,18 +266,6 @@ export function postEmail(email, id, company_id){
     payload: axios.put('/api/email', {email, id, company_id})
   }
 }
-export function postProfile(profile) {
-  return {
-    type: POST_PROFILE,
-    payload: axios.post('/api/postProfile', profile)
-  }
-}
-export function getProfile(user) {
-  return {
-    type: GET_PROFILE,
-    payload: axios.get('/api/getProfile')
-  }
-}
 
 export function postNote(note, date, contact_id, company_id){
   console.log("note", note, date, contact_id, company_id)
@@ -306,5 +293,11 @@ export function setSearch(value) {
   return {
     type: SET_SEARCH,
     payload: value
+  }
+}
+export function postProfile(linked, resume, portfolio) {
+  return {
+    type: POST_PROFILE,
+    payload: axios.post('/api/postProfile', {linked, resume, portfolio})
   }
 }

@@ -13,54 +13,20 @@ class DashBoard extends Component {
 
     this.state = {
       goal: ''
-      // task: '',
       
     }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleGoalSubmit = this.handleGoalSubmit.bind(this)
-    // this.handleTaskSubmit = this.handleTaskSubmit.bind(this)
   }
   
 
   componentDidMount() {
     this.props.getGoals(this.props.user.id)
-    // this.props.getTasks(this.props.user.id)
-}
-handleChange(event) {
-  let name = event.target.name
-  let value = event.target.value
-  this.setState({
-    [name]: value
-  })
 }
 
-handleGoalSubmit(event) {
-  event.preventDefault();
-  this.props.postGoal(this.state.goal);
-  this.setState({
-    goal: ''
-  })
-}
-// handleTaskSubmit(event) {
-//   event.preventDefault();
-//   this.props.postTask(this.state.task);
-//   this.setState({
-//     task: ''
-//   })
-// }
   render(){
     const {
       goals,
 
     } = this.props
-
-    // const renderedTasks = tasks.map((e, j) => 
-    //   (
-    //   <li key={j}>
-    //     {e.task}
-    //   </li>
-    //   )
-    // )
 
     const renderedGoals = goals.map((e, i) => 
     (
@@ -70,58 +36,20 @@ handleGoalSubmit(event) {
 
     )
   )
+  console.log("user", this.props.user)
     return(
       <div className="dash_container">
           <div className="top_row">
-            <a href=""><span className="link_spans">LinkedIn</span></a>
-            <a href=""><span className="link_spans">Resume</span></a>
-            <a href=""><span className="link_spans">Portfolio</span></a>
+            <a href={this.props.user.linked} target="_blank"><span className="link_spans">LinkedIn</span></a>
+            <a href={this.props.user.resume} target="_blank"><span className="link_spans">Resume</span></a>
+            <a href={this.props.user.portfolio} target="_blank"><span className="link_spans">Portfolio</span></a>
           </div>
       <div className="side_by">
           <div className="goal_renderings">
               <span className="daily_header">Daily Essentials
               </span>
               <div className="empty_input">
-              <input 
-                type='text'
-                name='goal'
-                inverted
-                onChange={this.handleChange} 
-                value={this.state.goal}
-                className="input_input"
-                >
-              </input>
-              <Button onClick={this.handleGoalSubmit} size="tiny">
-                            <Button.Content visible>
-                            </Button.Content>
-                              <Button.Content hidden>
-                                Add
-                              </Button.Content>
-                           </Button>
               </div>
-                    
-            {/* <Accordion>
-              <Accordion.Title>Add</Accordion.Title>
-              <Accordion.Content>
-              <Input 
-                type='text'
-                name='goal'
-                onChange={this.handleChange} 
-                inverted placeholder={'Add goal here...'}
-                value={this.state.goal}
-                >
-              </Input>
-              <Button animated onClick={this.handleGoalSubmit}>
-                            <Button.Content visible>
-                            <Icon name='right arrow' />
-                            </Button.Content>
-                              <Button.Content hidden>
-                                Add
-                              </Button.Content>
-                           </Button>
-           
-              </Accordion.Content>
-            </Accordion> */}
             <Segment className="list_rendered" vertical>
               {renderedGoals}
             </Segment>
@@ -138,8 +66,7 @@ handleGoalSubmit(event) {
 function mapStateToProps(state) {
   return {
     user: state.user,
-    goals: state.goals,
-    // tasks: state.tasks
+    goals: state.goals
   }
 }
 
