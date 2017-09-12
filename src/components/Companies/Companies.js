@@ -106,8 +106,7 @@ class Companies extends Component {
                       <Table.Cell><a className="RowFill" href={company.companylinkedin} target={"_blank"}>{company.companylinkedin}</a></Table.Cell>
                       <Table.Cell>
                       {
-                        company.applied ? <Checkbox checked={company.applied} /> :
-                        <Checkbox onChange={(e, data) => {this.applied(e, data, company.id)}} />
+                        <Checkbox checked={company.applied} onChange={(e, data) => {this.applied(e, data, company.id)}} />
                       }
                       </Table.Cell>
                     </Table.Row>
