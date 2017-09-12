@@ -91,38 +91,40 @@ class Contacts extends Component {
           card: 'Card Flip2Front',
           flip: false
         })}> &#10006; </div>
-        <p className="InputType"> Name </p>
-          <Input 
-            placeholder="Name" 
-            type="text"
-            name={"name"}
-            value={this.state.name}
-            onChange={(e) => {this.handleChange(e)}}
-          />
-        <p className="InputType"> Position </p>
-          <Input 
-            placeholder="Position" 
-            type="text"
-            name={"position"}
-            value={this.state.position}
-            onChange={(e) => {this.handleChange(e)}}
-          />
-        <p className="InputType"> LinkedIn </p>
-          <Input 
-            placeholder="LinkedIn Profile URL" 
-            type="text"
-            name={"linkedin"}
-            value={this.state.linkedin}
-            onChange={(e) => {this.handleChange(e)}}
-          />
-        <p className="InputType"> Email </p>
-          <Input 
-            placeholder="Email" 
-            type="text"
-            name={"email"}
-            value={this.state.email}
-            onChange={(e) => {this.handleChange(e)}}
-          />
+        <div className="IndivInput">
+          <p className="InputType"> Name </p>
+            <Input 
+              placeholder="Name" 
+              type="text"
+              name={"name"}
+              value={this.state.name}
+              onChange={(e) => {this.handleChange(e)}}
+            />
+          <p className="InputType"> Position </p>
+            <Input 
+              placeholder="Position" 
+              type="text"
+              name={"position"}
+              value={this.state.position}
+              onChange={(e) => {this.handleChange(e)}}
+            />
+          <p className="InputType"> LinkedIn </p>
+            <Input 
+              placeholder="LinkedIn Profile URL" 
+              type="text"
+              name={"linkedin"}
+              value={this.state.linkedin}
+              onChange={(e) => {this.handleChange(e)}}
+            />
+          <p className="InputType"> Email </p>
+            <Input 
+              placeholder="Email" 
+              type="text"
+              name={"email"}
+              value={this.state.email}
+              onChange={(e) => {this.handleChange(e)}}
+            />
+        </div>
           
         <Button size="large" color="blue"
           onClick={this.handleSubmit}

@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+<<<<<<< HEAD
+=======
+
+
+// import { Grid, Segment, Modal } from 'semantic-ui-react';
+
+>>>>>>> master
 import './DashBoard.css';
 import { Button, Segment } from 'semantic-ui-react'
 

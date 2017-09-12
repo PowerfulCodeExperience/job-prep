@@ -13,6 +13,7 @@
 }
 
 .ResourceHeader {
+  font-family: 'Nunito', sans-serif;
   width: 100%;
   height: 100px;
   font-weight: 700;
@@ -33,7 +34,7 @@
   height: 60px;
   font-size: 18px;
   font-weight: 600;
-  color: black;
+  color: #2AABE2;
   display: flex;
   align-items: center;
 }
@@ -70,19 +71,21 @@
   border-radius: 0px;
 }
 
+.ui.styled.accordion>.title:hover {
+  background: #2AABE2;
+  color: black;
+}
+
 .ui.styled.accordion>.title.active {
   border-radius: 0;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
   background: #2AABE2;
-}
-
-.ui.styled.accordion>.title:hover {
-  background: #2AABE2;
+  color: black;
 }
 
 .ui.styled.accordion>.content {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
-  background: #0072A2;
+  /* background: #0072A2; */
 }

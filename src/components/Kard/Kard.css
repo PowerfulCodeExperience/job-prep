@@ -2,6 +2,10 @@ textarea {
   width: 258px;
 }
 
+.ui.cards>.card {
+  height: 480px;
+}
+
 .ui.card, .ui.cards>.card {
   border-radius: 0px;
 }
