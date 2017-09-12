@@ -139,8 +139,9 @@ export default function reducer(state=initialState, action) {
       return state;
 
     case POST_PROFILE + '_FULFILLED':
+    console.log('action payload', action.payload.data)
       return Object.assign({}, state, {
-        profile: [...action.payload.data]
+        user: [...action.payload.data]
       })
     // case GET_PROFILE + '_PENDING':
     //   return state;
@@ -295,6 +296,7 @@ export function setSearch(value) {
   }
 }
 export function postProfile(profileObj) {
+  console.log('profile', profileObj)
   return {
     type: POST_PROFILE,
     payload: axios.post('/api/postProfile', profileObj)

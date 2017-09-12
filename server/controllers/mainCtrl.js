@@ -46,10 +46,13 @@ module.exports = {
   postProfile: (req, res) => {
     const db = req.app.get('db');
     const {linked, resume, portfolio} = req.body;
+    console.log(req.user)
     const {id} = req.user
-    console.log("l:",linked," r:", resume, " p:", portfolio, " id: ",id)
-    db.post_profile([id, linked, resume, portfolio])
-    .then(response => console.log(response))
+    // console.log("l:",linked," r:", resume, " p:", portfolio, " id: ",id)
+    db.update_profile(id, linked, resume, portfolio)
+    .then(response => {
+      res.status(200).send(response)
+    })
     .catch(err => err);
   },
   getCompany: (req, res) => {

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import './DashBoard.css';
 import { Input, Button, Icon, Card, Popup, Segment } from 'semantic-ui-react'
 
-import { getGoals } from '../../ducks/reducer'
+import { getGoals, getCompanies } from '../../ducks/reducer'
 
 
 class DashBoard extends Component {
@@ -19,11 +19,13 @@ class DashBoard extends Component {
 
   componentDidMount() {
     this.props.getGoals(this.props.user.id)
+    this.props.getCompanies(this.props.user.id)
 }
 
   render(){
     const {
       goals,
+      companies
 
     } = this.props
 
@@ -35,7 +37,16 @@ class DashBoard extends Component {
 
     )
   )
-  console.log("user", this.props.user)
+  const renderedApplied = companies.map((e, j) => 
+    (
+      <li key={j} className="list">
+          {e.companyname}
+      </li>
+
+    )
+  )
+  console.log("companies", this.props.companies)
+  console.log('renderedapplied', renderedApplied)
     return(
       <div className="dash_container">
           <div className="top_row">
@@ -45,17 +56,22 @@ class DashBoard extends Component {
           </div>
       <div className="side_by">
           <div className="goal_renderings">
-              <span className="daily_header">Daily Essentials
-              </span>
-              <div className="empty_input">
-              </div>
-            <Segment className="list_rendered" vertical>
-              {renderedGoals}
-            </Segment>
-                </div>
-                <div className="jobs_applied">
+            <span className="daily_header">Daily Essentials</span>
+            <div className="empty_input"></div>
+            <Segment className="list_rendered" vertical>{renderedGoals}</Segment>
+          </div>
+          <div className="jobs_applied">
+            <span className="daily_header">Jobs Applied</span>
+            {/* <div className="empty_input"></div> */}
+            <Segment className="list_rendered" vertical>{renderedApplied}</Segment>
+          </div>
+                {/* <div className="jobs_applied">
                   <span>Jobs Applied</span>
-                </div>
+                
+                <ul>
+                {renderedApplied}
+                </ul>
+                </div> */}
                 </div>
             </div>
     )
@@ -65,8 +81,9 @@ class DashBoard extends Component {
 function mapStateToProps(state) {
   return {
     user: state.user,
-    goals: state.goals
+    goals: state.goals,
+    companies: state.companies
   }
 }
 
-export default connect(mapStateToProps, { getGoals })(DashBoard);
+export default connect(mapStateToProps, { getGoals, getCompanies })(DashBoard);

@@ -43,7 +43,8 @@ li {
 }
 .jobs_applied {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  /* justify-content: space-around; */
   color: white;
   height: 80vh;
   width: 25vw;

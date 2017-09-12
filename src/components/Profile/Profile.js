@@ -109,7 +109,7 @@ class Profile extends Component {
                     </form>
                     <br/>
                     <span>Add a Goal</span>
-                    <p className="form_sub">Goals will display on your <Link to="/dashboard">Dashboard</Link></p>
+                    <p className="form_sub">Goals will display on your <Link to="/">Dashboard</Link></p>
                     <br/>
                     <div className="input-group">
                     <span className="input-group-addon">Goal</span>
@@ -152,8 +152,7 @@ class Profile extends Component {
     function mapStateToProps(state) {
         return {
             user: state.user,
-            goals: state.goals,
-            companies: state.companies
+            goals: state.goals
         }
 }
     export default connect(mapStateToProps, {postProfile, postGoal})(Profile)
