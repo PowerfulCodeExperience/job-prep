@@ -1,7 +1,3 @@
-textarea {
-  width: 258px;
-}
-
 .ui.cards>.card {
   height: 480px;
 }
@@ -34,3 +30,7 @@ input {
   display: flex;
   justify-content: center;
 }
+
+.ui.mini.modal.transition.visible.active {
+  height: 13.5em;
+ }
