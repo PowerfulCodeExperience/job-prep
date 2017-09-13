@@ -30,7 +30,7 @@ class Kard extends Component {
     console.log("mounted")
     axios.get(`/api/note/${id}`)
     .then(response => {
-      console.log("res", response)
+      // console.log("res", response)
       this.setState({
         log: response.data
       })
@@ -78,7 +78,7 @@ class Kard extends Component {
     {key: "Request Sent", text: "Request Sent", value: "Request Sent"},  
     {key: "Connected", text: "Connected", value: "Connected"}
   ]
-  console.log("log", this.state.log)
+  // console.log("log", this.state.log)
   return(
     <Card key={this.props.i}>
 
@@ -124,7 +124,7 @@ class Kard extends Component {
           <FA name="plus" onClick={(e) => this.postitNote(e)}/>
         </div>
         <div>
-          <input value={this.state.note} onChange={(e) => this.addNote(e)}/>
+          <input className="KardInput" value={this.state.note} onChange={(e) => this.addNote(e)}/>
         </div>
       </Card.Content>
 
@@ -148,7 +148,7 @@ class Kard extends Component {
           Add an Email:
         </Modal.Header>
         <Modal.Content>
-          <input value={this.props.email} onChange={(e) => this.props.updateEmail(e)}/>
+          <input className="KardInput" value={this.props.email} onChange={(e) => this.props.updateEmail(e)}/>
         </Modal.Content>
         <Modal.Actions>
           <Button onClick={() => this.close()}>Submit</Button>

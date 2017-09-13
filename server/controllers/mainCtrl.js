@@ -46,7 +46,7 @@ module.exports = {
   postProfile: (req, res) => {
     const db = req.app.get('db');
     const {linked, resume, portfolio} = req.body;
-    console.log(req.user)
+    // console.log(req.user)
     const {id} = req.user
     // console.log("l:",linked," r:", resume, " p:", portfolio, " id: ",id)
     db.update_profile(id, linked, resume, portfolio)
@@ -67,7 +67,7 @@ module.exports = {
 
   returnCompany: (req, res) => {
     const db = req.app.get('db');
-    console.log("id", req.params.id);
+    // console.log("id", req.params.id);
     db.get_company(req.params.id)
       .then(response => {
         res.status(200).send(response);
@@ -80,7 +80,7 @@ module.exports = {
 
     db.get_contacts(req.params.id)
       .then(response => {
-        console.log("Returned contacts", response)
+        // console.log("Returned contacts", response)
         res.status(200).send(response)
     })
     .catch( err => console.log(err));
@@ -93,7 +93,7 @@ module.exports = {
 
     db.get_notes(id)
     .then(response => {
-      console.log("res", response)
+      // console.log("res", response)
       res.status(200).send(response)
     })
     .catch( err => console.log(err));
@@ -104,7 +104,7 @@ module.exports = {
 
     db.get_all_contacts(req.user.id)
       .then(response => {
-        console.log('response', response);
+        // console.log('response', response);
         res.status(200).send(response);
       })
       .catch( err => console.log(err));
@@ -118,9 +118,9 @@ module.exports = {
 
     db.post_company(company, linkedin, id)
       .then(response => {
-        console.log("response", response)
+        // console.log("response", response)
         db.get_companies(id).then(companies => {
-          console.log("companies", companies)
+          // console.log("companies", companies)
           res.status(200).send(companies)
       })
     })
@@ -138,7 +138,7 @@ module.exports = {
       .then(response => {
         db.get_contacts(company.id)
           .then(contacts => {
-            console.log("contacts: ", contacts)
+            // console.log("contacts: ", contacts)
             res.status(200).send(contacts)
           })
       })
@@ -149,12 +149,12 @@ module.exports = {
     const db = req.app.get('db');
 
     const {note, date, contact_id, company_id} = req.body;
-    console.log("req.body", req.body)
+    // console.log("req.body", req.body)
     db.post_note(note, date, contact_id)
       .then(note => {
         db.get_notes(contact_id)
         .then(response => {
-          console.log("res", response)
+          // console.log("res", response)
           res.status(200).send(response)
         })
         .catch( err => console.log(err));
@@ -165,14 +165,14 @@ module.exports = {
   updateStatus: (req, res) => {
     const db = req.app.get('db');
 
-    console.log("req.body", req.body);
+    // console.log("req.body", req.body);
     const {status, date, id, company_id} = req.body;
 
     db.update_status(status, date, id, company_id)
       .then(response => {
         db.get_contacts(company_id)
           .then(contacts => {
-            console.log("contacts", contacts)
+            // console.log("contacts", contacts)
             res.status(200).send(contacts)
           })
       })
@@ -183,12 +183,12 @@ module.exports = {
     const db = req.app.get('db');
 
     const {email, id, company_id} = req.body;
-    console.log("body", req.body)
+    // console.log("body", req.body)
     db.update_email(email, id)
       .then(response => {
         db.get_contacts(company_id)
           .then(contacts => {
-            console.log("contacts", contacts)
+            // console.log("contacts", contacts)
             res.status(200).send(contacts)
           })
           .catch( err => console.log(err));
@@ -205,7 +205,7 @@ module.exports = {
       .then(response => {
         db.get_companies(req.user.id)
           .then(companies => {
-            console.log("comp", companies)
+            // console.log("comp", companies)
             res.status(200).send(companies)
           })
           .catch( err => console.log(err));

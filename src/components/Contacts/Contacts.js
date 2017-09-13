@@ -91,7 +91,7 @@ class Contacts extends Component {
           card: 'Card Flip2Front',
           flip: false
         })}> &#10006; </div>
-        <div className="IndivInput">
+        <div className="InputBody">
           <p className="InputType"> Name </p>
             <Input 
               placeholder="Name" 

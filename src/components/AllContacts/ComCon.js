@@ -15,20 +15,22 @@ class ComCon extends Component {
             return (
               <section className="SingleWrap" key={company.companyid}>
                 <h1 className="SingleTitle"><Link to={`/contacts/${company.id}`} className="TitleLink"> {company.companyname} </Link></h1>
-                <Card.Group>   
-                {
-                  this.props.allContacts.map((contact, i) => {
-                    if(contact.companyname === company.companyname) {
-                      return (
-                        <Kard key={i}
-                          i = {i}
-                          contact = {contact}
-                          setStatus = {this.setStatus}
-                        />
-                    )}
-                  })
-                }
-                </Card.Group>
+                  <div className="CardGroupWrap">
+                    <Card.Group>   
+                    {
+                      this.props.allContacts.map((contact, i) => {
+                        if(contact.companyname === company.companyname) {
+                          return (
+                            <Kard key={i}
+                              i = {i}
+                              contact = {contact}
+                              setStatus = {this.setStatus}
+                            />
+                        )}
+                      })
+                    }
+                    </Card.Group>
+                  </div>
               </section>
             )
           })

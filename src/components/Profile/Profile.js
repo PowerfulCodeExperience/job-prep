@@ -58,7 +58,7 @@ class Profile extends Component {
 
                     <div className="form-group">
                         <label>Url's</label>
-                        <p className="form_sub">(psssttt...use <a href="https://bitly.com/" className="bit"target='_blank'>bit.ly</a> to shorten the link)</p>
+                        <p className="form_sub">(psssttt...use <a href="https://bitly.com/" className="bit" target='_blank' rel="noopener noreferrer">bit.ly</a> to shorten the link)</p>
                         <br/>
                         <br/>
                         <div className="input-group">

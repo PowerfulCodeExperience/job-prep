@@ -65,7 +65,7 @@ export default function reducer(state=initialState, action) {
       return state;
 
     case GET_COMPANIES + '_FULFILLED':
-      console.log("Companies:", action.payload.data);
+      // console.log("Companies:", action.payload.data);
       return Object.assign({}, state, {
         companies: [...action.payload.data]
       })

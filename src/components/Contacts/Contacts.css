@@ -84,6 +84,7 @@
   align-items: flex-end;
   border: 2px solid gray;
   opacity: 0.5;
+  padding: 0 10px 10px 0;
 }
 
 .CardFront:hover {
@@ -101,8 +102,8 @@
   width: 80px;
   height: 80px;
   position: relative;
-  left: 20px;
-  bottom: 200px;
+  left: 5px;
+  bottom: 190px;
   font-size: 50px;
   color: #2AABE2;
   border: 2px solid #2AABE2;
@@ -124,7 +125,6 @@
   background: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
 }
 
@@ -150,9 +150,14 @@
   cursor: pointer;
 }
 
+.InputBody {
+  margin: 20px 0 20px 0;
+}
+
 .InputType {
   font-size: 20px;
   font-weight: bold;
+  padding: 20px 0 10px 0;
 }
 
 /* Mobile View */

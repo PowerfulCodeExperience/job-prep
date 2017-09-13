@@ -46,7 +46,7 @@
 }
 
 /* Mobile View */
-@media(max-width: 800px) {
+@media(max-width: 1200px) {
   .CompanyHeader {
     padding-top: 30px;
     text-align: center;

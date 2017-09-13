@@ -5,7 +5,7 @@
 .Container {
   position: fixed;
   z-index: 900;
-  background: #202020;
+  /* background: #202020; */
   width: 302px;
   height: 100vh;
   border-right: 2px solid #2AABE2;
@@ -16,7 +16,7 @@
 }
 
 .Container img {
-  filter: invert(100%);
+  /* filter: invert(100%); */
   width: 238px;
 }
 
@@ -25,7 +25,8 @@
   text-decoration: none;
   font-size: 16px;
   font-weight: 700;
-  color: white;
+  /* color: white; */
+  color: black;
   display: flex;
   align-items: center;
 }
@@ -39,7 +40,7 @@
 }
 
 .Container span:hover {
-  color: white;
+  color: black;
 }
 
 .Links {
