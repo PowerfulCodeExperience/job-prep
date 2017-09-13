@@ -34,3 +34,6 @@ input {
   display: flex;
   justify-content: center;
 }
+.ui.mini.modal.transition.visible.active {
+  height: 20em;
+}

@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
-
-// import { Grid, Segment, Modal } from 'semantic-ui-react';
-
-import './DashBoard.css';
 import { Button, Segment } from 'semantic-ui-react'
+import './DashBoard.css';
 
 import { getGoals, getCompanies } from '../../ducks/reducer'
 
