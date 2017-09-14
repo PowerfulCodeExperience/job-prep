@@ -61,10 +61,11 @@
 /* Accordian Styles */
 .ui.styled.accordion {
   background: #2AABE2;
-  border: 2px solid #2AABE2;
+  border: 1px solid black
 }
 
 .ui.styled.accordion>.title {
+  /* -webkit-text-stroke: 0.5px black; */
   color: white;
   font-family: 'Nunito', sans-serif;
   font-size: 25px;
@@ -72,20 +73,21 @@
 }
 
 .ui.styled.accordion>.title:hover {
-  background: #2AABE2;
+  border-radius: 5px;
+  background: #74DCFF;
   color: black;
 }
 
 .ui.styled.accordion>.title.active {
   border-radius: 0;
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
-  background: #2AABE2;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background: #74DCFF;
   color: black;
 }
 
 .ui.styled.accordion>.content {
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-  background: #0073A0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background: #2AABE2;
 }

@@ -33,6 +33,7 @@
   height: 100px;
   font-family: 'Nunito', sans-serif;
   background-color: #2AABE2;
+  border: 1px solid black;
   border-radius: 5px;
   display: flex;
   justify-content: space-around;
@@ -55,7 +56,6 @@
 
   .CompanyInput {
     flex-direction: column;
-
     width: 90%;
     height: 300px;
     font-family: 'Nunito', sans-serif;
@@ -104,29 +104,18 @@
 
 /* Desktop Table Styles */
 .ui.table {
-  background: transparent;
-  border: 2px solid #2AABE2;
+  background: #2AABE2;
+  border: 1px solid black;
 }
 
 .ui.table thead tr>th {
-  background: transparent;
+  background: #2AABE2;
+  color: white;
   font-size: 35px;
-  color: #2AABE2;
-  border-bottom: 2px solid #2AABE2;
+  border-bottom: 1px solid black;
   padding: 20px 0 20px 30px;
 }
 
-/* Odd Rows */
-.ui.table tbody tr {
-  background: transparent;
-}
-
-/* Even Rows */
-.ui.table tbody {
-  background: transparent;  
-}
-
-/* Single Row & Column */
 .ui.table tbody tr>td {
   padding: 0;
   margin: 0;
@@ -147,13 +136,13 @@
   height: 100%;
   font-size: 20px;
   font-weight: 700;
-  color: #2AABE2;
+  color: white;
   display: flex;
   align-items: center;
   padding-left: 30px;
 }
 
 .RowFill:hover {
-  color: white;
+  color: black;
   cursor: pointer;
 }

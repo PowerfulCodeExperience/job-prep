@@ -88,12 +88,12 @@ class Companies extends Component {
           </section>
 
           <section className="TableWrap">
-            <Table striped selectable>
+            <Table selectable>
               <Table.Header>
                 <Table.Row>
                   <Table.HeaderCell>Company</Table.HeaderCell>
                   <Table.HeaderCell>LinkedIn</Table.HeaderCell>
-                  <Table.HeaderCell>Applied</Table.HeaderCell>
+                  <Table.HeaderCell textAlign="center">Applied</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
 
@@ -104,7 +104,7 @@ class Companies extends Component {
                     <Table.Row key={i}>
                       <Table.Cell><Link to={`/contacts/${company.id}`} className="RowFill"><span className="Comp">{company.companyname}</span></Link></Table.Cell>
                       <Table.Cell><a className="RowFill" href={company.companylinkedin} target={"_blank"}>{company.companylinkedin}</a></Table.Cell>
-                      <Table.Cell>
+                      <Table.Cell textAlign="center">
                       {
                         <Checkbox checked={company.applied} onChange={(e, data) => {this.applied(e, data, company.id)}} />
                       }
