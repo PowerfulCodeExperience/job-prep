@@ -53,6 +53,7 @@ class Companies extends Component {
   }
 
   render() {
+    console.log("companies", this.props.companies)
     return (
       <div className="Companies">
 
@@ -96,7 +97,7 @@ class Companies extends Component {
               <h3 className="CompanySub">LinkedIn:</h3>
 
               <Input
-                focus placeholder="URL"
+                focus placeholder="LInkedin URL"
                 type="text"
                 name={"linkedin"}
                 value={this.state.linkedin}
@@ -129,32 +130,43 @@ class Companies extends Component {
                   return (
                     <Table.Row key={i}>
 
+                      {/* Company Name */}
                       <Table.Cell>
                         <Link to={`/contacts/${company.id}`} className="RowFill">
                           <span className="Comp">{company.companyname}</span>
                         </Link>
                       </Table.Cell>
 
+                      {/* Position */}
                       <Table.Cell>
-                        <span className="Comp">Full Stack Web Developer</span>
+                        <span className="Comp RowFill">{company.position}</span>
                       </Table.Cell>
 
+                      {/* CompanyURL */}
+                      <Table.Cell>
+                        <span className="RowFill">
+                          <a href={company.companyurl} target={"_blank"}> 
+                            <FA name="external-link" size="2x"/>
+                          </a>
+                        </span>
+                      </Table.Cell>
+
+                      {/* Linkedin Link */}
                       <Table.Cell textAlign="center">
-                        <FA name="external-link" size="2x"/>
+                        <span className="RowFill">
+                          <a href={company.companylinkedin} target={"_blank"}>
+                            <FA name="linkedin-square" size="2x"/>
+                          </a>
+                        </span>
                       </Table.Cell>
 
-                      <Table.Cell textAlign="center">
-                        <a className="RowFill" href={company.companylinkedin} target={"_blank"}>
-                          <FA name="linkedin-square" size="2x"/>
-                        </a>
-                      </Table.Cell>
-
+                      {/* Applied Checkout Box */}
                       <Table.Cell textAlign="center">
                       {
                         <Checkbox checked={company.applied} onChange={(e, data) => {this.applied(e, data, company.id)}} />
                       }
                       </Table.Cell>
-                      
+
                     </Table.Row>
                   )
                 })

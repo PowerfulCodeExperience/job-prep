@@ -1,1 +1,1 @@
-INSERT INTO users_companies (companyname, companylinkedin, user_id) VALUES ($1, $2, $3) RETURNING *;
+INSERT INTO users_companies (companyname, position, companyurl, companylinkedin, user_id) VALUES ($1, $2, $3, $4, $5) RETURNING *;

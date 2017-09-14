@@ -20,13 +20,8 @@ class Profile extends Component {
 
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
-        // this.handleChange = this.handleChange.bind(this)
         this.handleGoalSubmit = this.handleGoalSubmit.bind(this)
       }
-    
-    //   componentDidMount(){
-    //     this.props.getProfile();
-    //   }
     
       handleChange(event) {
         let name = event.target.name
@@ -124,19 +119,7 @@ class Profile extends Component {
                            </Button>
                 </div>
                 </div>
-                    <div className="rendered_url">
-                        <p>
-                            {/* {
-                                if(this.props.companies.applied === true) {
-                                    this.props.companies.applied
-                                } else {
-                                    !this.props.companies.applied
-                                }
-                            } */}
-                        </p> 
-                    </div>
-                    
-              
+                  
               </div>
           )
       }
