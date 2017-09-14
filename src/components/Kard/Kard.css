@@ -34,9 +34,6 @@
   display: flex;
   justify-content: center;
 }
-
-/* .ui.mini.modal {
-  margin: 0 0 0 0;
-  padding: 0 0 0 0;
-  transition: none !important;
-} */
+.ui.mini.modal.transition.visible.active {
+  height: 13.5em;
+}

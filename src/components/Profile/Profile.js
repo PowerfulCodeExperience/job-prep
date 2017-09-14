@@ -20,13 +20,8 @@ class Profile extends Component {
 
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
-        // this.handleChange = this.handleChange.bind(this)
         this.handleGoalSubmit = this.handleGoalSubmit.bind(this)
       }
-    
-    //   componentDidMount(){
-    //     this.props.getProfile();
-    //   }
     
       handleChange(event) {
         let name = event.target.name
@@ -126,13 +121,36 @@ class Profile extends Component {
                 </div>
                     <div className="rendered_url">
                         <p>
-                            {/* {
-                                if(this.props.companies.applied === true) {
-                                    this.props.companies.applied
-                                } else {
-                                    !this.props.companies.applied
-                                }
-                            } */}
+                            <Link to="/companies"><h2 id="teach_header">20 Company Challenge Instructions</h2></Link>
+                            <br/>
+                            <h3 className="step_headers">Step 1</h3>
+                            <p className="para_steps">Search LinkedIn for companies
+                                you want to work for.
+                            </p>
+                            <br/>
+                            <h3 className="step_headers">Step 2</h3>
+                            <p className="para_steps">Search that company for tech related 
+                                people who you can connect with and ask to connect with them.
+                            </p>
+                            <br/>
+                            <h3 className="step_headers">Step 3</h3>
+                            <p className="para_steps">Enter the company
+                                and contact information in the 20
+                                Company Challenge provided inputs.
+                            </p>
+                            <br/>
+                            <h3 className="step_headers">Step 4</h3>
+                            <p className="para_steps">Once you are connected with the person
+                                on LinkedIn, add their email to the 
+                                contacts card.
+                            </p>
+                            <br/>
+                            <p className="para_steps">*Remember, make connections before 
+                                making requests.
+                                <span>"Focus on friendships and the opportunities
+                                will follow."  - Meghan Barber, DevMountain Employment Specialist
+                                </span>
+                            </p>
                         </p> 
                     </div>
                     

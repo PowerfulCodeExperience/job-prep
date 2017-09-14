@@ -17,12 +17,12 @@
   margin-bottom: 3em;
   height: 20vh;
   width: 80%;
-  border: 2px solid #2AAAE0;
+  /* border: 2px solid #2AAAE0; */
 }
 .goal_renderings {
   height: 80vh;
   width: 45vw;
-  border: 2px solid #2AAAE0;
+  /* border: 2px solid #2AAAE0; */
   overflow: auto;
   margin: 4px;
 }
@@ -50,7 +50,8 @@
   width: 25vw;
   font-size: 30px;
   padding-top: 16px;
-  border: 2px solid #2AAAE0;
+  /* border: 2px solid #2AAAE0; */
+  overflow: auto;
 }
 .top_row {
   display: flex;
