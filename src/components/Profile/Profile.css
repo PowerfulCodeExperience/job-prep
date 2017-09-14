@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Architects+Daughter');
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
 
 .profile_wrapper {
     display: flex;
@@ -13,9 +14,8 @@
 }
 .rendered_url {
     display: flex;
-    height: 30vh;
-    width: 30%;
-    border: 2px solid red;
+    height: 45vh;
+    width: 45%;
     color: white;
     font-size: 20px;
 }
@@ -28,4 +28,18 @@
 }
 .bit:hover {
     color: #4795E9;
+}
+#teach_header {
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 28px;
+    color: yellow;
+}
+.step_headers {
+    font-size: 18px;
+    font-weight: bold;
+}
+.para_steps {
+    font-size: 16px;
+    font-style: italic;
 }
