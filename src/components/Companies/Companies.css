@@ -29,8 +29,9 @@
 }
 
 .CompanyInput {
+  display: flex;
   width: 80%;
-  height: 100px;
+  height: 200px;
   font-family: 'Nunito', sans-serif;
   background-color: #2AABE2;
   border-radius: 5px;
@@ -55,7 +56,6 @@
 
   .CompanyInput {
     flex-direction: column;
-
     width: 90%;
     height: 300px;
     font-family: 'Nunito', sans-serif;

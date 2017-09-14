@@ -63,9 +63,17 @@ class App extends Component {
 
     return (
       <div>
-      <div>
+      {/* <div>
         {checkStatus()}
-      </div>
+      </div> */}
+
+      <Router>
+            <div>
+              <Route path="/" component={ Wrapper } />
+              <Route path="/landing" component={ Landing } />
+            </div>
+          </Router>
+
       </div>
     );
   }
