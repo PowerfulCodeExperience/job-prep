@@ -4,22 +4,20 @@ import {connect} from 'react-redux';
 import './DashBoard.css';
 // import { Segment } from 'semantic-ui-react';
 
+import { Segment } from 'semantic-ui-react'
+
 import { getGoals, getCompanies } from '../../ducks/reducer'
 
 
 class DashBoard extends Component {
-  
-    componentDidMount() {
-      this.props.getGoals(this.props.user.id)
-      this.props.getCompanies(this.props.user.id)
-    }
+
+  componentDidMount() {
+    this.props.getGoals(this.props.user.id)
+    this.props.getCompanies(this.props.user.id)
+  }
 
   render(){
-    const {
-      goals,
-      companies
-
-    } = this.props
+    const { goals, companies } = this.props
 
     const renderedGoals = goals.map((e, i) => 
     {

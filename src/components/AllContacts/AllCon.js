@@ -12,8 +12,8 @@ class AllCon extends Component {
       <main className="AllWrap">
         <section className="SingleWrap">
           <h1 className="SingleTitle"> All Contacts </h1>
-            <div className="CardGroupWrap">
-              <Card.Group>
+          <div className="CardGroupWrap">
+            <Card.Group>
               {
                 this.props.allContacts.map((contact, i) => {
                   if(!this.props.search) {
@@ -34,10 +34,17 @@ class AllCon extends Component {
                       />
                     )
                   }
+                  else {
+                    return (
+                      null
+                    )
+                  }
                 })
               }
-              </Card.Group>
-            </div>
+            })
+          }
+            </Card.Group>
+          </div>
         </section>
       </main>
     )

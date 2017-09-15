@@ -21,7 +21,7 @@
 .form {
     width: 30%;
     height: 75vh;
-    color:black;
+    color:white;
     background: #2AABE2;
     font-size: 20px;
     border: 1px solid black;
@@ -33,7 +33,7 @@
     width: 45%;
     height: 75vh;
     background: #2AABE2;
-    color: black;
+    color: white;
     font-size: 20px;
     border: 1px solid black;
     border-radius: 5px;
@@ -91,11 +91,11 @@
     float: right;
 }
 .dash_link {
-    color: black;
+    color: white;
     text-decoration: underline;
 }
 .dash_link:hover {
-    color: white;
+    color: black;
     text-decoration: underline;
 }
 .ProfileImage {

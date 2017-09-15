@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import FA from 'react-fontawesome';
 
 import {Button, Input, Table, Checkbox} from 'semantic-ui-react';
 
@@ -35,14 +36,14 @@ class Companies extends Component {
     })
   }
 
-  
-
   handleSubmit(event){
     this.props.postCompany(this.state);
 
     this.setState({
       company: "",
-      linkedin: ""
+      position: "",
+      linkedin: "",
+      companyurl: ""
     })
   }
 
@@ -52,6 +53,7 @@ class Companies extends Component {
   }
 
   render() {
+    console.log("companies", this.props.companies)
     return (
       <div className="Companies">
 
@@ -59,32 +61,57 @@ class Companies extends Component {
 
         <main className="CompanyWrap">
           <section className="CompanyInput">
+            <div className="TopInput">
+              <h3 className="CompanySub">Company:</h3>
 
-            <h3 className="CompanySub">Company:</h3>
+              <Input 
+                focus placeholder="Name" 
+                type="text"
+                name={"company"}
+                value={this.state.company}
+                onChange={(e) => {this.handleChange(e)}}
+              />
 
-            <Input 
-              focus placeholder="Name" 
-              type="text"
-              name={"company"}
-              value={this.state.company}
-              onChange={(e) => {this.handleChange(e)}}
-            />
+              <h3 className="CompanySub">Position:</h3>
 
-            <h3 className="CompanySub">LinkedIn:</h3>
+              <Input
+                focus placeholder="Position"
+                type="text"
+                name={"position"}
+                value={this.state.position}
+                onChange={(e) => {this.handleChange(e)}}
+              />
+            </div>
 
-            <Input
-              focus placeholder="URL"
-              type="text"
-              name={"linkedin"}
-              value={this.state.linkedin}
-              onChange={(e) => {this.handleChange(e)}}
-            />
+            <div className="BottomInput">
+                <h3 className="CompanySub">Company URL:</h3>
 
-            <Button style={{'fontFamily':'"Nunito", sans-serif', 'fontWeight':'700'}} size='large' inverted
-              disabled={this.state.company && this.state.linkedin?false:true}
-              onClick={this.handleSubmit}>
-              SUBMIT
-            </Button>
+                <Input 
+                  focus placeholder="Company URL"
+                  type="text"
+                  name={"companyurl"}
+                  value={this.state.companyurl}
+                  onChange={(e) => {this.handleChange(e)}}
+                />
+
+                <h3 className="CompanySub">LinkedIn:</h3>
+
+                <Input
+                  focus placeholder="LInkedin URL"
+                  type="text"
+                  name={"linkedin"}
+                  value={this.state.linkedin}
+                  onChange={(e) => {this.handleChange(e)}}
+                />
+            </div>
+
+            <div className="SubmitButton">
+              <Button style={{'fontFamily':'"Nunito", sans-serif', 'fontWeight':'700'}} size='large' inverted
+                disabled={this.state.company && this.state.linkedin?false:true}
+                onClick={this.handleSubmit}>
+                SUBMIT
+              </Button>
+            </div>
           </section>
 
           <section className="TableWrap">
@@ -92,6 +119,8 @@ class Companies extends Component {
               <Table.Header>
                 <Table.Row>
                   <Table.HeaderCell>Company</Table.HeaderCell>
+                  <Table.HeaderCell>Position</Table.HeaderCell>
+                  <Table.HeaderCell>Company URL</Table.HeaderCell>
                   <Table.HeaderCell>LinkedIn</Table.HeaderCell>
                   <Table.HeaderCell textAlign="center">Applied</Table.HeaderCell>
                 </Table.Row>
@@ -102,13 +131,44 @@ class Companies extends Component {
                 this.props.companies.map((company, i) => {
                   return (
                     <Table.Row key={i}>
-                      <Table.Cell><Link to={`/contacts/${company.id}`} className="RowFill"><span className="Comp">{company.companyname}</span></Link></Table.Cell>
-                      <Table.Cell><a className="RowFill" href={company.companylinkedin} target={"_blank"}>{company.companylinkedin}</a></Table.Cell>
+
+                      {/* Company Name */}
+                      <Table.Cell>
+                        <Link to={`/contacts/${company.id}`} className="RowFill">
+                          <span className="Comp">{company.companyname}</span>
+                        </Link>
+                      </Table.Cell>
+
+                      {/* Position */}
+                      <Table.Cell>
+                        <span className="Comp RowFill">{company.position}</span>
+                      </Table.Cell>
+
+                      {/* CompanyURL */}
+                      <Table.Cell>
+                        <span className="RowFill">
+                          <a href={company.companyurl} target={"_blank"}> 
+                            <FA name="external-link" size="2x"/>
+                          </a>
+                        </span>
+                      </Table.Cell>
+
+                      {/* Linkedin Link */}
+                      <Table.Cell textAlign="center">
+                        <span className="RowFill">
+                          <a href={company.companylinkedin} target={"_blank"}>
+                            <FA name="linkedin-square" size="2x"/>
+                          </a>
+                        </span>
+                      </Table.Cell>
+
+                      {/* Applied Checkout Box */}
                       <Table.Cell textAlign="center">
                       {
                         <Checkbox checked={company.applied} onChange={(e, data) => {this.applied(e, data, company.id)}} />
                       }
                       </Table.Cell>
+
                     </Table.Row>
                   )
                 })

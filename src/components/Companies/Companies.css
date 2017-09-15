@@ -29,8 +29,9 @@
 }
 
 .CompanyInput {
+  display: flex;
   width: 80%;
-  height: 100px;
+  height: 350px;
   font-family: 'Nunito', sans-serif;
   background-color: #2AABE2;
   border: 1px solid black;
@@ -44,6 +45,13 @@
 
 .TableWrap {
   width: 80%;
+}
+
+.TopInput, .BottomInput {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /* Mobile View */
@@ -87,6 +95,7 @@
   .RowFill {
     display: flex;
     justify-content: center;
+    color: white;
     padding-right: 30px;
     margin: 0;
   }
@@ -97,7 +106,7 @@
   }
 
   .Comp {
-    color: #2AABE2;
+    color: white;
     font-size: 25px;
   }
 }
