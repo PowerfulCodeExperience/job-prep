@@ -65,7 +65,6 @@
 }
 
 .ui.styled.accordion>.title {
-  /* -webkit-text-stroke: 0.5px black; */
   color: white;
   font-family: 'Nunito', sans-serif;
   font-size: 25px;

@@ -56,7 +56,7 @@ class AllContacts extends Component {
             </h1></Link>
           </div>
           <div className="SearchWrap">
-            <input className="Search" placeholder="Search Contacts" disabled={this.state.disable} onBlur={(e) => e.target.value = ''} onChange={(e) => {
+            <input className="Search" placeholder={!this.state.disable?"Search Contacts":""} disabled={this.state.disable} onBlur={(e) => e.target.value = ''} onChange={(e) => {
               let value = e.target.value.toLowerCase();
               this.props.setSearch(value);
             }}/>

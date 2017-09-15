@@ -1,45 +1,128 @@
-@import url('https://fonts.googleapis.com/css?family=Architects+Daughter');
+/* @import url('https://fonts.googleapis.com/css?family=Architects+Daughter'); */
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
 .profile_wrapper {
+    height: 100vh;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    flex-wrap: wrap;
+}
+.profile-header {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 60px;
+    font-weight: 700;
+    color: #2AABE2;
+    padding-right: 100px;
 }
 .form {
     width: 30%;
-    color: white;
+    height: 75vh;
+    color:black;
+    background: #2AABE2;
     font-size: 20px;
-    margin-top: 5em; 
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 20px;
 }
 .rendered_url {
     display: flex;
-    height: 45vh;
     width: 45%;
-    color: white;
+    height: 75vh;
+    background: #2AABE2;
+    color: black;
     font-size: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 20px;
 }
 .form_sub {
     font-size: 16px;
-    font-family: 'Architects Daughter', cursive;
+    font-family: 'Nunito', sans-serif;
 }
 .bit {
-    color: yellow;
+    color: white;
 }
 .bit:hover {
-    color: #4795E9;
+    color: #2AABE2;
 }
 #teach_header {
+    width: 100%;
     text-align: center;
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-size: 28px;
-    color: yellow;
+    font-weight: 700;
+    color: white;
+    padding-bottom: 10px;
+}
+.input-group {
+    font-family: 'Nunito', sans-serif;
+    height: 30px;
+    width: 90%;
+}
+.input-group-addon {
+    font-family: 'Nunito', sans-serif;
+    width: 50px;
+    height: 100%;
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    font-weight: 700;
+}
+.form-control {
+    height: 100%;
 }
 .step_headers {
     font-size: 18px;
     font-weight: bold;
+    padding-bottom: 10px;
 }
 .para_steps {
     font-size: 16px;
+}
+.para-italic {
+    font-size: 16px;
     font-style: italic;
+}
+.indent {
+    float: right;
+}
+.dash_link {
+    color: black;
+    text-decoration: underline;
+}
+.dash_link:hover {
+    color: white;
+    text-decoration: underline;
+}
+.ProfileImage {
+    width: 60px;
+    height: 60px;
+    border: 3px solid #2AABE2;
+    border-radius: 50%;
+    margin-right: 30px;
+  }
+
+/* Mobile View */
+@media(max-width: 800px) {
+    .profile-header {
+        font-size: 45px;
+        padding: 0;
+        margin-top: 20px;
+    }
+
+    .form {
+        width: 90%;
+        height: 90%;
+        margin: 20px 0 20px 0;
+    }
+
+    .rendered_url {
+        width: 90%;
+        height: 100%;
+        margin-bottom: 50px;
+    }
 }

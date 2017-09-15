@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
 import './DashBoard.css';
-import { Segment } from 'semantic-ui-react'
+// import { Segment } from 'semantic-ui-react';
 
 import { getGoals, getCompanies } from '../../ducks/reducer'
 
@@ -34,30 +34,30 @@ class DashBoard extends Component {
     return(
       <div className="dash_container">
           <div className="top_row">
-            <a href={this.props.user.linked} target="_blank" rel="noopener noreferrer" className={!this.props.user.linked ? "not_active" : null}><span className="link_spans">LinkedIn</span></a>
-            <a href={this.props.user.resume} target="_blank" rel="noopener noreferrer" className={!this.props.user.resume ? "not_active" : null}><span className="link_spans">Resume</span></a>
-            <a href={this.props.user.portfolio} target="_blank" rel="noopener noreferrer" className={!this.props.user.portfolio ? "not_active" : null}><span className="link_spans">Portfolio</span></a>
+            <a href={this.props.user.linked} target="_blank" rel="noopener noreferrer" className={!this.props.user.linked ? "not_active" : "active"}><span className="link_spans">LinkedIn</span></a>
+            <a href={this.props.user.resume} target="_blank" rel="noopener noreferrer" className={!this.props.user.resume ? "not_active" : "active"}><span className="link_spans">Resume</span></a>
+            <a href={this.props.user.portfolio} target="_blank" rel="noopener noreferrer" className={!this.props.user.portfolio ? "not_active" : "active"}><span className="link_spans">Portfolio</span></a>
           </div>
         <div className="side_by">
           <div className="goal_renderings">
             <span className="daily_header">Daily Essentials</span>
-            <Segment className="list_rendered" vertical>
+            <ul className="list_rendered">
               {
                 renderedGoals.map((e, i) => {
                   return <li className="dash_li" key={i}>{e}</li>
                 })
               }
-            </Segment>
+            </ul>
           </div>
           <div className="jobs_applied">
             <span className="daily_header">Jobs Applied</span>
-            <Segment className="list_rendered" vertical>
+            <ul className="list_rendered">
               {
                 renderedApplied.map((e, i) => {
                   return <li className="dash_li" key={i}>{e.companyname}</li>
                 })
               }
-            </Segment>
+            </ul>
           </div>
         </div>
       </div>

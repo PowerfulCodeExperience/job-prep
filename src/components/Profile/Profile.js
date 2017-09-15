@@ -47,18 +47,21 @@ class Profile extends Component {
 
           return (
               <div className="profile_wrapper">
+                  <div className="profile-header">
+                    {/* <img src={this.props.user.picture} className={this.props.user.id?"ProfileImage":null} alt=""/> */}
+                    Profile
+                  </div>
                   <div className="form">
                   <div className="form-group">
                     <form onSubmit={this.handleSubmit}>
 
                     <div className="form-group">
-                        <label>Url's</label>
-                        <p className="form_sub">(psssttt...use <a href="https://bitly.com/" className="bit" target='_blank' rel="noopener noreferrer">bit.ly</a> to shorten the link)</p>
+                        <label id="teach_header">URL's</label>
+                        <p className="form_sub">These will be displayed on your <Link to="/" className="dash_link">Dashboard</Link></p>
                         <br/>
                         <br/>
                         <div className="input-group">
                         <span className="input-group-addon">LinkedIn</span>
-
                         <input 
                         type="text"
                         name="linked"
@@ -95,11 +98,10 @@ class Profile extends Component {
                     </div>
                     </div>
                     <br/>
-                        <Button type='submit' value='submit'>Submit</Button>
+                        <Button size="medium" inverted type='submit' value='submit'>SUBMIT</Button>
                     </form>
                     <br/>
-                    <span>Add a Goal</span>
-                    <p className="form_sub">Goals will display on your <Link to="/">Dashboard</Link></p>
+                    <label id="teach_header">Add a Goal</label>
                     <br/>
                     <div className="input-group">
                     <span className="input-group-addon">Goal</span>
@@ -112,10 +114,10 @@ class Profile extends Component {
                         />
                     </div>
                     <br/>
-                    <Button disabled={!this.state.goal} onClick={this.handleGoalSubmit} size="tiny">
+                    <Button size="medium" inverted disabled={!this.state.goal} onClick={this.handleGoalSubmit}>
                             <Button.Content visible>
                             </Button.Content>
-                              <Button.Content>Add</Button.Content>
+                              <Button.Content>ADD</Button.Content>
                            </Button>
                 </div>
                 </div>
@@ -144,11 +146,12 @@ class Profile extends Component {
                                 on LinkedIn, add their email to the 
                                 contacts card.
                             </p>
-                            <br/>
-                            <p className="para_steps">*Remember, make connections before 
-                                making requests.
-                                <span>"Focus on friendships and the opportunities
-                                will follow."  - Meghan Barber, DevMountain Employment Specialist
+                            <br/><br/><br/><br/>
+                            <p className="para-italic">* Remember, make connections before 
+                                making requests. <br/><br/>
+                                <span className="para-italic">"Focus on friendships and the opportunities
+                                will follow." <br/>
+                                <span className="para-italic indent"> - Meaghan Barber, DevMountain Employment Specialist</span>
                                 </span>
                             </p>
                         </p> 
