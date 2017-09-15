@@ -26,11 +26,10 @@ class Kard extends Component {
 
   componentDidMount(){
     let id = this.props.contact.id
-    console.log("id", this.props.contact.id)
-    console.log("mounted")
+
     axios.get(`/api/note/${id}`)
-    .then(response => {
-      console.log("res", response)
+      .then(response => {
+
       this.setState({
         log: response.data
       })
@@ -67,9 +66,9 @@ class Kard extends Component {
         })
       })
 
-    // this.setState({
-    //   note: ''
-    // })
+    this.setState({
+      note: ''
+    })
   }
 
   render(){
@@ -78,7 +77,7 @@ class Kard extends Component {
     {key: "Request Sent", text: "Request Sent", value: "Request Sent"},  
     {key: "Connected", text: "Connected", value: "Connected"}
   ]
-  console.log("log", this.state.log)
+
   return(
     <Card key={this.props.i}>
 
