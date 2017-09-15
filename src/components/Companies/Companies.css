@@ -31,7 +31,7 @@
 .CompanyInput {
   display: flex;
   width: 80%;
-  height: 200px;
+  height: 350px;
   font-family: 'Nunito', sans-serif;
   background-color: #2AABE2;
   border-radius: 5px;
@@ -44,6 +44,13 @@
 
 .TableWrap {
   width: 80%;
+}
+
+.TopInput, .BottomInput {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /* Mobile View */

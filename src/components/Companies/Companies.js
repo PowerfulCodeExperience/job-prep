@@ -84,32 +84,34 @@ class Companies extends Component {
             </div>
 
             <div className="BottomInput">
-              <h3 className="CompanySub">Company URL:</h3>
+                <h3 className="CompanySub">Company URL:</h3>
 
-              <Input 
-                focus placeholder="Company URL"
-                type="text"
-                name={"companyurl"}
-                value={this.state.companyurl}
-                onChange={(e) => {this.handleChange(e)}}
-              />
+                <Input 
+                  focus placeholder="Company URL"
+                  type="text"
+                  name={"companyurl"}
+                  value={this.state.companyurl}
+                  onChange={(e) => {this.handleChange(e)}}
+                />
 
-              <h3 className="CompanySub">LinkedIn:</h3>
+                <h3 className="CompanySub">LinkedIn:</h3>
 
-              <Input
-                focus placeholder="LInkedin URL"
-                type="text"
-                name={"linkedin"}
-                value={this.state.linkedin}
-                onChange={(e) => {this.handleChange(e)}}
-              />
+                <Input
+                  focus placeholder="LInkedin URL"
+                  type="text"
+                  name={"linkedin"}
+                  value={this.state.linkedin}
+                  onChange={(e) => {this.handleChange(e)}}
+                />
             </div>
 
-            <Button style={{'fontFamily':'"Nunito", sans-serif', 'fontWeight':'700'}} size='large' inverted
-              disabled={this.state.company && this.state.linkedin?false:true}
-              onClick={this.handleSubmit}>
-              SUBMIT
-            </Button>
+            <div className="SubmitButton">
+              <Button style={{'fontFamily':'"Nunito", sans-serif', 'fontWeight':'700'}} size='large' inverted
+                disabled={this.state.company && this.state.linkedin?false:true}
+                onClick={this.handleSubmit}>
+                SUBMIT
+              </Button>
+            </div>
           </section>
 
           <section className="TableWrap">
