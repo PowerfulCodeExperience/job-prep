@@ -33,6 +33,10 @@ const UPDATE_EMAIL = 'UPDATE_EMAIL';
 const UPDATE_NOTE = 'UPDATE_NOTE';
 const UPDATE_APPLIED = 'UPDATE_APPLIED';
 
+<<<<<<< HEAD
+=======
+const POST_PROFILE = 'POST_PROFILE';
+>>>>>>> master
 
 const SIGN_OUT = 'SIGN_OUT';
 const SET_SEARCH = 'SET_SEARCH';

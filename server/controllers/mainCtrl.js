@@ -1,5 +1,3 @@
-
-
 module.exports = {
   signIn: (req, res) => {
     console.log('User:', req.user);
