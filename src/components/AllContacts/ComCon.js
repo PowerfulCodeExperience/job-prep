@@ -25,7 +25,11 @@ class ComCon extends Component {
                           contact = {contact}
                           setStatus = {this.setStatus}
                         />
-                    )}
+                    )} else {
+                      return (
+                        null
+                      )
+                    }
                   })
                 }
                 </Card.Group>

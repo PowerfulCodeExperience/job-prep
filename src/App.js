@@ -63,9 +63,9 @@ class App extends Component {
 
     return (
       <div>
-      <div>
-        {checkStatus()}
-      </div>
+        <div>
+          {checkStatus()}
+        </div>
       </div>
     );
   }

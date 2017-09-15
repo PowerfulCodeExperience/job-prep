@@ -32,6 +32,8 @@ CREATE TABLE IF NOT EXISTS users_companies (
   companyName TEXT,
   companyLinkedIn TEXT,
   applied BOOLEAN,
+  position TEXT,
+  companyurl TEXT,
   user_id INTEGER REFERENCES users(id)
 );
 

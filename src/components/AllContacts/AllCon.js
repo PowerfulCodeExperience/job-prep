@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
 import './AllContacts.css';
 
 import Kard from './../Kard/Kard.js';
@@ -33,6 +32,11 @@ class AllCon extends Component {
                     contact = {contact}
                     setStatus = {this.setStatus}
                   />
+                )
+              }
+              else {
+                return (
+                  null
                 )
               }
             })
