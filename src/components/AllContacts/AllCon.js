@@ -34,6 +34,11 @@ class AllCon extends Component {
                   />
                 )
               }
+              else {
+                return (
+                  null
+                )
+              }
             })
           }
           </Card.Group>

@@ -104,14 +104,11 @@ module.exports = {
   postCompany: (req, res) => {
     const db = req.app.get('db');
 
-    console.log("body", req.body)
-
     const {company, position, companyurl, linkedin} = req.body;
     const {id} = req.user;
 
     db.post_company(company, position, companyurl, linkedin, id)
       .then(response => {
-        console.log("res", response)
         db.get_companies(id).then(companies => {
           res.status(200).send(companies)
       })
