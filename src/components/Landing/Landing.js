@@ -15,7 +15,7 @@ class Landing extends Component {
       <div className="Landing-Body"></div>
 
       <div className="Overlap">
-        <Button style={{'fontFamily':'"Nunito", sans-serif', 'fontWeight':'700', 'color':'white'}} inverted color="blue" size="massive" href={'http://localhost:3001/auth/'}>
+        <Button style={{'fontFamily':'"Nunito", sans-serif', 'fontWeight':'700', 'color':'white'}} color="blue" size="massive" href={'http://localhost:3001/auth/'}>
           LOGIN
         </Button>
       </div>
