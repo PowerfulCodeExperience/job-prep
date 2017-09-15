@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Libre+Barcode+39+Text');
 
-li {
-  margin: 18px 0;
-}
 .dash_container {
   display: flex;
   flex-direction: column;
@@ -17,18 +14,18 @@ li {
   margin-bottom: 3em;
   height: 20vh;
   width: 80%;
-  border: 2px solid #2AAAE0;
+  border: 2px solid #2AABE2;
 }
 .goal_renderings {
-  height: 80vh;
   width: 45vw;
-  border: 2px solid #2AAAE0;
-  overflow: auto;
-  margin: 4px;
+  background: #2AABE2;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 .side_by {
   display: flex;
   justify-content: space-around;
+  height: calc(100vh - 130px);
 }
 .daily_header {
   display: flex;
@@ -36,31 +33,29 @@ li {
   font-size: 45px;
   color: white;
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 .port_add {
   margin-bottom: 5px;
 }
 .jobs_applied {
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
+  background: #2AABE2;
   color: white;
-  height: 80vh;
   width: 25vw;
   font-size: 30px;
-  padding-top: 16px;
-  border: 2px solid #2AAAE0;
-  overflow: auto;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 .top_row {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 10vh;
+  height: 100px;
   font-family: 'Libre Barcode 39 Text', cursive;
-  font-size: 4em;
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
+  font-size: 60px;
+  padding: 50px 0;
   color: white;
 }
 .link_spans {
@@ -69,26 +64,29 @@ li {
   overflow: hidden;
   transition-duration: 0.3s;
   transition-property: color, background-color;
+  color: #383838;
 }
 .link_spans:hover {
   cursor: pointer;
-  background: hsl(0, 0%, 88%);
-  text-decoration: none;
-  color: #4795E9;
+  background: white;
+  color: #2AABE2;
+}
+.link_spans:active {
+  color: none;
 }
 .list_rendered {
-  background-color: #303030;
+  padding: 30px 50px 0 50px;
+}
+.dash_li {
   color: white;
-  padding: 4px;
-}
-.list {
-  list-style-type: none;
-}
-.ui.vertical.segment.list_rendered {
-  padding: 18px;
-  font-size: 24px;
+  font-size: 18px;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 25px;
+  list-style-type: circle;
 }
 .empty_input {
+  color: #2AABE2;
   display: flex;
   padding-top: 10px;
   width: 80%;
@@ -100,6 +98,56 @@ li {
   height: 5vh;
 }
 .not_active {
+  color: #383838;
   pointer-events: none;
-  cursor: default;
+}
+.active {
+  color: #2AABE2;
+  text-decoration: none !important;
+}
+
+/* Mobile View */
+@media(max-width: 800px) {
+  .top_row {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 300px;
+    padding: 0;
+    margin: 60px 0 60px 0;
+  }
+
+  .side_by {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 130px;
+  }
+
+  .goal_renderings {
+    width: 90%;
+    margin-bottom: 30px;
+  }
+
+  .daily_header {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+
+  .jobs_applied {
+    width: 90%;
+    height: 100%;
+    margin-bottom: 50px;
+  }
+
+  .list_rendered {
+    padding: 0;
+    margin: 0;
+  }
+
+  .dash_li {
+    list-style-type: circle;
+  }
 }

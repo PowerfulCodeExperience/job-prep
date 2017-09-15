@@ -34,13 +34,13 @@
   height: 60px;
   font-size: 18px;
   font-weight: 600;
-  color: #2AABE2;
+  color: white;
   display: flex;
   align-items: center;
 }
 
 .PanelRow:hover {
-  color: white;
+  color: black;
   cursor: pointer;
 }
 
@@ -60,32 +60,33 @@
 
 /* Accordian Styles */
 .ui.styled.accordion {
-  background: transparent;
-  border: 2px solid #2AABE2;
+  background: #2AABE2;
+  border: 1px solid black
 }
 
 .ui.styled.accordion>.title {
-  color: #2AABE2;
+  color: white;
   font-family: 'Nunito', sans-serif;
   font-size: 25px;
   border-radius: 0px;
 }
 
 .ui.styled.accordion>.title:hover {
-  background: #2AABE2;
+  border-radius: 5px;
+  background: #74DCFF;
   color: black;
 }
 
 .ui.styled.accordion>.title.active {
   border-radius: 0;
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
-  background: #2AABE2;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background: #74DCFF;
   color: black;
 }
 
 .ui.styled.accordion>.content {
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-  /* background: #0072A2; */
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background: #2AABE2;
 }

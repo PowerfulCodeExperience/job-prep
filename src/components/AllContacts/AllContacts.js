@@ -6,8 +6,6 @@ import './AllContacts.css';
 
 import AllCon from './AllCon.js';
 import ComCon from './ComCon.js';
-// import Kard from './../Kard/Kard.js';
-// import {Card} from 'semantic-ui-react';
 import {getCompanies, getAllContacts, setSearch} from '../../ducks/reducer';
 
 class AllContacts extends Component {
@@ -44,21 +42,21 @@ class AllContacts extends Component {
     });
   }
 
-  render() {
+  render() { console.log('ALLCONSTATE', this.state.companies)
     return (
       <div className="AllContacts">
 
         <header className="AllHeader">
           <div className="WrapTitle">
-            <Link to="/allcontacts"><h1 className={this.state.contacts} onClick={() => this.onContacts()}>
+            <Link to="/allcontacts" className="AllTitleLink"><h1 className={this.state.contacts} onClick={() => this.onContacts()}>
               Contacts
             </h1></Link>
-            <Link to="/allcontacts/cc"><h1 className={this.state.companies} onClick={() => this.onCompanies()}>
+            <Link to="/allcontacts/cc" className="AllTitleLink"><h1 className={this.state.companies} onClick={() => this.onCompanies()}>
               Companies
             </h1></Link>
           </div>
           <div className="SearchWrap">
-            <input className="Search" placeholder="Search Contacts" disabled={this.state.disable} onBlur={(e) => e.target.value = ''} onChange={(e) => {
+            <input className="Search" placeholder={!this.state.disable?"Search Contacts":""} disabled={this.state.disable} onBlur={(e) => e.target.value = ''} onChange={(e) => {
               let value = e.target.value.toLowerCase();
               this.props.setSearch(value);
             }}/>

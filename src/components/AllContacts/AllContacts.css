@@ -18,15 +18,19 @@
   font-size: 55px;
   font-weight: 700;
   font-family: 'Nunito', sans-serif;
-  color: white;
+  color: black;
   padding-right: 30px;
-  opacity: 0.3;
+  opacity: 0.5;
   cursor: pointer;
 }
 
 .On {
   color: #2AABE2;
   opacity: 1;
+}
+
+.AllTitleLink {
+  text-decoration: none !important;
 }
 
 .SearchWrap {
@@ -40,7 +44,7 @@
   background: transparent;
   font-family: 'Nunito', sans-serif;
   text-indent: 20px;
-  color: white;
+  color: black;
   border: 2px solid #2AABE2;
   border-right: none;
   border-top-left-radius: 5px;
@@ -49,15 +53,15 @@
 }
 
 .Search:disabled {
+  color: white;
   border: 2px solid white;
   border-right: none;
-  opacity: 0.4;
 }
 
 .SearchButton {
   width: 80px;
   background: transparent;
-  color: white;
+  color: #2AABE2;
   font-size: 35px;
   border: 2px solid #2AABE2;
   border-top-right-radius: 5px;
@@ -66,7 +70,7 @@
 
 .SearchButton:disabled {
   border-color: white;
-  opacity: 0.4;
+  color: white;
 }
 
 .Mag {
@@ -84,15 +88,21 @@
   width: 90%;
   border: 2px solid #2AABE2;
   border-radius: 5px;
-  padding: 0 0 50px 100px;
+  padding: 0 0 50px 0px;
   margin-bottom: 50px;
+  background: #2AABE2;
+  border: 1px solid black;
 }
 
 .SingleTitle {
   font-family: 'Nunito', sans-serif;
+  width: 100%;
   height: 100px;
+  font-size: 40px;
+  font-weight: 700;
+  color: white;
+  text-align: center;
   padding-top: 30px;
-  padding-right: 90px;
 }
 
 .TitleLink {
@@ -101,8 +111,12 @@
   color: white;
 }
 
-.SingleTitle:hover {
+.TitleLink:hover {
   color: #2AABE2;
+}
+
+.CardGroupWrap {
+  padding-left: 95px;
 }
 
 /* Mobile View */
@@ -119,8 +133,6 @@
   .AllTitle {
     font-size: 32px;
     font-weight: 700;
-    color: white;
-    opacity: 0.3;
     cursor: pointer;
   }
 
@@ -160,6 +172,10 @@
 
   .AllWrap {
     padding-right: 5px;
+  }
+
+  .CardGroupWrap {
+    padding-left: 0px;
   }
 }
 

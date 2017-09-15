@@ -59,7 +59,6 @@ module.exports = {
 
   returnCompany: (req, res) => {
     const db = req.app.get('db');
-
     db.get_company(req.params.id)
       .then(response => {
         res.status(200).send(response);
@@ -135,7 +134,6 @@ module.exports = {
     const db = req.app.get('db');
 
     const {note, date, contact_id, company_id} = req.body;
-
     db.post_note(note, date, contact_id)
       .then(note => {
         db.get_notes(contact_id)
@@ -166,7 +164,6 @@ module.exports = {
     const db = req.app.get('db');
 
     const {email, id, company_id} = req.body;
-
     db.update_email(email, id)
       .then(response => {
         db.get_contacts(company_id)

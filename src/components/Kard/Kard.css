@@ -17,13 +17,17 @@
   border: 1px gray solid;
 }
 
-input {
+.KardInput {
   width: 258px;
 }
 
 .Notes {
   overflow-y: scroll;
   height: 100px;
+}
+
+.Notes p {
+  padding-bottom: 10px;
 }
 
 .CardDescription {
@@ -33,4 +37,4 @@ input {
 
 .ui.mini.modal.transition.visible.active {
   height: 13.5em;
- }
+}

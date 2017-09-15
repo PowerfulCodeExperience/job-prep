@@ -115,14 +115,14 @@ class Companies extends Component {
           </section>
 
           <section className="TableWrap">
-            <Table striped selectable>
+            <Table selectable>
               <Table.Header>
                 <Table.Row>
                   <Table.HeaderCell>Company</Table.HeaderCell>
                   <Table.HeaderCell>Position</Table.HeaderCell>
                   <Table.HeaderCell>Company URL</Table.HeaderCell>
                   <Table.HeaderCell>LinkedIn</Table.HeaderCell>
-                  <Table.HeaderCell>Applied</Table.HeaderCell>
+                  <Table.HeaderCell textAlign="center">Applied</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
 

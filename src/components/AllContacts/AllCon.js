@@ -8,40 +8,43 @@ import {Card} from 'semantic-ui-react';
 class AllCon extends Component {
 
   render() {
-    console.log('Search', this.props.search)
     return (
       <main className="AllWrap">
         <section className="SingleWrap">
-          <h1 className="SingleTitle"><span className="TitleLink"> All Contacts </span></h1>
-          <Card.Group>
-          {
-            this.props.allContacts.map((contact, i) => {
-              if(!this.props.search) {
-                return (
-                  <Kard key={i}
-                    i = {i}
-                    contact = {contact}
-                    setStatus = {this.setStatus}
-                  />
-                )
-              }
-              else if(contact.firstname.toLowerCase().includes(this.props.search)) {
-                return (
-                  <Kard key={i}
-                    i = {i}
-                    contact = {contact}
-                    setStatus = {this.setStatus}
-                  />
-                )
-              }
-              else {
-                return (
-                  null
-                )
+          <h1 className="SingleTitle"> All Contacts </h1>
+          <div className="CardGroupWrap">
+            <Card.Group>
+              {
+                this.props.allContacts.map((contact, i) => {
+                  if(!this.props.search) {
+                    return (
+                      <Kard key={i}
+                        i = {i}
+                        contact = {contact}
+                        setStatus = {this.setStatus}
+                      />
+                    )
+                  }
+                  else if(contact.firstname.toLowerCase().includes(this.props.search)) {
+                    return (
+                      <Kard key={i}
+                        i = {i}
+                        contact = {contact}
+                        setStatus = {this.setStatus}
+                      />
+                    )
+                  }
+                  else {
+                    return (
+                      null
+                    )
+                  }
+                })
               }
             })
           }
-          </Card.Group>
+            </Card.Group>
+          </div>
         </section>
       </main>
     )
